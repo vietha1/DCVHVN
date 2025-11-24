@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz Cơ sở Văn hoá Việt Nam</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 16px 40px;
+      line-height: 1.5;
+      background: #f5f5f5;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    #container {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    #question-text {
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .option {
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.05s ease;
+      user-select: none;
+    }
+    .option:hover {
+      transform: translateY(-1px);
+    }
+    .option.correct {
+      background: #d4f4d4;
+      border-color: #8bc34a;
+    }
+    .option.incorrect {
+      background: #ffd6d6;
+      border-color: #e57373;
+    }
+    .option.disabled {
+      cursor: default;
+      opacity: 0.8;
+    }
+    #feedback {
+      margin-top: 12px;
+      min-height: 24px;
+      font-weight: 600;
+    }
+    #feedback.correct {
+      color: #2e7d32;
+    }
+    #feedback.incorrect {
+      color: #c62828;
+    }
+    #scoreBar {
+      margin-top: 8px;
+      font-size: 14px;
+      opacity: 0.85;
+    }
+    #controls {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .btn {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid #ccc;
+      background: #fafafa;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+    #progress {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+    #raw-note {
+      margin-top: 24px;
+      font-size: 13px;
+      color: #666;
+      border-top: 1px dashed #ddd;
+      padding-top: 8px;
+    }
+    /* Summary view */
+    #summaryView h2 {
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+    #wrongList ol {
+      padding-left: 20px;
+    }
+    #wrongList li {
+      cursor: pointer;
+      margin-bottom: 4px;
+    }
+    #wrongList li:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Quiz Cơ sở Văn hoá Việt Nam</h1>
+  <div id="container">
+    <!-- View làm bài -->
+    <div id="quizView">
+      <div id="question-text"></div>
+      <div id="options"></div>
+      <div id="feedback"></div>
+      <div id="scoreBar"></div>
+
+      <div id="controls">
+        <div>
+          <button id="prevBtn" class="btn">⟨ Câu trước</button>
+          <button id="nextBtn" class="btn">Câu sau ⟩</button>
+          <button id="randomBtn" class="btn">Ngẫu nhiên 🎲</button>
+        </div>
+        <div>
+          <button id="resetBtn" class="btn">Làm lại từ đầu ⟳</button>
+          <button id="summaryBtn" class="btn" disabled>Tổng kết</button>
+        </div>
+        <div id="progress"></div>
+      </div>
+
+      <div id="raw-note">
+        📌 Gợi ý: mở file HTML này bằng Notepad, tìm biến
+        <code>rawQuestions</code> bên dưới và dán toàn bộ bộ câu hỏi + đáp án
+        (có dấu <code>*</code> trước đáp án đúng) của bạn vào đó.
+      </div>
+    </div>
+
+    <!-- View tổng kết -->
+    <div id="summaryView" style="display:none;">
+      <h2>Kết quả</h2>
+      <p id="scoreText"></p>
+      <p id="answeredText"></p>
+
+      <h3>Các câu làm sai</h3>
+      <div id="wrongList"></div>
+
+      <div style="margin-top:16px; display:flex; flex-wrap:wrap; gap:8px;">
+        <button id="practiceWrongBtn" class="btn">Luyện lại tất cả câu sai</button>
+        <button id="backToQuizBtn" class="btn">Quay lại làm bài</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ==== DÁN BỘ CÂU HỎI CỦA BẠN VÀO ĐÂY ====
+    // Format:
+    //  - mỗi câu cách nhau ít nhất 1 dòng trống
+    //  - dòng 1: nội dung câu hỏi
+    //  - dòng 2–5: 4 phương án A/B/C/D, đáp án đúng có dấu * ở đầu
+   const rawQuestions = `
+Câu 1: Căn cứ theo nguồn gốc, các nền văn hoá phương tây thuộc loại hình văn hoá nào:
+A. Văn hóa công nghiệp
+B. Văn hoá nông nghiệp
+*C. Văn hoá du mục
+D. Văn hoá đồng quê
+
+Câu 2: Phân biệt cửa sinh và cửa tử là một nét đặc trưng ngôi nhà truyền thống của dân tộc nào?
+A. Người Chăm
+*B. Người Chăm Ninh Thuận
+C. Người Tày
+D. Người Thái
+
+Câu 3: Trong đời sống tư tưởng Việt nam từ thế kỷ nào thì có sự du nhập của Thiên chúa giáo, Kitô giáo?
+A. Thế kỷ XII
+*B. Thế kỷ XVI
+C. Thế kỷ XVIII
+D. Thế kỷ XV
+
+Câu 4: Nhà của người Việt được xây dựng trên những miền núi có địa khác nhau thì có sự khác nhau. Sự khác nhau đó có mục đích gì:
+A. Đối phó với lũ lụt
+B. Chiến thắng môi trường tự nhiên
+C. Giữ gìn những công trình văn hoá truyền thống
+*D. Thích nghi với môi trường tự nhiên
+
+Câu 5: Mục đích của chế độ thi cử thời xưa ở Việt nam:
+*A. Tuyển chọn hiền tài
+B. Cả ba
+C. Tuyển chọn người giỏi văn
+D. Truyền bá nho giáo
+
+Câu 6: Một yếu tố văn hoá đặc thù được người việt bảo vệ ở thời Bắc thuộc; thể hiện sự tồn tại dân tộc và thể hiện bản sắc dân tộc:
+A. Tín ngưỡng dân gian
+B. Lễ hội dân tộc
+C. Chữ viết
+*D. Tiếng nói /Tiếng Việt
+
+Câu 7: Mối quan hệ giữa con người và văn hoá được bộc lộ ở các khía cạnh?
+A. Con người - đại biểu mang giá trị văn hoá của chính mình
+B. Con người - chủ thể của văn hoá
+C. Con người - sản phẩm của văn hoá
+*D. Tất cả
+
+Câu 8: Ai là người sáng lập ra Đạo Gia?
+A. Khổng Tử
+B. Trang Tử
+C. Tăng Tử
+*D. Lão Tử
+
+Câu 9: Kích thước ngôi nhà việt truyền thống thể hiện ở:
+A. Thước dây
+*B. Thước tầm
+C. Thước thợ
+D. Thước lỗ ban
+
+Câu 10: Tác phẩm văn học nào được coi là tiểu thuyết đầu tiên của Việt nam viết bằng chữ quốc ngữ?
+A. Sống chết mặc bay
+*B. Truyện thầy Lazarô phiền
+C. Tố Tâm
+D. Phan yên ngoại sử
+
+Câu 11: Chọn luận điểm đúng.
+A. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là sự trao đổi văn hoá là sự trao đổi hàng hoá.
+B. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là sự trao đổi văn hoá là sự trao đổi vật phẩm tôn giáo.
+*C. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là sự trao đổi kinh tế.
+D. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là do các cuộc thiên di thời cổ đại.
+
+Câu 12: Ngôi nhà nào của người Chăm được xây dựng trước tiên trong khuôn viên?
+*A. Nhà tục
+B. Nhà lới
+C. Nhà bếp
+D. Nhà cặp đôi
+
+Câu 13: Từ nào được điền vào chỗ trống: .................... là truyền thống văn hoá lâu đời và tốt đẹp. Khái niệm này thiên về những giá trị tinh thần do những người có tài đức chuyên chở:
+A. Văn vật
+B. Văn minh
+C. Văn hoá
+*D. Văn hiến
+
+Câu 14: Các tộc người Cống, La Hư, Lô Lô thuộc nhóm văn hoá ngôn ngữ nào:
+A. Mã lai- Đa đảo
+B. Môn- Khơ me
+C. Tày – Thái
+*D. Tạng - Miếng
+
+Câu 15: Người Việt xưng hô theo nguyên tắc nào?
+A. Trọng tình cảm
+B. Xưng hô khiêm tốn
+C. Cung kính khiêm nhường
+*D. Xưng khiêm hô tôn
+
+Câu 16: Hồ Nguyệt Cô hóa cáo, Chém Tá, Lan Anh đẻ, là những lớp trò thuộc loại hình sân khấu cổ truyền nào của người Việt
+A. Rối nước
+B. Cải lương
+C. Hát chèo
+*D. Hát tuồng
+
+Câu 17: Ai trong số các đối tượng sau được tôn là một vị thánh trong Tứ bất tử?
+A. Trần Cảnh
+B. Trần Hưng Đạo
+*C. Thánh Gióng
+D. Chiêu Hoàng
+
+Câu 18: Trang trí cầu thang của nhà bằng việc chạm khắc nổi hình trăng khuyết và đôi bầu sữa mẹ là của dân tộc nào?
+A. Dân tộc Chu Ru
+*B. Dân tộc Ê Đê
+C. Dân tộc Raglai
+D. Dân tộc Chăm
+
+Câu 19: Lễ hội Chùa Hương, hội Phủ Giầy, hội Giáng Sinh thuộc loại lễ hội:
+A. Lễ hội nghề nghiệp
+*B. Lễ hội tôn giáo và văn hóa
+C. Lễ hội văn hóa
+D. Lễ hội tôn giáo
+
+Câu 20: Hệ thống từ xưng hô của người Việt có những đặc điểm gì?
+A. Tính cộng đồng cao
+*B. Tất cả
+C. Trọng tình cảm
+D. Tính tôn ti kỹ lưỡng
+
+Câu 21: Ngôi nhà cộng đồng của người Cơtu gọi là gì?
+A. Nhà rường
+B. Nhà dài
+*C. Nhà gươl
+D. Nhà rông
+
+Câu 22: Lễ Tam nguyên là lễ hội của:
+*A. Đạo giáo
+B. Đạo mẫu
+C. Phật giáo
+D. Nho giáo
+
+Câu 23: Trong câu "tháng 8 giỗ cha, tháng ba giỗ mẹ", người Việt tôn ai là cha, ai là mẹ?
+A. Pháp Vân và Thạch Quang
+B. Pháp Vân và Ngọc Hoàng
+*C. Liễu Hạnh và Trần Hưng Đạo
+D. Liễu Hạnh và Ngọc Hoàng
+
+Câu 24: Hề chèo là nhân vật như thế nào?
+A. Là nhân vật trữ tình
+*B. Là nhân vật hài hước, châm biếm
+C. Là nhân vật hóm hỉnh.
+D. Là nhân vật từ bi
+
+Câu 25: Đặc điểm lối chào của văn hóa giao tiếp người Việt Nam?
+*A. Phụ thuộc vào quan hệ xã hội và theo sắc thái tình cảm.
+B. Theo khuôn mẫu chung.
+C. Phân biệt kỹ lưỡng các lối chào.
+D. Phụ thuộc vào thời gian.
+
+Câu 26: Nguyên nhân khiến người Việt Nam cực kỳ coi trọng việc giao tiếp?
+A. Tính rụt rè.
+B. Tính tự ti làng xã.
+C. Tính thích tìm hiểu.
+*D. Tính cộng đồng làng xã nông nghiệp.
+
+Câu 27: Hát Chầu văn và kéo chữ là nét văn hóa đặc trưng của lễ hội nào của người Việt?
+A. Lễ hội Đền Hai Bà Trưng
+B. Lễ hội Đền Đô
+*C. Lễ hội Phủ Giầy
+D. Lễ hội Đền Hùng
+
+Câu 28: Thành Hoàng là vị thần như thế nào?
+A. Thần nghề nghiệp
+*B. Thần bảo vệ làng
+C. Thần bảo vệ di tích
+D. Thần giữ của
+
+Câu 29: Nhà mồ Tây Nguyên thường phải tuân theo một hướng nhất định là hướng nào?
+*A. Đông Tây
+B. Đông Bắc
+C. Đông Nam
+D. Tây Nam
+
+Câu 30: Lễ tế thành hoàng hằng năm ở đình làng Việt gọi là lễ gì?
+*A. Lễ Kỳ Yên
+B. Lễ sắp ấn
+C. Lễ khai hạ
+D. Lễ Hạ điền
+
+Câu 31: Tên một lễ hội nông nghiệp đặc trưng ở vùng việt Bắc?
+A. Lễ hội cúng trăng
+*B. Lễ hội Lung Tùng
+C. Lễ hội Nàng hai
+D. Lễ hội Hang Bua
+
+Câu 32: "Nương - Phai - Lái - Lịn" là những biểu tượng của văn hoá nông nghiệp của dân tộc nào ở vùng văn hoá Tây bắc?
+A. Người Nùng
+*B. Người Thái
+C. Người Tày
+D. Người Lự
+
+Câu 33: Xuồng ba lá, Ghe tam bàn là những phương tiện đi lại và vận chuyển thuộc vùng đất nào ở nước ta?
+*A. Vùng Nam bộ
+B. Vùng Thăng Long
+C. Vùng Nam trung bộ
+D. Vùng Trung bộ
+
+Câu 34: Các báo "Lục tĩnh tân văn" "Nông cổ mín đàm", "Nữ giới chung" ra đời ở đâu?
+A. Bắc Bộ
+*B. Nam Bộ
+C. Hà Nội
+D. Trung Bộ
+
+Câu 35: Người Êđê gọi sử thi của mình là gì?
+A. Hri
+B. Truyện cổ tích
+C. Hmon
+*D. Kha
+
+Câu 36: Váy, xửa cơm (áo), khăn piêu là trang phục của phụ nữ dân tộc nào ở nước ta?
+A. Người La Ha
+B. Người La Chí
+C. Người Lô Lô
+*D. Người Thái
+
+Câu 37: Một biểu tượng của nghi lễ trong các dịp hỏi, cưới, đám tang, cúng giỗ, của người Việt là?
+A. Cau và thuốc lào
+*B. Trầu và Cau
+C. Trầu và bánh bèo
+D. Trầu và nước
+
+Câu 38: Mục đích lễ hội Chorchmanthmay của người Khơme Nam bộ?
+A. Cúng trăng
+*B. Đón năm mới/ lễ tết
+C. Cúng thần lúa
+D. Ngày Phật đản
+
+Câu 39: Kinh rạch và cầu tre là biểu tượng của làng Việt ở vùng nào của nước ta?
+A. Vùng trung bộ
+*B. Vùng Nam bộ
+C. Vùng duyên hải trung bộ
+D. Vùng bắc bộ
+
+Câu 40: Dân tộc nào ở nước ta có tục "kéo vợ"?
+*A. Người Cờ Lao
+B. Người Hà Nhí
+C. Người Lô Lô
+D. Người Sila
+
+Câu 41: Hát Chầu văn, Hát bóng liên quan đến hình thái tín ngưỡng nào của người Việt?
+*A. Thờ Mẫu
+B. Thờ thuỷ thần
+C. Thờ thiên Thần
+D. Thờ Phồn Thực
+
+Câu 42: Nội dung Tết Đoan Ngọ của người Việt?
+A. Cúng hành khiển thần.
+B. Hái thuốc nam để dành chữa bệnh.
+*C. Diệt trừ sâu bọ, xua đuổi bệnh tật.
+D. Giỗ khuất nguyên.
+
+Câu 43: Nội dung ý nghĩa lễ trừ tịch trong đêm giao thừa của người Việt?
+*A. Cúng hành khiển thần
+B. Cúng Thổ thần
+C. Cúng chúng sinh, hành khiển thần
+D. Cúng chúng sinh
+
+Câu 44: Vùng văn hoá nào của nước ta mà trong suốt quá trình lịch sử trở thành "phên dậu" của Đại việt chống lại mưu đồ thôn tính và đồng hoá phong kiến Phương bắc?
+*A. Vùng Việt Bắc
+B. Vùng Trường sơn Tây nguyên
+C. Vùng Tây Bắc
+D. Vùng Thăng long
+
+Câu 45: Dân tộc nào của nước ta cho rằng Trống là Mặt trời-tính nam, Cồng chiêng là Mặt trời- tính nữ?
+*A. Người Êđê
+B. Người lô
+C. Người Mnông
+D. Người Khơmú
+
+Câu 46: Lượn cọi và lượn chương là những thể loại dân ca tiêu biểu?
+*A. Cư dân Tày- Nùng ở Việt Bắc
+B. Cư dân Môn- khơ me
+C. Cư dân Tày - Thái ở tây bắc
+D. Cư dân Mông -Dao vùng Việt bắc
+
+Câu 47: Biểu tượng của văn hoá ChămPa thuộc lĩnh vực kiến trúc?
+A. Linga
+B. Tượng thần SiVa
+*C. Tháp/Kalan
+D. Lăng mộ
+
+Câu 48: Vùng văn hoá nào của nước ta mà sinh hoạt hội chợ được coi như một sinh hoạt văn hoá đặc thù?
+A. Vùng Tây Nguyên
+B. Vùng Tây Ninh
+*C. Vùng Việt Bắc
+D. Vùng Tây Bắc
+
+Câu 49: Lễ pơ thi (bỏ mả), lễ cúng giằng và tục đâm trâu là những lễ hội đặc trưng của vùng văn hoá nào của nước ta?
+A. Vùng Việt Bắc
+B. Vùng Bắc Bộ
+*C. Vùng Tây Nguyên
+D. Vùng Tây Bắc
+
+Câu 50: Thiên Y A Na (Pô-I- Nu- Narga) là Thần Mẹ của dân tộc nào trên đất nước ta?
+A. Người Gia Rai
+*B. Người Chăm
+C. Người Raglai
+D. Người Chu Ru
+1. Nhiều ý kiến cho rằng, nguyên nhân khởi phát của tín ngưỡng thờ Mẫu là từ?
+*A. Chế độ mẫu hệ
+B. Tư tưởng phụ quyền trong xã hội xưa
+C. Ảnh hưởng của Đạo giáo Trung Hoa
+D. Tín ngưỡng phồn thực
+
+2.Minh chứng của việc đan xen giữa tín ngưỡng thờ Mẫu và Phật giáo được thể hiện qua
+*A. Huyền thoại về Man nương và nhà sư Khâu đà la
+B. Các ngôi chùa đồng thời thờ Phật và thờ Mẫu
+C. Sự xuất hiện của Mẫu Liễu Hạnh trong các ngôi chùa cổ
+D. Nghi thức cầu tự vừa theo đạo Phật vừa theo đạo Mẫu
+
+3.4 nữ thần trong câu chuyện trong video đại diện cho
+*A. Mây, mưa, sấm, chớp
+B. Đất, nước, gió, lửa
+C. Xuân, hạ, thu, đông
+D. Phúc, lộc, thọ, tài
+
+4. Hệ thống điện thần gồm 
+A. 9 bậc thần
+*B. 5 bậc thần
+C. 8 bậc thần
+D. 7 bậc thần
+
+5. Ai là vị thánh cao nhất trong đạo thờ Mẫu
+A. Ngọc hoàng
+*B. Thánh Mẫu Liễu Hạnh
+C. Phật Bà Quan Âm
+D. Vua Cha Bát Hải Động Đình
+
+6. Tứ phủ thánh mẫu gồm:
+*A. Mẫu đệ nhất Thượng Thiên – Mẫu đệ nhị Thượng Ngàn – Mẫu đệ tam Thoải phủ – Mẫu Địa
+B. Mẫu Thoải – Mẫu Địa – Mẫu Liễu – Mẫu Núi
+C. Mẫu Trời – Mẫu Nước – Mẫu Đất – Mẫu Rừng
+D. Mẫu Cửu Trùng – Mẫu Thần Nông – Mẫu Sơn Tinh – Mẫu Biển
+
+7. Chầu đệ nhất là hóa thân của 
+*A.Mẫu Thượng Thiên
+B. Mẫu Thuợng Ngàn
+C. Mẫu Thoải
+D. Thánh Mẫu Thiên phủ
+
+8. Lên đồng là
+*A. Hiện tượng nhập hồn nhiều lần của các thần linh trong điện thần, của đạo mẫu và các ông đồng, bà đồng để cầu sức khoẻ, may mắn và tài lộc.
+B. Một nghi lễ múa hát dân gian để tưởng nhớ tổ tiên
+C. Hình thức hát chầu văn thuần túy để cầu tài lộc
+D. Nghi lễ cúng tế thần linh bằng lễ vật truyền thống
+
+9. Sự khác nhau tín ngưỡng xuất phát chủ yếu từ
+*A. Điều kiện tự nhiên
+B. Điều kiện lịch sử
+C. Điều kiện văn hoá
+D. Điều kiện kinh tế
+
+10. Tín ngưỡng thờ thần rừng, thần núi, thần cây và các loài vật linh thiêng như hổ,
+gấu của người miền núi do đâu
+*A. Sự kính sợ và tôn trọng trước sức mạnh bí ẩn của tự nhiên
+B. Ảnh hưởng từ truyền thuyết dân gian và anh hùng ca
+C. Tập tục săn bắn và sinh hoạt cộng đồng
+D. Mong muốn bảo vệ mùa màng và tránh tai ương
+
+Câu 11: Tín ngưỡng phồn thực chủ yếu gắn liền với mong muốn nào của con người
+trong xã hội nông nghiệp?
+A. Cầu mong sự sung túc, tài lộc
+*B. Cầu mong sinh sôi, nảy nở
+C. Cầu mong sức khỏe, bình an
+D. Cầu mong sự che chở từ thần linh
+
+Câu 12: Thành hoàng làng trong tín ngưỡng Việt Nam thường được coi là:
+A. Người sáng lập ra làng
+B. Thần cai quản nghề nông
+*C. Vị thần bảo trợ, che chở cho cả cộng đồng làng xã
+D. Thần núi, thần sông trong thiên nhiên
+
+Câu 13: Tín ngưỡng thờ Mẫu phản ánh sâu sắc nhất điều gì trong đời sống tinh 
+thần người Việt?
+A. Ý thức cộng đồng
+B. Tinh thần thượng võ
+*C. Đề cao vai trò người mẹ và sự sinh sôi của vũ trụ
+D. Tín ngưỡng đa thần cổ xưa
+
+Câu 14 Điểm chung giữa tín ngưỡng thờ thành hoàng và tín ngưỡng thờ Mẫu là:
+A. Đều gắn với thờ phụng thiên nhiên
+*B. Đều thể hiện niềm tin vào sự bảo trợ, che chở cho cộng đồng
+C. Đều nhằm cầu mùa màng bội thu
+D. Đều chỉ gắn với tín ngưỡng dân gian địa phương
+
+Câu 15: Tín ngưỡng phồn thực được coi là sản phẩm tất yếu của xã hội nông 
+nghiệp vì:
+A. Phản ánh sự giao lưu văn hóa với phương Bắc
+B. Thể hiện sức mạnh của nam giới trong xã hội cổ
+*C. Xuất phát từ nhu cầu cầu mùa màng, sinh sản của con người
+D. Do chính quyền phong kiến cổ vũ và tổ chức
+
+Câu 16: Việc nhà Lê cho san định thần tích năm 1572 phản ánh ý nghĩa nào trong 
+sự phát triển tín ngưỡng thờ thành hoàng?
+A. Chứng minh tín ngưỡng này có từ rất sớm
+B. Nhà nước muốn áp đặt tôn giáo chính thống
+*C. Tín ngưỡng dân gian được chính quyền thừa nhận và quản lý
+D. Cho thấy sự cạnh tranh với tín ngưỡng phồn thực
+
+Câu 17: Trong tín ngưỡng thờ Mẫu, Tam phủ – Tứ phủ thể hiện quan niệm gì?
+A. Mỗi phủ tượng trưng cho một dòng họ
+*B. Mỗi phủ ứng với một miền vũ trụ – thiên nhiên khác nhau
+C. Chỉ thờ những người phụ nữ có công
+D. Chỉ dành cho tầng lớp quý tộc
+
+Câu 18: Một ngôi làng ở đồng bằng Bắc Bộ tổ chức lễ hội cầu mùa, diễn xướng tục
+giã gạo, hát giao duyên, rước nước từ sông về. Đây là biểu hiện của loại tín ngưỡng
+nào?
+A. Thờ thành hoàng
+B. Thờ Mẫu
+*C. Phồn thực
+D. Tôn giáo ngoại lai
+
+Câu 19: Khi phân tích tín ngưỡng thờ Mẫu, một sinh viên cho rằng tín ngưỡng này 
+phản ánh sự tôn vinh nữ giới, đồng thời gắn kết cộng đồng qua các lễ hội chầu văn.
+Nhận định này:
+*A. Hoàn toàn chính xác
+B. Sai vì thờ Mẫu không liên quan đến nữ giới
+C. Sai vì thờ Mẫu chỉ gắn với tầng lớp quan lại
+D. Chỉ đúng về phương diện nghệ thuật diễn xướng
+
+Câu 20: Trong bối cảnh hiện nay, nếu địa phương muốn khai thác giá trị du lịch 
+văn hóa từ tín ngưỡng thờ thành hoàng, cần lưu ý điều gì để vừa phát triển kinh tế 
+vừa bảo tồn được bản sắc?
+A. Chỉ tập trung thương mại hóa lễ hội để thu hút khách
+B. Loại bỏ toàn bộ nghi thức dân gian, thay bằng hiện đại hóa
+*C. Giữ gìn nghi lễ truyền thống cốt lõi, kết hợp tổ chức dịch vụ du lịch một cách hài hòa
+D. Không cần quan tâm bảo tồn vì đây là tín ngưỡng dân gian không chính thống
+Câu 1: Căn cứ theo nguồn gốc, các nền văn hoá phương Tây thuộc loại hình văn hoá nào:
+A. Văn hóa công nghiệp
+B. Văn hoá nông nghiệp
+*C. Văn hoá du mục
+D. Văn hoá đồng quê
+Câu 2: Phân biệt cửa sinh và cửa tử là một nét đặc trưng ngôi nhà truyền thống của dân tộc nào?
+A. Người Chăm
+*B. Người Chăm Ninh Thuận
+C. Người Tày
+D. Người Thái
+Câu 3: Trong đời sống tư tưởng Việt Nam từ thế kỷ nào thì có sự du nhập của Thiên chúa giáo, Kitô giáo?
+A. Thế kỷ XII
+*B. Thế kỷ XVI
+C. Thế kỷ XVIII
+D. Thế kỷ XV
+Câu 4: Nhà của người Việt được xây dựng trên những miền núi có địa hình khác nhau thì có sự khác nhau. Sự khác nhau đó có mục đích gì:
+A. Đối phó với lũ lụt
+B. Chiến thắng môi trường tự nhiên
+C. Giữ gìn những công trình văn hoá truyền thống
+*D. Thích nghi với môi trường tự nhiên
+Câu 5: Mục đích của chế độ thi cử thời xưa ở Việt Nam:
+*A. Tuyển chọn hiền tài
+B. Cả ba
+C. Tuyển chọn người giỏi văn
+D. Truyền bá Nho giáo
+Câu 6: Một yếu tố văn hoá đặc thù được người Việt bảo vệ ở thời Bắc thuộc; thể hiện sự tồn tại dân tộc và thể hiện bản sắc dân tộc:
+A. Tín ngưỡng dân gian
+B. Lễ hội dân tộc
+C. Chữ viết
+*D. Tiếng nói / Tiếng Việt
+Câu 7: Mối quan hệ giữa con người và văn hoá được bộc lộ ở các khía cạnh?
+A. Con người - đại biểu mang giá trị văn hoá của chính mình
+B. Con người - chủ thể của văn hoá
+C. Con người - sản phẩm của văn hoá
+*D. Tất cả
+Câu 8: Ai là người sáng lập ra Đạo Gia?
+A. Khổng Tử
+B. Trang Tử
+C. Tăng Tử
+*D. Lão Tử
+Câu 9: Kích thước ngôi nhà Việt truyền thống thể hiện ở:
+A. Thước dây
+*B. Thước tầm
+C. Thước thợ
+D. Thước lỗ ban
+Câu 10: Tác phẩm văn học nào được coi là tiểu thuyết đầu tiên của Việt Nam viết bằng chữ quốc ngữ?
+A. Sống chết mặc bay
+*B. Truyện thầy Lazarô Phiền
+C. Tố Tâm
+D. Phan yên ngoại sử
+Câu 11: Chọn luận điểm đúng.
+A. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là sự trao đổi văn hoá là sự trao đổi hàng hoá.
+B. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là sự trao đổi văn hoá là sự trao đổi vật phẩm tôn giáo.
+*C. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là sự trao đổi kinh tế.
+D. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là do các cuộc thiên di thời cổ đại.
+Câu 12: Ngôi nhà nào của người Chăm được xây dựng trước tiên trong khuôn viên?
+*A. Nhà tục
+B. Nhà lới
+C. Nhà bếp
+D. Nhà cặp đôi
+Câu 13: Từ nào được điền vào chỗ trống: “.................... là truyền thống văn hoá lâu đời và tốt đẹp. Khái niệm này thiên về những giá trị tinh thần do những người có tài đức chuyên chở”:
+A. Văn vật
+B. Văn minh
+C. Văn hoá
+*D. Văn hiến
+Câu 14: Các tộc người Cống, La Hư, Lô Lô thuộc nhóm văn hoá ngôn ngữ nào:
+A. Mã Lai - Đa đảo
+B. Môn - Khơ Me
+C. Tày – Thái
+*D. Tạng - Miến
+Câu 15: Người Việt xưng hô theo nguyên tắc nào?
+A. Trọng tình cảm
+B. Xưng hô khiêm tốn
+C. Cung kính khiêm nhường
+*D. Xưng khiêm, hô tôn
+Câu 16: Hồ Nguyệt Cô hóa cáo, Chém Tá, Lan Anh đẻ, là những lớp trò thuộc loại hình sân khấu cổ truyền nào của người Việt?
+A. Rối nước
+B. Cải lương
+C. Hát chèo
+*D. Hát tuồng
+Câu 17: Ai trong số các đối tượng sau được tôn là một vị thánh trong Tứ bất tử?
+A. Trần Cảnh
+B. Trần Hưng Đạo
+*C. Thánh Gióng
+D. Chiêu Hoàng
+Câu 18: Trang trí cầu thang của nhà bằng việc chạm khắc nổi hình trăng khuyết và đôi bầu sữa mẹ là của dân tộc nào?
+A. Dân tộc Chu Ru
+*B. Dân tộc Ê Đê
+C. Dân tộc Raglai
+D. Dân tộc Chăm
+Câu 19: Lễ hội Chùa Hương, hội Phủ Giầy, hội Giáng Sinh thuộc loại lễ hội:
+A. Lễ hội nghề nghiệp
+*B. Lễ hội tôn giáo và văn hóa
+C. Lễ hội văn hóa
+D. Lễ hội tôn giáo
+Câu 20: Hệ thống từ xưng hô của người Việt có những đặc điểm gì?
+A. Tính cộng đồng cao
+*B. Tất cả
+C. Trọng tình cảm
+D. Tính tôn ti kỹ lưỡng
+Câu 21: Ngôi nhà cộng đồng của người Cơ Tu gọi là gì?
+A. Nhà rường
+B. Nhà dài
+*C. Nhà gươl
+D. Nhà rông
+Câu 22: Lễ Tam nguyên là lễ hội của:
+*A. Đạo giáo
+B. Đạo Mẫu
+C. Phật giáo
+D. Nho giáo
+Câu 23: Trong câu "tháng 8 giỗ cha, tháng ba giỗ mẹ", người Việt tôn ai là cha, ai là mẹ?
+A. Pháp Vân và Thạch Quang
+B. Pháp Vân và Ngọc Hoàng
+*C. Liễu Hạnh và Trần Hưng Đạo
+D. Liễu Hạnh và Ngọc Hoàng
+Câu 24: Hề chèo là nhân vật như thế nào?
+A. Là nhân vật trữ tình
+*B. Là nhân vật hài hước, châm biếm
+C. Là nhân vật hóm hỉnh
+D. Là nhân vật từ bi
+Câu 25: Đặc điểm lối chào của văn hóa giao tiếp người Việt Nam?
+*A. Phụ thuộc vào quan hệ xã hội và theo sắc thái tình cảm.
+B. Theo khuôn mẫu chung.
+C. Phân biệt kỹ lưỡng các lối chào.
+D. Phụ thuộc vào thời gian.
+Câu 26: Nguyên nhân khiến người Việt Nam cực kỳ coi trọng việc giao tiếp?
+A. Tính rụt rè.
+B. Tính tự ti làng xã.
+C. Tính thích tìm hiểu.
+*D. Tính cộng đồng làng xã nông nghiệp.
+Câu 27: Hát Chầu văn và kéo chữ là nét văn hóa đặc trưng của lễ hội nào của người Việt?
+A. Lễ hội Đền Hai Bà Trưng
+B. Lễ hội Đền Đô
+*C. Lễ hội Phủ Giầy
+D. Lễ hội Đền Hùng
+Câu 28: Thành Hoàng là vị thần như thế nào?
+A. Thần nghề nghiệp
+*B. Thần bảo vệ làng
+C. Thần bảo vệ di tích
+D. Thần giữ của
+Câu 29: Nhà mồ Tây Nguyên thường phải tuân theo một hướng nhất định là hướng nào?
+*A. Đông - Tây
+B. Đông Bắc
+C. Đông Nam
+D. Tây Nam
+Câu 30: Lễ tế Thành Hoàng hằng năm ở đình làng Việt gọi là lễ gì?
+*A. Lễ Kỳ Yên
+B. Lễ sắp ấn
+C. Lễ khai hạ
+D. Lễ Hạ điền
+Câu 31: Tên một lễ hội nông nghiệp đặc trưng ở vùng Việt Bắc?
+A. Lễ hội cúng trăng
+*B. Lễ hội Lồng Tồng
+C. Lễ hội Nàng Hai
+D. Lễ hội Hang Bua
+Câu 32: "Mương - Phai - Lái - Lịn" là những biểu tượng của văn hoá nông nghiệp của dân tộc nào ở vùng văn hoá Tây Bắc?
+A. Người Nùng
+*B. Người Thái
+C. Người Tày
+D. Người Lự
+Câu 33: Xuồng ba lá, ghe tam bản là những phương tiện đi lại và vận chuyển thuộc vùng đất nào ở nước ta?
+*A. Vùng Nam Bộ
+B. Vùng Thăng Long
+C. Vùng Nam Trung Bộ
+D. Vùng Trung Bộ
+Câu 34: Các báo "Lục tĩnh tân văn", "Nông cổ mín đàm", "Nữ giới chung" ra đời ở đâu?
+A. Bắc Bộ
+*B. Nam Bộ
+C. Hà Nội
+D. Trung Bộ
+Câu 35: Người Êđê gọi sử thi của mình là gì?
+A. Hri
+B. Truyện cổ tích
+C. Hmon
+*D. Kha
+Câu 36: Váy, xửa cơm (áo), khăn piêu là trang phục của phụ nữ dân tộc nào ở nước ta?
+A. Người La Ha
+B. Người La Chí
+C. Người Lô Lô
+*D. Người Thái
+Câu 37: Một biểu tượng của nghi lễ trong các dịp hỏi, cưới, đám tang, cúng giỗ của người Việt là?
+A. Cau và thuốc lào
+*B. Trầu và cau
+C. Trầu và bánh bèo
+D. Trầu và nước
+Câu 38: Mục đích lễ hội Chol Chnam Thmay (Chôl Chnăm Thmây) của người Khơme Nam Bộ là:
+A. Cúng trăng
+*B. Đón năm mới / lễ Tết
+C. Cúng thần lúa
+D. Ngày Phật đản
+Câu 39: Kinh rạch và cầu tre là biểu tượng của làng Việt ở vùng nào của nước ta?
+A. Vùng Trung Bộ
+*B. Vùng Nam Bộ
+C. Vùng Duyên hải Trung Bộ
+D. Vùng Bắc Bộ
+Câu 40: Dân tộc nào ở nước ta có tục "kéo vợ"?
+*A. Người Cờ Lao
+B. Người Hà Nhì
+C. Người Lô Lô
+D. Người Si La
+Câu 41: Hát Chầu văn, hát bóng liên quan đến hình thái tín ngưỡng nào của người Việt?
+*A. Thờ Mẫu
+B. Thờ Thuỷ thần
+C. Thờ Thiên thần
+D. Thờ phồn thực
+Câu 42: Nội dung Tết Đoan Ngọ của người Việt?
+A. Cúng hành khiển thần
+B. Hái thuốc nam để dành chữa bệnh
+*C. Diệt trừ sâu bọ, xua đuổi bệnh tật
+D. Giỗ Khuất Nguyên
+Câu 43: Nội dung, ý nghĩa lễ Trừ tịch trong đêm giao thừa của người Việt?
+*A. Cúng hành khiển thần
+B. Cúng Thổ thần
+C. Cúng chúng sinh, hành khiển thần
+D. Cúng chúng sinh
+Câu 44: Vùng văn hoá nào của nước ta mà trong suốt quá trình lịch sử trở thành "phên dậu" của Đại Việt chống lại mưu đồ thôn tính và đồng hoá của phong kiến phương Bắc?
+*A. Vùng Việt Bắc
+B. Vùng Trường Sơn - Tây Nguyên
+C. Vùng Tây Bắc
+D. Vùng Thăng Long
+Câu 45: Dân tộc nào của nước ta cho rằng trống là Mặt trời - tính nam, cồng chiêng là Mặt trời - tính nữ?
+*A. Người Êđê
+B. Người Lô Lô
+C. Người Mnông
+D. Người Khơ Mú
+Câu 46: Lượn cọi và lượn chương là những thể loại dân ca tiêu biểu của:
+*A. Cư dân Tày - Nùng ở Việt Bắc
+B. Cư dân Môn - Khơ Me
+C. Cư dân Tày - Thái ở Tây Bắc
+D. Cư dân Mông - Dao vùng Việt Bắc
+Câu 47: Biểu tượng của văn hoá Chăm Pa thuộc lĩnh vực kiến trúc là:
+A. Linga
+B. Tượng thần Siva
+*C. Tháp / Kalan
+D. Lăng mộ
+Câu 48: Vùng văn hoá nào của nước ta mà sinh hoạt hội chợ được coi như một sinh hoạt văn hoá đặc thù?
+A. Vùng Tây Nguyên
+B. Vùng Tây Ninh
+*C. Vùng Việt Bắc
+D. Vùng Tây Bắc
+Câu 49: Lễ pơ thi (bỏ mả), lễ cúng giằng và tục đâm trâu là những lễ hội đặc trưng của vùng văn hoá nào của nước ta?
+A. Vùng Việt Bắc
+B. Vùng Bắc Bộ
+*C. Vùng Tây Nguyên
+D. Vùng Tây Bắc
+Câu 50: Thiên Y A Na (Pô Nagar / Pô I Nu Nagar) là Thần Mẹ của dân tộc nào trên đất nước ta?
+A. Người Gia Rai
+*B. Người Chăm
+C. Người Raglai
+D. Người Chu Ru
+Câu 1: Trong đời sống tư tưởng Việt Nam từ thế kỷ nào thì có sự du nhập của Thiên chúa giáo, Kitô giáo?
+A. Thế kỷ XVIII
+B. Thế kỷ XV
+*C. Thế kỷ XVI
+D. Thế kỷ XII
+
+Câu 2: Ngôi nhà nào của người Chàm được xây dựng trước tiên trong khuôn viên?
+*A. Nhà tục
+B. Nhà bếp
+C. Nhà cặp đôi
+D. Nhà lới
+
+Câu 3: Các tộc người Cống, La Hư, Lô Lô thuộc nhóm văn hoá ngôn ngữ nào:
+*A. Tạng - Miến
+B. Mã Lai - Đa đảo
+C. Tày – Thái
+D. Môn - Khơ Me
+
+Câu 4: Phân biệt cửa sinh và cửa tử là một nét đặc trưng ngôi nhà truyền thống của dân tộc nào?
+*A. Người Chăm Ninh Thuận
+B. Người Chăm
+C. Người Tày
+D. Người Thái
+
+Câu 5: Từ nào được điền vào chỗ trống: “………. là truyền thống văn hoá lâu đời và tốt đẹp. Khái niệm này thiên về những giá trị tinh thần do những người có tài đức chuyên chở”:
+*A. Văn hiến
+B. Văn vật
+C. Văn minh
+D. Văn hoá
+
+Câu 6: Mối quan hệ giữa con người và văn hoá được bộc lộ ở các khía cạnh?
+A. Con người - sản phẩm của văn hoá
+B. Con người - chủ thể của văn hoá
+C. Con người - đại biểu mang giá trị văn hoá của chính mình
+*D. Tất cả
+
+Câu 7: Người Việt xưng hô theo nguyên tắc nào?
+A. Xưng hô khiêm tốn
+B. Cung kính khiêm nhường
+*C. Xưng khiêm, hô tôn
+D. Trọng tình cảm
+
+Câu 8: Nhà của người Việt được xây dựng trên những miền núi có địa hình khác nhau thì có sự khác nhau. Sự khác nhau đó có mục đích gì:
+A. Đối phó với lũ lụt
+B. Chiến thắng môi trường tự nhiên
+*C. Thích nghi với môi trường tự nhiên
+D. Giữ gìn những công trình văn hoá truyền thống
+
+Câu 9: Căn cứ theo nguồn gốc, các nền văn hoá phương Tây thuộc loại hình văn hoá nào:
+A. Văn hoá đồng quê
+B. Văn hóa công nghiệp
+*C. Văn hoá du mục
+D. Văn hoá nông nghiệp
+
+Câu 10: Có mấy nhóm ngôn ngữ tộc người Việt Nam?
+A. Sáu
+B. Năm
+*C. Tám
+D. Bảy
+
+Câu 11: Mục đích của chế độ thi cử thời xưa ở Việt Nam:
+A. Truyền bá Nho giáo
+B. Tuyển chọn người giỏi văn
+C. Cả ba
+*D. Tuyển chọn hiền tài
+
+Câu 12: Từ nào được điền vào chỗ trống? Văn hoá Việt Nam là nền văn hoá ……….. trong đa dạng.
+A. Đa tộc
+B. Nông nghiệp
+*C. Thống nhất
+D. Lúa nước
+
+Câu 13: Tác phẩm văn học nào được coi là tiểu thuyết đầu tiên của Việt Nam viết bằng chữ quốc ngữ?
+*A. Truyện thầy Lazarô Phiền
+B. Sống chết mặc bay
+C. Tố Tâm
+D. Phan yên ngoại sử
+
+Câu 14: Ai là người sáng lập ra Đạo Gia?
+A. Khổng Tử
+*B. Lão Tử
+C. Tăng Tử
+D. Trang Tử
+
+Câu 15: Một yếu tố văn hoá đặc thù được người Việt bảo vệ ở thời Bắc thuộc; thể hiện sự tồn tại dân tộc và thể hiện bản sắc dân tộc:
+A. Lễ hội dân tộc
+*B. Tiếng nói /Tiếng Việt
+C. Chữ viết
+D. Tín ngưỡng dân gian
+
+Câu 16: Các bức tranh: Đánh ghen, Thầy đồ cóc, là họa phẩm của dòng tranh dân gian cổ truyền nào của người Việt?
+*A. Tranh Đông Hồ
+B. Tranh Kim Hoàng
+C. Tranh Làng Sình
+D. Tranh Làng Hồ
+
+Câu 17: Đơn vị quan trọng để cấu thành bộ khung nhà người Việt (Kinh) là:
+*A. Vì kèo
+B. Thượng lương
+C. Khung sườn
+D. Xà nóc
+
+Câu 18: Trang trí cầu thang của nhà bằng việc chạm khắc nổi hình trăng khuyết và đôi bầu sữa mẹ là của dân tộc nào?
+A. Dân tộc Chu Ru
+B. Dân tộc Chăm
+C. Dân tộc Raglai
+*D. Dân tộc Ê Đê
+
+Câu 19: Sau khi làm nhà xong, người Việt thường có lễ cái sáo. "Sáo" là:
+A. Thước thợ
+B. Thước vải
+*C. Thước tầm
+D. Thước dây
+
+Câu 20: Một biểu tượng vật thể về chế độ mẫu hệ của người Ê Đê?
+A. Đại gia đình
+B. Nhà sàn
+C. Nhà trệt
+*D. Nhà dài
+
+Câu 21: Lễ tế Thành Hoàng hằng năm ở đình làng Việt gọi là lễ gì?
+A. Lễ khai hạ
+B. Lễ sắp ấn
+C. Lễ Hạ điền
+*D. Lễ Kỳ Yên
+
+Câu 22: Một nhạc cụ quen thuộc của các dân tộc Thái, Mường, Lào là:
+A. Đàn lá
+B. Đàn tính
+*C. Khèn
+D. Sáo
+
+Câu 23: Đặc điểm hướng nhà của người Thái?
+A. Hướng nhà là hướng núi.
+*B. Hướng nhà là hướng của dòng suối chảy.
+C. Hướng nhà là hướng của cả bản.
+D. Hướng nhà là hướng của rừng cây.
+
+Câu 24: Hát Chầu văn và kéo chữ là nét văn hóa đặc trưng của lễ hội nào của người Việt?
+*A. Lễ hội Phủ Giầy
+B. Lễ hội Đền Hùng
+C. Lễ hội Đền Hai Bà Trưng
+D. Lễ hội Đền Đô
+
+Câu 25: Lễ Tam nguyên là lễ hội của:
+A. Nho giáo
+B. Đạo Mẫu
+*C. Đạo giáo
+D. Phật giáo
+
+Câu 26: Đàn đá, chiêng, cồng, trống cơm là những nhạc cụ thuộc:
+A. Bộ dây
+B. Bộ hơi
+C. Bộ tự thân vang
+*D. Bộ gõ
+
+Câu 27: Nguyên nhân khiến người Việt Nam cực kỳ coi trọng việc giao tiếp?
+A. Tính thích tìm hiểu.
+B. Tính tự ti làng xã.
+*C. Tính cộng đồng làng xã nông nghiệp
+D. Tính rụt rè.
+
+Câu 28: Đàn nguyệt còn được gọi là đàn gì?
+A. Đàn tranh
+B. Đàn cò
+C. Đàn bầu
+*D. Đàn kìm
+
+Câu 29: Hệ thống từ xưng hô của người Việt có những đặc điểm gì?
+A. Tính tôn ti kỹ lưỡng
+*B. Tất cả
+C. Tính cộng đồng cao
+D. Trọng tình cảm
+
+Câu 30: Dạ cổ hoài lang được mệnh danh là "bản nhạc vua" của loại hình sân khấu cổ truyền nào của người Việt?
+A. Hát xẩm
+B. Tuồng
+*C. Cải lương
+D. Chèo
+
+Câu 31: Biểu tượng của văn hoá ChămPa thuộc lĩnh vực kiến trúc?
+A. Tượng thần Siva
+*B. Tháp/Kalan
+C. Lăng mộ
+D. Linga
+
+Câu 32: Thiên Y A Na (Pô-I-Nu-Narga) là Thần Mẹ của dân tộc nào trên đất nước ta?
+*A. Người Chăm
+B. Người Chu Ru
+C. Người Gia Rai
+D. Người Raglai
+
+Câu 33: Mục đích lễ hội Chol Chnam Thmay của người Khơme Nam Bộ?
+A. Cúng trăng
+*B. Đón năm mới / lễ Tết
+C. Cúng thần lúa
+D. Ngày Phật đản
+
+Câu 34: Các báo "Lục tĩnh tân văn", "Nông cổ mín đàm", "Nữ giới chung" ra đời ở đâu?
+A. Hà Nội
+B. Bắc Bộ
+*C. Nam Bộ
+D. Trung Bộ
+
+Câu 35: Lễ pơ thi (bỏ mả), lễ cúng giằng và tục đâm trâu là những lễ hội đặc trưng của vùng văn hoá nào của nước ta?
+A. Vùng Tây Bắc
+B. Vùng Bắc Bộ
+C. Vùng Việt Bắc
+*D. Vùng Tây Nguyên
+
+Câu 36: Các biểu tượng tiêu biểu và tương đối phổ biến của làng Việt là gì?
+A. Đình làng, luỹ tre, cổng làng
+B. Đình, đền, chùa, miếu
+C. Đình, điếm canh, chùa
+*D. Đình làng, bến nước, cây đa
+
+Câu 37: Lượn cọi và lượn chương là những thể loại dân ca tiêu biểu?
+A. Cư dân Môn - Khơ Me
+B. Cư dân Mông - Dao vùng Việt Bắc
+C. Cư dân Tày - Thái ở Tây Bắc
+*D. Cư dân Tày - Nùng ở Việt Bắc
+
+Câu 38: Dân tộc nào ở nước ta có tục "kéo vợ"?
+A. Người Hà Nhì
+*B. Người Cờ Lao
+C. Người Si La
+D. Người Lô Lô
+
+Câu 39: Tháp Pô Nagar ở Nha Trang thờ ai?
+A. Thánh mẫu người Việt
+*B. Thánh mẫu người Chăm
+C. Thần tài lộc (Kubêra)
+D. Thần Siva
+
+Câu 40: Váy, xửa cơm (áo), khăn piêu là trang phục của phụ nữ dân tộc nào ở nước ta?
+A. Người La Chí
+B. Người Lô Lô
+C. Người La Ha
+*D. Người Thái
+
+Câu 41: Tộc người nào ở nước ta cho rằng trong con người có tất cả 80 hồn; và người chết không biến mất mà trở về sống ở bản của tổ tiên?
+A. Người Khơ Me
+B. Người Thái
+C. Người Hrê
+*D. Người Giẻ Triêng
+
+Câu 42: Nội dung ý nghĩa lễ Trừ tịch trong đêm giao thừa của người Việt?
+A. Cúng Thổ thần
+B. Cúng chúng sinh, hành khiển thần
+*C. Cúng hành khiển thần
+D. Cúng chúng sinh
+
+Câu 43: Người Êđê gọi sử thi của mình là gì?
+A. Hmon
+B. Truyện cổ tích
+*C. Kha (Khan)
+D. Hri
+
+Câu 44: Một biểu tượng về nghệ thuật của vùng văn hoá Tây Bắc là gì?
+A. Múa xoan
+B. Múa chèo tàu
+C. Múa đạp lửa
+*D. Múa xoè
+
+Câu 45: Vùng văn hoá nào của nước ta mà sinh hoạt hội chợ được coi như một sinh hoạt văn hoá đặc thù?
+A. Vùng Tây Nguyên
+B. Vùng Tây Ninh
+*C. Vùng Việt Bắc
+D. Vùng Tây Bắc
+
+Câu 46: Một biểu tượng của nghi lễ trong các dịp hỏi, cưới, đám tang, cúng giỗ của người Việt là?
+A. Trầu và bánh bèo
+B. Cau và thuốc lào
+C. Trầu và nước
+*D. Trầu và cau
+
+Câu 47: Dân tộc nào trong các dân tộc dưới đây có làn điệu dân ca NiCa?
+A. Người La Chí
+*B. Người La Ha
+C. Người Pu Péo
+D. Người La Hủ
+
+Câu 48: Kinh rạch và cầu tre là biểu tượng của làng Việt ở vùng đất nào của nước ta?
+*A. Vùng Nam Bộ
+B. Vùng Bắc Bộ
+C. Vùng Trung Bộ
+D. Vùng duyên hải Trung Bộ
+
+Câu 49: Sông Lô, Sông Gâm, Sông Cầu, Sông Kỳ Cùng, Hồ Ba Bể gắn với vùng đất/vùng văn hoá nào của nước ta?
+*A. Vùng Việt Bắc
+B. Vùng Trung Bộ
+C. Vùng Nam Bộ
+D. Vùng Tây Bắc
+
+Câu 50: Xuồng ba lá, Ghe tam bản là những phương tiện đi lại và vận chuyển thuộc vùng đất nào ở nước ta?
+*A. Vùng Nam Bộ
+B. Vùng Thăng Long
+C. Vùng Trung Bộ
+D. Vùng Nam Trung Bộ
+
+Câu 51: Chọn luận điểm đúng.
+A. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là sự trao đổi văn hoá là sự trao đổi hàng hoá.
+B. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là sự trao đổi văn hoá là sự trao đổi vật phẩm tôn giáo.
+*C. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là sự trao đổi kinh tế.
+D. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là do các cuộc thiên di thời cổ đại.
+
+Câu 52: Hồ Nguyệt Cô hóa cáo, Chém Tá, Lan Anh đẻ, là những lớp trò thuộc loại hình sân khấu cổ truyền nào của người Việt?
+A. Rối nước
+B. Cải lương
+C. Hát chèo
+*D. Hát tuồng
+
+Câu 53: Ai trong số các đối tượng sau được tôn là một vị thánh trong Tứ bất tử?
+A. Trần Cảnh
+B. Trần Hưng Đạo
+*C. Thánh Gióng
+D. Chiêu Hoàng
+
+Câu 54: Lễ hội Chùa Hương, hội Phủ Giầy, hội Giáng Sinh thuộc loại lễ hội:
+A. Lễ hội nghề nghiệp
+*B. Lễ hội tôn giáo và văn hóa
+C. Lễ hội văn hóa
+D. Lễ hội tôn giáo
+
+Câu 55: Ngôi nhà cộng đồng của người Cơ Tu gọi là?
+A. Nhà rường
+B. Nhà dài
+*C. Nhà gươl
+D. Nhà rông
+
+Câu 56: Lễ Tam nguyên là lễ hội của:
+*A. Đạo giáo
+B. Đạo Mẫu
+C. Phật giáo
+D. Nho giáo
+
+Câu 57: Trong câu “tháng 8 giỗ cha, tháng ba giỗ mẹ”, người Việt tôn ai là cha, ai là mẹ?
+A. Pháp Vân và Thạch Quang
+B. Pháp Vân và Ngọc Hoàng
+*C. Liễu Hạnh và Trần Hưng Đạo
+D. Liễu Hạnh và Ngọc Hoàng
+
+Câu 58: Hề chèo là nhân vật như thế nào?
+A. Là nhân vật trữ tình
+*B. Là nhân vật hài hước, châm biếm
+C. Là nhân vật hóm hỉnh
+D. Là nhân vật từ bi
+
+Câu 59: Đặc điểm lối chào của văn hóa giao tiếp người Việt Nam?
+*A. Phụ thuộc vào quan hệ xã hội và theo sắc thái tình cảm
+B. Theo khuôn mẫu chung
+C. Phân biệt kỹ lưỡng các lối chào
+D. Phụ thuộc vào thời gian
+
+Câu 60: Thành Hoàng là vị thần như thế nào?
+A. Thần nghề nghiệp
+*B. Thần bảo vệ làng
+C. Thần bảo vệ di tích
+D. Thần giữ của
+
+Câu 61: Nhà mồ Tây Nguyên thường phải tuân theo một hướng nhất định là hướng nào?
+*A. Đông Tây
+B. Đông Bắc
+C. Đông Nam
+D. Tây Nam
+
+Câu 62: Tên một lễ hội nông nghiệp đặc trưng ở vùng Việt Bắc:
+A. Lễ hội cúng trăng
+*B. Lễ hội Lồng Tồng
+C. Lễ hội Nàng Hai
+D. Lễ hội Hang Bua
+
+Câu 63: “Mương – Phai – Lái – Lịn” là những biểu tượng của văn hóa nông nghiệp của dân tộc nào ở vùng văn hóa Tây Bắc?
+A. Người Nùng
+*B. Người Thái
+C. Người Tày
+D. Người Lự
+
+Câu 64: Xuồng ba lá, Ghe tam bản là những phương tiện đi lại và vận chuyển vùng đất nào ở nước ta?
+*A. Vùng Nam Bộ
+B. Vùng Thăng Long
+C. Vùng Nam Trung Bộ
+D. Vùng Trung Bộ
+
+Câu 65: Các báo “Lục tĩnh tân văn”, “Nông cổ mín đàm”, “Nữ giới chung” ra đời ở đâu?
+A. Bắc Bộ
+*B. Nam Bộ
+C. Hà Nội
+D. Trung Bộ
+
+Câu 66: Hát Chầu văn, hát bóng liên quan đến hình thái tín ngưỡng nào của người Việt?
+*A. Thờ Mẫu
+B. Thờ Thủy thần
+C. Thờ Thiên thần
+D. Thờ phồn thực
+
+Câu 67: Nội dung Tết Đoan Ngọ của người Việt?
+A. Cúng hành khiển thần
+B. Hái thuốc nam để dành chữa bệnh
+*C. Diệt trừ sâu bọ, xua đuổi bệnh tật
+D. Giỗ Khuất Nguyên
+
+Câu 68: Vùng văn hóa nào của nước ta mà trong suốt quá trình lịch sử trở thành “phên dậu” của Đại Việt chống lại mưu đồ thôn tính và đồng hóa của phong kiến phương Bắc?
+*A. Vùng Việt Bắc
+B. Vùng Trường Sơn - Tây Nguyên
+C. Vùng Tây Bắc
+D. Vùng Thăng Long
+
+Câu 69: Dân tộc nào của nước ta cho rằng Trống là Mặt trời – tính nam, Cồng chiêng là Mặt trời – tính nữ?
+*A. Người Êđê
+B. Người Lô Lô
+C. Người Mnông
+D. Người Khơ Mú
+
+Câu 70: Lượn cọi và lượn chương là những thể loại dân ca tiêu biểu?
+*A. Cư dân Tày – Nùng ở Việt Bắc
+B. Cư dân Môn – Khơ Me
+C. Cư dân Tày – Thái ở Tây Bắc
+D. Cư dân Mông – Dao ở vùng Việt Bắc
+
+Câu 71: Lễ pơ thi (bỏ mả), lễ cúng giằng và tục đâm trâu là những lễ hội đặc trưng của vùng văn hóa nào của nước ta?
+A. Vùng Việt Bắc
+B. Vùng Bắc Bộ
+*C. Vùng Tây Nguyên
+D. Vùng Tây Bắc
+
+Câu 72: Người lo việc xới bài, chia bài và gọi tên con bài theo lối hát dân ca địa phương, ngân thơ, nói vè trong bài chòi là:
+A. Anh lính
+*B. Anh hiệu
+C. Anh hề
+D. Anh Tễu
+1. Nhiều ý kiến cho rằng, nguyên nhân khởi phát của tín ngưỡng thờ Mẫu là từ?
+*A. Chế độ mẫu hệ
+B. Tư tưởng phụ quyền trong xã hội xưa
+C. Ảnh hưởng của Đạo giáo Trung Hoa
+D. Tín ngưỡng phồn thực
+
+2.Minh chứng của việc đan xen giữa tín ngưỡng thờ Mẫu và Phật giáo được thể hiện qua
+*A. Huyền thoại về Man nương và nhà sư Khâu đà la
+B. Các ngôi chùa đồng thời thờ Phật và thờ Mẫu
+C. Sự xuất hiện của Mẫu Liễu Hạnh trong các ngôi chùa cổ
+D. Nghi thức cầu tự vừa theo đạo Phật vừa theo đạo Mẫu
+
+3.4 nữ thần trong câu chuyện trong video đại diện cho
+*A. Mây, mưa, sấm, chớp
+B. Đất, nước, gió, lửa
+C. Xuân, hạ, thu, đông
+D. Phúc, lộc, thọ, tài
+
+4. Hệ thống điện thần gồm 
+A. 9 bậc thần
+*B. 5 bậc thần
+C. 8 bậc thần
+D. 7 bậc thần
+
+5. Ai là vị thánh cao nhất trong đạo thờ Mẫu
+A. Ngọc hoàng
+*B. Thánh Mẫu Liễu Hạnh
+C. Phật Bà Quan Âm
+D. Vua Cha Bát Hải Động Đình
+
+6. Tứ phủ thánh mẫu gồm:
+*A. Mẫu đệ nhất Thượng Thiên – Mẫu đệ nhị Thượng Ngàn – Mẫu đệ tam Thoải phủ – Mẫu Địa
+B. Mẫu Thoải – Mẫu Địa – Mẫu Liễu – Mẫu Núi
+C. Mẫu Trời – Mẫu Nước – Mẫu Đất – Mẫu Rừng
+D. Mẫu Cửu Trùng – Mẫu Thần Nông – Mẫu Sơn Tinh – Mẫu Biển
+
+7. Chầu đệ nhất là hóa thân của 
+*A.Mẫu Thượng Thiên
+B. Mẫu Thuợng Ngàn
+C. Mẫu Thoải
+D. Thánh Mẫu Thiên phủ
+
+8. Lên đồng là
+*A. Hiện tượng nhập hồn nhiều lần của các thần linh trong điện thần, của đạo mẫu và các ông đồng, bà đồng để cầu sức khoẻ, may mắn và tài lộc.
+B. Một nghi lễ múa hát dân gian để tưởng nhớ tổ tiên
+C. Hình thức hát chầu văn thuần túy để cầu tài lộc
+D. Nghi lễ cúng tế thần linh bằng lễ vật truyền thống
+
+9. Sự khác nhau tín ngưỡng xuất phát chủ yếu từ
+*A. Điều kiện tự nhiên
+B. Điều kiện lịch sử
+C. Điều kiện văn hoá
+D. Điều kiện kinh tế
+
+10. Tín ngưỡng thờ thần rừng, thần núi, thần cây và các loài vật linh thiêng như hổ,
+gấu của người miền núi do đâu
+*A. Sự kính sợ và tôn trọng trước sức mạnh bí ẩn của tự nhiên
+B. Ảnh hưởng từ truyền thuyết dân gian và anh hùng ca
+C. Tập tục săn bắn và sinh hoạt cộng đồng
+D. Mong muốn bảo vệ mùa màng và tránh tai ương
+
+Câu 11: Tín ngưỡng phồn thực chủ yếu gắn liền với mong muốn nào của con người
+trong xã hội nông nghiệp?
+A. Cầu mong sự sung túc, tài lộc
+*B. Cầu mong sinh sôi, nảy nở
+C. Cầu mong sức khỏe, bình an
+D. Cầu mong sự che chở từ thần linh
+
+Câu 12: Thành hoàng làng trong tín ngưỡng Việt Nam thường được coi là:
+A. Người sáng lập ra làng
+B. Thần cai quản nghề nông
+*C. Vị thần bảo trợ, che chở cho cả cộng đồng làng xã
+D. Thần núi, thần sông trong thiên nhiên
+
+Câu 13: Tín ngưỡng thờ Mẫu phản ánh sâu sắc nhất điều gì trong đời sống tinh 
+thần người Việt?
+A. Ý thức cộng đồng
+B. Tinh thần thượng võ
+*C. Đề cao vai trò người mẹ và sự sinh sôi của vũ trụ
+D. Tín ngưỡng đa thần cổ xưa
+
+Câu 14 Điểm chung giữa tín ngưỡng thờ thành hoàng và tín ngưỡng thờ Mẫu là:
+A. Đều gắn với thờ phụng thiên nhiên
+*B. Đều thể hiện niềm tin vào sự bảo trợ, che chở cho cộng đồng
+C. Đều nhằm cầu mùa màng bội thu
+D. Đều chỉ gắn với tín ngưỡng dân gian địa phương
+
+Câu 15: Tín ngưỡng phồn thực được coi là sản phẩm tất yếu của xã hội nông 
+nghiệp vì:
+A. Phản ánh sự giao lưu văn hóa với phương Bắc
+B. Thể hiện sức mạnh của nam giới trong xã hội cổ
+*C. Xuất phát từ nhu cầu cầu mùa màng, sinh sản của con người
+D. Do chính quyền phong kiến cổ vũ và tổ chức
+
+Câu 16: Việc nhà Lê cho san định thần tích năm 1572 phản ánh ý nghĩa nào trong 
+sự phát triển tín ngưỡng thờ thành hoàng?
+A. Chứng minh tín ngưỡng này có từ rất sớm
+B. Nhà nước muốn áp đặt tôn giáo chính thống
+*C. Tín ngưỡng dân gian được chính quyền thừa nhận và quản lý
+D. Cho thấy sự cạnh tranh với tín ngưỡng phồn thực
+
+Câu 17: Trong tín ngưỡng thờ Mẫu, Tam phủ – Tứ phủ thể hiện quan niệm gì?
+A. Mỗi phủ tượng trưng cho một dòng họ
+*B. Mỗi phủ ứng với một miền vũ trụ – thiên nhiên khác nhau
+C. Chỉ thờ những người phụ nữ có công
+D. Chỉ dành cho tầng lớp quý tộc
+
+Câu 18: Một ngôi làng ở đồng bằng Bắc Bộ tổ chức lễ hội cầu mùa, diễn xướng tục
+giã gạo, hát giao duyên, rước nước từ sông về. Đây là biểu hiện của loại tín ngưỡng
+nào?
+A. Thờ thành hoàng
+B. Thờ Mẫu
+*C. Phồn thực
+D. Tôn giáo ngoại lai
+
+Câu 19: Khi phân tích tín ngưỡng thờ Mẫu, một sinh viên cho rằng tín ngưỡng này 
+phản ánh sự tôn vinh nữ giới, đồng thời gắn kết cộng đồng qua các lễ hội chầu văn.
+Nhận định này:
+*A. Hoàn toàn chính xác
+B. Sai vì thờ Mẫu không liên quan đến nữ giới
+C. Sai vì thờ Mẫu chỉ gắn với tầng lớp quan lại
+D. Chỉ đúng về phương diện nghệ thuật diễn xướng
+
+Câu 20: Trong bối cảnh hiện nay, nếu địa phương muốn khai thác giá trị du lịch 
+văn hóa từ tín ngưỡng thờ thành hoàng, cần lưu ý điều gì để vừa phát triển kinh tế 
+vừa bảo tồn được bản sắc?
+A. Chỉ tập trung thương mại hóa lễ hội để thu hút khách
+B. Loại bỏ toàn bộ nghi thức dân gian, thay bằng hiện đại hóa
+*C. Giữ gìn nghi lễ truyền thống cốt lõi, kết hợp tổ chức dịch vụ du lịch một cách hài hòa
+D. Không cần quan tâm bảo tồn vì đây là tín ngưỡng dân gian không chính thống
+`;
+
+    // ==== HÀM TRỘN MẢNG (Fisher–Yates) ====
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    // ==== PARSE TEXT THÀNH DANH SÁCH CÂU HỎI ====
+    function parseQuestions(raw) {
+      const blocks = raw
+        .trim()
+        .split(/\n\s*\n+/)
+        .map(b => b.trim())
+        .filter(b => b.length > 0);
+
+      const result = [];
+
+      blocks.forEach((block) => {
+        const lines = block
+          .split('\n')
+          .map(l => l.trim())
+          .filter(l => l.length > 0);
+
+        if (lines.length < 2) return;
+
+        const questionText = lines[0];
+        const optionLines = lines.slice(1);
+
+        let correctIndex = -1;
+        const options = optionLines.map((line, i) => {
+          let text = line;
+          if (text.startsWith('*')) {
+            correctIndex = i;
+            text = text.slice(1).trim();
+          }
+          return text;
+        });
+
+        if (options.length === 0) return;
+
+        result.push({
+          question: questionText,
+          options,
+          correctIndex
+        });
+      });
+
+      return result;
+    }
+
+    const questions = parseQuestions(rawQuestions);
+
+    // Thứ tự hiển thị câu hỏi (sẽ được tráo ngẫu nhiên mỗi lần load trang)
+    let displayOrder = questions.map((_, i) => i);
+    shuffle(displayOrder);
+
+    // currentIndex là index thực trong mảng questions
+    let currentIndex = questions.length ? displayOrder[0] : 0;
+    let locked = false;
+    let answered = new Array(questions.length).fill(null); // null / true / false
+
+    // practice mode cho các câu sai
+    let practiceMode = false;
+    let practiceOrder = [];
+    let practicePos = 0;
+
+    // DOM
+    const quizView = document.getElementById('quizView');
+    const summaryView = document.getElementById('summaryView');
+
+    const questionEl = document.getElementById('question-text');
+    const optionsEl = document.getElementById('options');
+    const feedbackEl = document.getElementById('feedback');
+    const scoreBarEl = document.getElementById('scoreBar');
+
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const randomBtn = document.getElementById('randomBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const summaryBtn = document.getElementById('summaryBtn');
+    const progressEl = document.getElementById('progress');
+
+    const scoreTextEl = document.getElementById('scoreText');
+    const answeredTextEl = document.getElementById('answeredText');
+    const wrongListEl = document.getElementById('wrongList');
+    const practiceWrongBtn = document.getElementById('practiceWrongBtn');
+    const backToQuizBtn = document.getElementById('backToQuizBtn');
+
+    function countAnswered() {
+      return answered.filter(v => v !== null).length;
+    }
+
+    function countCorrect() {
+      return answered.filter(v => v === true).length;
+    }
+
+    function allAnswered() {
+      return questions.length > 0 && answered.every(v => v !== null);
+    }
+
+    function updateScoreBar() {
+      if (!questions.length) {
+        scoreBarEl.textContent = '';
+        summaryBtn.disabled = true;
+        return;
+      }
+      const total = questions.length;
+      const ans = countAnswered();
+      const correct = countCorrect();
+      scoreBarEl.textContent = `Đúng: ${correct}/${total} • Đã trả lời: ${ans}/${total}`;
+      summaryBtn.disabled = !allAnswered();
+    }
+
+    function renderQuestion(realIndex) {
+      if (!questions.length) {
+        questionEl.textContent = 'Chưa có câu hỏi nào. Hãy dán dữ liệu vào biến rawQuestions trong file.';
+        optionsEl.innerHTML = '';
+        feedbackEl.textContent = '';
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+        randomBtn.disabled = true;
+        resetBtn.disabled = true;
+        progressEl.textContent = '';
+        scoreBarEl.textContent = '';
+        return;
+      }
+
+      currentIndex = realIndex;
+      locked = false;
+
+      const q = questions[realIndex];
+      questionEl.textContent = q.question;
+      optionsEl.innerHTML = '';
+      feedbackEl.textContent = '';
+      feedbackEl.className = '';
+
+      q.options.forEach((optText, i) => {
+        const div = document.createElement('div');
+        div.className = 'option';
+        div.textContent = optText;
+        div.dataset.index = i;
+        div.addEventListener('click', onOptionClick);
+        optionsEl.appendChild(div);
+      });
+
+      // xử lý trạng thái nút prev/next + progress
+      if (practiceMode) {
+        prevBtn.disabled = (practicePos === 0);
+        nextBtn.disabled = (practicePos === practiceOrder.length - 1);
+        progressEl.textContent = `Câu luyện sai ${practicePos + 1} / ${practiceOrder.length} (Tổng: ${questions.length})`;
+      } else {
+        const posInMain = displayOrder.indexOf(realIndex);
+        prevBtn.disabled = (posInMain <= 0);
+        nextBtn.disabled = (posInMain === displayOrder.length - 1);
+        progressEl.textContent = `Câu ${posInMain + 1} / ${questions.length}`;
+      }
+
+      updateScoreBar();
+    }
+
+    function onOptionClick(evt) {
+      if (locked) return;
+
+      const clicked = evt.currentTarget;
+      const chosenIndex = Number(clicked.dataset.index);
+      const q = questions[currentIndex];
+
+      locked = true;
+
+      const optionDivs = Array.from(optionsEl.querySelectorAll('.option'));
+      optionDivs.forEach((div, i) => {
+        div.classList.add('disabled');
+        if (i === q.correctIndex) {
+          div.classList.add('correct');
+        }
+      });
+
+      if (chosenIndex === q.correctIndex) {
+        answered[currentIndex] = true;
+        feedbackEl.textContent = '✅ Chính xác!';
+        feedbackEl.className = 'correct';
+      } else {
+        answered[currentIndex] = false;
+        clicked.classList.add('incorrect');
+        const correctText = q.options[q.correctIndex] || '(không tìm thấy)';
+        feedbackEl.textContent = '❌ Sai. Đáp án đúng là: ' + correctText;
+        feedbackEl.className = 'incorrect';
+      }
+
+      updateScoreBar();
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (practiceMode) {
+        if (practicePos > 0) {
+          practicePos--;
+          renderQuestion(practiceOrder[practicePos]);
+        }
+      } else {
+        const pos = displayOrder.indexOf(currentIndex);
+        if (pos > 0) {
+          renderQuestion(displayOrder[pos - 1]);
+        }
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (practiceMode) {
+        if (practicePos < practiceOrder.length - 1) {
+          practicePos++;
+          renderQuestion(practiceOrder[practicePos]);
+        }
+      } else {
+        const pos = displayOrder.indexOf(currentIndex);
+        if (pos < displayOrder.length - 1) {
+          renderQuestion(displayOrder[pos + 1]);
+        }
+      }
+    });
+
+    randomBtn.addEventListener('click', () => {
+      if (!questions.length) return;
+      practiceMode = false; // random toàn bộ câu
+      const pos = Math.floor(Math.random() * displayOrder.length);
+      renderQuestion(displayOrder[pos]);
+    });
+
+    resetBtn.addEventListener('click', () => {
+      resetQuiz();
+    });
+
+    summaryBtn.addEventListener('click', () => {
+      showSummary();
+    });
+
+    backToQuizBtn.addEventListener('click', () => {
+      summaryView.style.display = 'none';
+      quizView.style.display = 'block';
+      practiceMode = false;
+      // quay về câu đang xem (giữ nguyên thứ tự hiện tại)
+      renderQuestion(currentIndex);
+    });
+
+    practiceWrongBtn.addEventListener('click', () => {
+      startPracticeWrong();
+    });
+
+    function showSummary() {
+      const total = questions.length;
+      const ans = countAnswered();
+      const correct = countCorrect();
+
+      scoreTextEl.textContent = `Số câu đúng: ${correct} / ${total}`;
+      answeredTextEl.textContent = `Đã trả lời: ${ans} / ${total}`;
+
+      const wrongIndexes = questions.map((_, i) => i).filter(i => answered[i] === false);
+      wrongListEl.innerHTML = '';
+
+      if (wrongIndexes.length === 0) {
+        wrongListEl.textContent = 'Bạn không sai câu nào 🎉';
+        practiceWrongBtn.disabled = true;
+      } else {
+        practiceWrongBtn.disabled = false;
+        const ol = document.createElement('ol');
+        wrongIndexes.forEach(i => {
+          const li = document.createElement('li');
+          li.textContent = questions[i].question;
+          li.addEventListener('click', () => {
+            quizView.style.display = 'block';
+            summaryView.style.display = 'none';
+            practiceMode = false;
+            renderQuestion(i);
+          });
+          ol.appendChild(li);
+        });
+        wrongListEl.appendChild(ol);
+      }
+
+      quizView.style.display = 'none';
+      summaryView.style.display = 'block';
+    }
+
+    function startPracticeWrong() {
+      const wrongIndexes = questions.map((_, i) => i).filter(i => answered[i] === false);
+      if (!wrongIndexes.length) return;
+
+      practiceMode = true;
+      practiceOrder = wrongIndexes.slice();
+      practicePos = 0;
+
+      summaryView.style.display = 'none';
+      quizView.style.display = 'block';
+      renderQuestion(practiceOrder[practicePos]);
+    }
+
+    function resetQuiz() {
+      answered = new Array(questions.length).fill(null);
+      practiceMode = false;
+      practiceOrder = [];
+      practicePos = 0;
+      displayOrder = questions.map((_, i) => i);
+      shuffle(displayOrder); // mỗi lần reset cũng tráo tiếp
+      currentIndex = displayOrder[0];
+      quizView.style.display = 'block';
+      summaryView.style.display = 'none';
+      renderQuestion(currentIndex);
+    }
+
+    // Khởi tạo (lần nào refresh trang cũng được tráo câu mới)
+    renderQuestion(currentIndex);
+  </script>
+</body>
+</html>
