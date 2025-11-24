@@ -167,1246 +167,1214 @@
     //  - dòng 1: nội dung câu hỏi
     //  - dòng 2–5: 4 phương án A/B/C/D, đáp án đúng có dấu * ở đầu
    const rawQuestions = `
-Câu 1: Căn cứ theo nguồn gốc, các nền văn hoá phương tây thuộc loại hình văn hoá nào:
-A. Văn hóa công nghiệp
-B. Văn hoá nông nghiệp
-*C. Văn hoá du mục
-D. Văn hoá đồng quê
-
-Câu 2: Phân biệt cửa sinh và cửa tử là một nét đặc trưng ngôi nhà truyền thống của dân tộc nào?
-A. Người Chăm
-*B. Người Chăm Ninh Thuận
-C. Người Tày
-D. Người Thái
-
-Câu 3: Trong đời sống tư tưởng Việt nam từ thế kỷ nào thì có sự du nhập của Thiên chúa giáo, Kitô giáo?
-A. Thế kỷ XII
-*B. Thế kỷ XVI
-C. Thế kỷ XVIII
-D. Thế kỷ XV
-
-Câu 4: Nhà của người Việt được xây dựng trên những miền núi có địa khác nhau thì có sự khác nhau. Sự khác nhau đó có mục đích gì:
-A. Đối phó với lũ lụt
-B. Chiến thắng môi trường tự nhiên
-C. Giữ gìn những công trình văn hoá truyền thống
-*D. Thích nghi với môi trường tự nhiên
-
-Câu 5: Mục đích của chế độ thi cử thời xưa ở Việt nam:
-*A. Tuyển chọn hiền tài
-B. Cả ba
-C. Tuyển chọn người giỏi văn
-D. Truyền bá nho giáo
-
-Câu 6: Một yếu tố văn hoá đặc thù được người việt bảo vệ ở thời Bắc thuộc; thể hiện sự tồn tại dân tộc và thể hiện bản sắc dân tộc:
-A. Tín ngưỡng dân gian
-B. Lễ hội dân tộc
-C. Chữ viết
-*D. Tiếng nói /Tiếng Việt
-
-Câu 7: Mối quan hệ giữa con người và văn hoá được bộc lộ ở các khía cạnh?
-A. Con người - đại biểu mang giá trị văn hoá của chính mình
-B. Con người - chủ thể của văn hoá
-C. Con người - sản phẩm của văn hoá
-*D. Tất cả
-
-Câu 8: Ai là người sáng lập ra Đạo Gia?
-A. Khổng Tử
-B. Trang Tử
-C. Tăng Tử
-*D. Lão Tử
-
-Câu 9: Kích thước ngôi nhà việt truyền thống thể hiện ở:
-A. Thước dây
-*B. Thước tầm
-C. Thước thợ
-D. Thước lỗ ban
-
-Câu 10: Tác phẩm văn học nào được coi là tiểu thuyết đầu tiên của Việt nam viết bằng chữ quốc ngữ?
-A. Sống chết mặc bay
-*B. Truyện thầy Lazarô phiền
-C. Tố Tâm
-D. Phan yên ngoại sử
-
-Câu 11: Chọn luận điểm đúng.
-A. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là sự trao đổi văn hoá là sự trao đổi hàng hoá.
-B. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là sự trao đổi văn hoá là sự trao đổi vật phẩm tôn giáo.
-*C. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là sự trao đổi kinh tế.
-D. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là do các cuộc thiên di thời cổ đại.
-
-Câu 12: Ngôi nhà nào của người Chăm được xây dựng trước tiên trong khuôn viên?
-*A. Nhà tục
-B. Nhà lới
-C. Nhà bếp
-D. Nhà cặp đôi
-
-Câu 13: Từ nào được điền vào chỗ trống: .................... là truyền thống văn hoá lâu đời và tốt đẹp. Khái niệm này thiên về những giá trị tinh thần do những người có tài đức chuyên chở:
-A. Văn vật
-B. Văn minh
-C. Văn hoá
-*D. Văn hiến
-
-Câu 14: Các tộc người Cống, La Hư, Lô Lô thuộc nhóm văn hoá ngôn ngữ nào:
-A. Mã lai- Đa đảo
-B. Môn- Khơ me
-C. Tày – Thái
-*D. Tạng - Miếng
-
-Câu 15: Người Việt xưng hô theo nguyên tắc nào?
-A. Trọng tình cảm
-B. Xưng hô khiêm tốn
-C. Cung kính khiêm nhường
-*D. Xưng khiêm hô tôn
-
-Câu 16: Hồ Nguyệt Cô hóa cáo, Chém Tá, Lan Anh đẻ, là những lớp trò thuộc loại hình sân khấu cổ truyền nào của người Việt
-A. Rối nước
-B. Cải lương
-C. Hát chèo
-*D. Hát tuồng
-
-Câu 17: Ai trong số các đối tượng sau được tôn là một vị thánh trong Tứ bất tử?
-A. Trần Cảnh
-B. Trần Hưng Đạo
-*C. Thánh Gióng
-D. Chiêu Hoàng
-
-Câu 18: Trang trí cầu thang của nhà bằng việc chạm khắc nổi hình trăng khuyết và đôi bầu sữa mẹ là của dân tộc nào?
-A. Dân tộc Chu Ru
-*B. Dân tộc Ê Đê
-C. Dân tộc Raglai
-D. Dân tộc Chăm
-
-Câu 19: Lễ hội Chùa Hương, hội Phủ Giầy, hội Giáng Sinh thuộc loại lễ hội:
-A. Lễ hội nghề nghiệp
-*B. Lễ hội tôn giáo và văn hóa
-C. Lễ hội văn hóa
-D. Lễ hội tôn giáo
-
-Câu 20: Hệ thống từ xưng hô của người Việt có những đặc điểm gì?
-A. Tính cộng đồng cao
-*B. Tất cả
-C. Trọng tình cảm
-D. Tính tôn ti kỹ lưỡng
-
-Câu 21: Ngôi nhà cộng đồng của người Cơtu gọi là gì?
-A. Nhà rường
-B. Nhà dài
-*C. Nhà gươl
-D. Nhà rông
-
-Câu 22: Lễ Tam nguyên là lễ hội của:
-*A. Đạo giáo
-B. Đạo mẫu
-C. Phật giáo
-D. Nho giáo
-
-Câu 23: Trong câu "tháng 8 giỗ cha, tháng ba giỗ mẹ", người Việt tôn ai là cha, ai là mẹ?
-A. Pháp Vân và Thạch Quang
-B. Pháp Vân và Ngọc Hoàng
-*C. Liễu Hạnh và Trần Hưng Đạo
-D. Liễu Hạnh và Ngọc Hoàng
-
-Câu 24: Hề chèo là nhân vật như thế nào?
-A. Là nhân vật trữ tình
-*B. Là nhân vật hài hước, châm biếm
-C. Là nhân vật hóm hỉnh.
-D. Là nhân vật từ bi
-
-Câu 25: Đặc điểm lối chào của văn hóa giao tiếp người Việt Nam?
-*A. Phụ thuộc vào quan hệ xã hội và theo sắc thái tình cảm.
-B. Theo khuôn mẫu chung.
-C. Phân biệt kỹ lưỡng các lối chào.
-D. Phụ thuộc vào thời gian.
-
-Câu 26: Nguyên nhân khiến người Việt Nam cực kỳ coi trọng việc giao tiếp?
-A. Tính rụt rè.
-B. Tính tự ti làng xã.
-C. Tính thích tìm hiểu.
-*D. Tính cộng đồng làng xã nông nghiệp.
-
-Câu 27: Hát Chầu văn và kéo chữ là nét văn hóa đặc trưng của lễ hội nào của người Việt?
-A. Lễ hội Đền Hai Bà Trưng
-B. Lễ hội Đền Đô
-*C. Lễ hội Phủ Giầy
-D. Lễ hội Đền Hùng
-
-Câu 28: Thành Hoàng là vị thần như thế nào?
-A. Thần nghề nghiệp
-*B. Thần bảo vệ làng
-C. Thần bảo vệ di tích
-D. Thần giữ của
-
-Câu 29: Nhà mồ Tây Nguyên thường phải tuân theo một hướng nhất định là hướng nào?
-*A. Đông Tây
-B. Đông Bắc
-C. Đông Nam
-D. Tây Nam
-
-Câu 30: Lễ tế thành hoàng hằng năm ở đình làng Việt gọi là lễ gì?
-*A. Lễ Kỳ Yên
-B. Lễ sắp ấn
-C. Lễ khai hạ
-D. Lễ Hạ điền
-
-Câu 31: Tên một lễ hội nông nghiệp đặc trưng ở vùng việt Bắc?
-A. Lễ hội cúng trăng
-*B. Lễ hội Lung Tùng
-C. Lễ hội Nàng hai
-D. Lễ hội Hang Bua
-
-Câu 32: "Nương - Phai - Lái - Lịn" là những biểu tượng của văn hoá nông nghiệp của dân tộc nào ở vùng văn hoá Tây bắc?
-A. Người Nùng
-*B. Người Thái
-C. Người Tày
-D. Người Lự
-
-Câu 33: Xuồng ba lá, Ghe tam bàn là những phương tiện đi lại và vận chuyển thuộc vùng đất nào ở nước ta?
-*A. Vùng Nam bộ
-B. Vùng Thăng Long
-C. Vùng Nam trung bộ
-D. Vùng Trung bộ
-
-Câu 34: Các báo "Lục tĩnh tân văn" "Nông cổ mín đàm", "Nữ giới chung" ra đời ở đâu?
-A. Bắc Bộ
-*B. Nam Bộ
-C. Hà Nội
-D. Trung Bộ
-
-Câu 35: Người Êđê gọi sử thi của mình là gì?
-A. Hri
-B. Truyện cổ tích
-C. Hmon
-*D. Kha
-
-Câu 36: Váy, xửa cơm (áo), khăn piêu là trang phục của phụ nữ dân tộc nào ở nước ta?
-A. Người La Ha
-B. Người La Chí
-C. Người Lô Lô
-*D. Người Thái
-
-Câu 37: Một biểu tượng của nghi lễ trong các dịp hỏi, cưới, đám tang, cúng giỗ, của người Việt là?
-A. Cau và thuốc lào
-*B. Trầu và Cau
-C. Trầu và bánh bèo
-D. Trầu và nước
-
-Câu 38: Mục đích lễ hội Chorchmanthmay của người Khơme Nam bộ?
-A. Cúng trăng
-*B. Đón năm mới/ lễ tết
-C. Cúng thần lúa
-D. Ngày Phật đản
-
-Câu 39: Kinh rạch và cầu tre là biểu tượng của làng Việt ở vùng nào của nước ta?
-A. Vùng trung bộ
-*B. Vùng Nam bộ
-C. Vùng duyên hải trung bộ
-D. Vùng bắc bộ
-
-Câu 40: Dân tộc nào ở nước ta có tục "kéo vợ"?
-*A. Người Cờ Lao
-B. Người Hà Nhí
-C. Người Lô Lô
-D. Người Sila
-
-Câu 41: Hát Chầu văn, Hát bóng liên quan đến hình thái tín ngưỡng nào của người Việt?
-*A. Thờ Mẫu
-B. Thờ thuỷ thần
-C. Thờ thiên Thần
-D. Thờ Phồn Thực
-
-Câu 42: Nội dung Tết Đoan Ngọ của người Việt?
-A. Cúng hành khiển thần.
-B. Hái thuốc nam để dành chữa bệnh.
-*C. Diệt trừ sâu bọ, xua đuổi bệnh tật.
-D. Giỗ khuất nguyên.
-
-Câu 43: Nội dung ý nghĩa lễ trừ tịch trong đêm giao thừa của người Việt?
-*A. Cúng hành khiển thần
-B. Cúng Thổ thần
-C. Cúng chúng sinh, hành khiển thần
-D. Cúng chúng sinh
-
-Câu 44: Vùng văn hoá nào của nước ta mà trong suốt quá trình lịch sử trở thành "phên dậu" của Đại việt chống lại mưu đồ thôn tính và đồng hoá phong kiến Phương bắc?
-*A. Vùng Việt Bắc
-B. Vùng Trường sơn Tây nguyên
-C. Vùng Tây Bắc
-D. Vùng Thăng long
-
-Câu 45: Dân tộc nào của nước ta cho rằng Trống là Mặt trời-tính nam, Cồng chiêng là Mặt trời- tính nữ?
-*A. Người Êđê
-B. Người lô
-C. Người Mnông
-D. Người Khơmú
-
-Câu 46: Lượn cọi và lượn chương là những thể loại dân ca tiêu biểu?
-*A. Cư dân Tày- Nùng ở Việt Bắc
-B. Cư dân Môn- khơ me
-C. Cư dân Tày - Thái ở tây bắc
-D. Cư dân Mông -Dao vùng Việt bắc
-
-Câu 47: Biểu tượng của văn hoá ChămPa thuộc lĩnh vực kiến trúc?
-A. Linga
-B. Tượng thần SiVa
-*C. Tháp/Kalan
-D. Lăng mộ
-
-Câu 48: Vùng văn hoá nào của nước ta mà sinh hoạt hội chợ được coi như một sinh hoạt văn hoá đặc thù?
-A. Vùng Tây Nguyên
-B. Vùng Tây Ninh
-*C. Vùng Việt Bắc
-D. Vùng Tây Bắc
-
-Câu 49: Lễ pơ thi (bỏ mả), lễ cúng giằng và tục đâm trâu là những lễ hội đặc trưng của vùng văn hoá nào của nước ta?
-A. Vùng Việt Bắc
-B. Vùng Bắc Bộ
-*C. Vùng Tây Nguyên
-D. Vùng Tây Bắc
-
-Câu 50: Thiên Y A Na (Pô-I- Nu- Narga) là Thần Mẹ của dân tộc nào trên đất nước ta?
-A. Người Gia Rai
-*B. Người Chăm
-C. Người Raglai
-D. Người Chu Ru
-1. Nhiều ý kiến cho rằng, nguyên nhân khởi phát của tín ngưỡng thờ Mẫu là từ?
-*A. Chế độ mẫu hệ
-B. Tư tưởng phụ quyền trong xã hội xưa
-C. Ảnh hưởng của Đạo giáo Trung Hoa
-D. Tín ngưỡng phồn thực
-
-2.Minh chứng của việc đan xen giữa tín ngưỡng thờ Mẫu và Phật giáo được thể hiện qua
-*A. Huyền thoại về Man nương và nhà sư Khâu đà la
-B. Các ngôi chùa đồng thời thờ Phật và thờ Mẫu
-C. Sự xuất hiện của Mẫu Liễu Hạnh trong các ngôi chùa cổ
-D. Nghi thức cầu tự vừa theo đạo Phật vừa theo đạo Mẫu
-
-3.4 nữ thần trong câu chuyện trong video đại diện cho
-*A. Mây, mưa, sấm, chớp
-B. Đất, nước, gió, lửa
-C. Xuân, hạ, thu, đông
-D. Phúc, lộc, thọ, tài
-
-4. Hệ thống điện thần gồm 
-A. 9 bậc thần
-*B. 5 bậc thần
-C. 8 bậc thần
-D. 7 bậc thần
-
-5. Ai là vị thánh cao nhất trong đạo thờ Mẫu
-A. Ngọc hoàng
-*B. Thánh Mẫu Liễu Hạnh
-C. Phật Bà Quan Âm
-D. Vua Cha Bát Hải Động Đình
-
-6. Tứ phủ thánh mẫu gồm:
-*A. Mẫu đệ nhất Thượng Thiên – Mẫu đệ nhị Thượng Ngàn – Mẫu đệ tam Thoải phủ – Mẫu Địa
-B. Mẫu Thoải – Mẫu Địa – Mẫu Liễu – Mẫu Núi
-C. Mẫu Trời – Mẫu Nước – Mẫu Đất – Mẫu Rừng
-D. Mẫu Cửu Trùng – Mẫu Thần Nông – Mẫu Sơn Tinh – Mẫu Biển
-
-7. Chầu đệ nhất là hóa thân của 
-*A.Mẫu Thượng Thiên
-B. Mẫu Thuợng Ngàn
-C. Mẫu Thoải
-D. Thánh Mẫu Thiên phủ
-
-8. Lên đồng là
-*A. Hiện tượng nhập hồn nhiều lần của các thần linh trong điện thần, của đạo mẫu và các ông đồng, bà đồng để cầu sức khoẻ, may mắn và tài lộc.
-B. Một nghi lễ múa hát dân gian để tưởng nhớ tổ tiên
-C. Hình thức hát chầu văn thuần túy để cầu tài lộc
-D. Nghi lễ cúng tế thần linh bằng lễ vật truyền thống
-
-9. Sự khác nhau tín ngưỡng xuất phát chủ yếu từ
-*A. Điều kiện tự nhiên
-B. Điều kiện lịch sử
-C. Điều kiện văn hoá
-D. Điều kiện kinh tế
-
-10. Tín ngưỡng thờ thần rừng, thần núi, thần cây và các loài vật linh thiêng như hổ,
-gấu của người miền núi do đâu
-*A. Sự kính sợ và tôn trọng trước sức mạnh bí ẩn của tự nhiên
-B. Ảnh hưởng từ truyền thuyết dân gian và anh hùng ca
-C. Tập tục săn bắn và sinh hoạt cộng đồng
-D. Mong muốn bảo vệ mùa màng và tránh tai ương
-
-Câu 11: Tín ngưỡng phồn thực chủ yếu gắn liền với mong muốn nào của con người
-trong xã hội nông nghiệp?
-A. Cầu mong sự sung túc, tài lộc
-*B. Cầu mong sinh sôi, nảy nở
-C. Cầu mong sức khỏe, bình an
-D. Cầu mong sự che chở từ thần linh
-
-Câu 12: Thành hoàng làng trong tín ngưỡng Việt Nam thường được coi là:
-A. Người sáng lập ra làng
-B. Thần cai quản nghề nông
-*C. Vị thần bảo trợ, che chở cho cả cộng đồng làng xã
-D. Thần núi, thần sông trong thiên nhiên
-
-Câu 13: Tín ngưỡng thờ Mẫu phản ánh sâu sắc nhất điều gì trong đời sống tinh 
-thần người Việt?
-A. Ý thức cộng đồng
-B. Tinh thần thượng võ
-*C. Đề cao vai trò người mẹ và sự sinh sôi của vũ trụ
-D. Tín ngưỡng đa thần cổ xưa
-
-Câu 14 Điểm chung giữa tín ngưỡng thờ thành hoàng và tín ngưỡng thờ Mẫu là:
-A. Đều gắn với thờ phụng thiên nhiên
-*B. Đều thể hiện niềm tin vào sự bảo trợ, che chở cho cộng đồng
-C. Đều nhằm cầu mùa màng bội thu
-D. Đều chỉ gắn với tín ngưỡng dân gian địa phương
-
-Câu 15: Tín ngưỡng phồn thực được coi là sản phẩm tất yếu của xã hội nông 
-nghiệp vì:
-A. Phản ánh sự giao lưu văn hóa với phương Bắc
-B. Thể hiện sức mạnh của nam giới trong xã hội cổ
-*C. Xuất phát từ nhu cầu cầu mùa màng, sinh sản của con người
-D. Do chính quyền phong kiến cổ vũ và tổ chức
-
-Câu 16: Việc nhà Lê cho san định thần tích năm 1572 phản ánh ý nghĩa nào trong 
-sự phát triển tín ngưỡng thờ thành hoàng?
-A. Chứng minh tín ngưỡng này có từ rất sớm
-B. Nhà nước muốn áp đặt tôn giáo chính thống
-*C. Tín ngưỡng dân gian được chính quyền thừa nhận và quản lý
-D. Cho thấy sự cạnh tranh với tín ngưỡng phồn thực
-
-Câu 17: Trong tín ngưỡng thờ Mẫu, Tam phủ – Tứ phủ thể hiện quan niệm gì?
-A. Mỗi phủ tượng trưng cho một dòng họ
-*B. Mỗi phủ ứng với một miền vũ trụ – thiên nhiên khác nhau
-C. Chỉ thờ những người phụ nữ có công
-D. Chỉ dành cho tầng lớp quý tộc
-
-Câu 18: Một ngôi làng ở đồng bằng Bắc Bộ tổ chức lễ hội cầu mùa, diễn xướng tục
-giã gạo, hát giao duyên, rước nước từ sông về. Đây là biểu hiện của loại tín ngưỡng
-nào?
-A. Thờ thành hoàng
-B. Thờ Mẫu
-*C. Phồn thực
-D. Tôn giáo ngoại lai
-
-Câu 19: Khi phân tích tín ngưỡng thờ Mẫu, một sinh viên cho rằng tín ngưỡng này 
-phản ánh sự tôn vinh nữ giới, đồng thời gắn kết cộng đồng qua các lễ hội chầu văn.
-Nhận định này:
-*A. Hoàn toàn chính xác
-B. Sai vì thờ Mẫu không liên quan đến nữ giới
-C. Sai vì thờ Mẫu chỉ gắn với tầng lớp quan lại
-D. Chỉ đúng về phương diện nghệ thuật diễn xướng
-
-Câu 20: Trong bối cảnh hiện nay, nếu địa phương muốn khai thác giá trị du lịch 
-văn hóa từ tín ngưỡng thờ thành hoàng, cần lưu ý điều gì để vừa phát triển kinh tế 
-vừa bảo tồn được bản sắc?
-A. Chỉ tập trung thương mại hóa lễ hội để thu hút khách
-B. Loại bỏ toàn bộ nghi thức dân gian, thay bằng hiện đại hóa
-*C. Giữ gìn nghi lễ truyền thống cốt lõi, kết hợp tổ chức dịch vụ du lịch một cách hài hòa
-D. Không cần quan tâm bảo tồn vì đây là tín ngưỡng dân gian không chính thống
-Câu 1: Căn cứ theo nguồn gốc, các nền văn hoá phương Tây thuộc loại hình văn hoá nào:
-A. Văn hóa công nghiệp
-B. Văn hoá nông nghiệp
-*C. Văn hoá du mục
-D. Văn hoá đồng quê
-Câu 2: Phân biệt cửa sinh và cửa tử là một nét đặc trưng ngôi nhà truyền thống của dân tộc nào?
-A. Người Chăm
-*B. Người Chăm Ninh Thuận
-C. Người Tày
-D. Người Thái
-Câu 3: Trong đời sống tư tưởng Việt Nam từ thế kỷ nào thì có sự du nhập của Thiên chúa giáo, Kitô giáo?
-A. Thế kỷ XII
-*B. Thế kỷ XVI
-C. Thế kỷ XVIII
-D. Thế kỷ XV
-Câu 4: Nhà của người Việt được xây dựng trên những miền núi có địa hình khác nhau thì có sự khác nhau. Sự khác nhau đó có mục đích gì:
-A. Đối phó với lũ lụt
-B. Chiến thắng môi trường tự nhiên
-C. Giữ gìn những công trình văn hoá truyền thống
-*D. Thích nghi với môi trường tự nhiên
-Câu 5: Mục đích của chế độ thi cử thời xưa ở Việt Nam:
-*A. Tuyển chọn hiền tài
-B. Cả ba
-C. Tuyển chọn người giỏi văn
-D. Truyền bá Nho giáo
-Câu 6: Một yếu tố văn hoá đặc thù được người Việt bảo vệ ở thời Bắc thuộc; thể hiện sự tồn tại dân tộc và thể hiện bản sắc dân tộc:
-A. Tín ngưỡng dân gian
-B. Lễ hội dân tộc
-C. Chữ viết
-*D. Tiếng nói / Tiếng Việt
-Câu 7: Mối quan hệ giữa con người và văn hoá được bộc lộ ở các khía cạnh?
-A. Con người - đại biểu mang giá trị văn hoá của chính mình
-B. Con người - chủ thể của văn hoá
-C. Con người - sản phẩm của văn hoá
-*D. Tất cả
-Câu 8: Ai là người sáng lập ra Đạo Gia?
-A. Khổng Tử
-B. Trang Tử
-C. Tăng Tử
-*D. Lão Tử
-Câu 9: Kích thước ngôi nhà Việt truyền thống thể hiện ở:
-A. Thước dây
-*B. Thước tầm
-C. Thước thợ
-D. Thước lỗ ban
-Câu 10: Tác phẩm văn học nào được coi là tiểu thuyết đầu tiên của Việt Nam viết bằng chữ quốc ngữ?
-A. Sống chết mặc bay
-*B. Truyện thầy Lazarô Phiền
-C. Tố Tâm
-D. Phan yên ngoại sử
-Câu 11: Chọn luận điểm đúng.
-A. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là sự trao đổi văn hoá là sự trao đổi hàng hoá.
-B. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là sự trao đổi văn hoá là sự trao đổi vật phẩm tôn giáo.
-*C. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là sự trao đổi kinh tế.
-D. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là do các cuộc thiên di thời cổ đại.
-Câu 12: Ngôi nhà nào của người Chăm được xây dựng trước tiên trong khuôn viên?
-*A. Nhà tục
-B. Nhà lới
-C. Nhà bếp
-D. Nhà cặp đôi
-Câu 13: Từ nào được điền vào chỗ trống: “.................... là truyền thống văn hoá lâu đời và tốt đẹp. Khái niệm này thiên về những giá trị tinh thần do những người có tài đức chuyên chở”:
-A. Văn vật
-B. Văn minh
-C. Văn hoá
-*D. Văn hiến
-Câu 14: Các tộc người Cống, La Hư, Lô Lô thuộc nhóm văn hoá ngôn ngữ nào:
-A. Mã Lai - Đa đảo
-B. Môn - Khơ Me
-C. Tày – Thái
-*D. Tạng - Miến
-Câu 15: Người Việt xưng hô theo nguyên tắc nào?
-A. Trọng tình cảm
-B. Xưng hô khiêm tốn
-C. Cung kính khiêm nhường
-*D. Xưng khiêm, hô tôn
-Câu 16: Hồ Nguyệt Cô hóa cáo, Chém Tá, Lan Anh đẻ, là những lớp trò thuộc loại hình sân khấu cổ truyền nào của người Việt?
-A. Rối nước
-B. Cải lương
-C. Hát chèo
-*D. Hát tuồng
-Câu 17: Ai trong số các đối tượng sau được tôn là một vị thánh trong Tứ bất tử?
-A. Trần Cảnh
-B. Trần Hưng Đạo
-*C. Thánh Gióng
-D. Chiêu Hoàng
-Câu 18: Trang trí cầu thang của nhà bằng việc chạm khắc nổi hình trăng khuyết và đôi bầu sữa mẹ là của dân tộc nào?
-A. Dân tộc Chu Ru
-*B. Dân tộc Ê Đê
-C. Dân tộc Raglai
-D. Dân tộc Chăm
-Câu 19: Lễ hội Chùa Hương, hội Phủ Giầy, hội Giáng Sinh thuộc loại lễ hội:
-A. Lễ hội nghề nghiệp
-*B. Lễ hội tôn giáo và văn hóa
-C. Lễ hội văn hóa
-D. Lễ hội tôn giáo
-Câu 20: Hệ thống từ xưng hô của người Việt có những đặc điểm gì?
-A. Tính cộng đồng cao
-*B. Tất cả
-C. Trọng tình cảm
-D. Tính tôn ti kỹ lưỡng
-Câu 21: Ngôi nhà cộng đồng của người Cơ Tu gọi là gì?
-A. Nhà rường
-B. Nhà dài
-*C. Nhà gươl
-D. Nhà rông
-Câu 22: Lễ Tam nguyên là lễ hội của:
-*A. Đạo giáo
-B. Đạo Mẫu
-C. Phật giáo
-D. Nho giáo
-Câu 23: Trong câu "tháng 8 giỗ cha, tháng ba giỗ mẹ", người Việt tôn ai là cha, ai là mẹ?
-A. Pháp Vân và Thạch Quang
-B. Pháp Vân và Ngọc Hoàng
-*C. Liễu Hạnh và Trần Hưng Đạo
-D. Liễu Hạnh và Ngọc Hoàng
-Câu 24: Hề chèo là nhân vật như thế nào?
-A. Là nhân vật trữ tình
-*B. Là nhân vật hài hước, châm biếm
-C. Là nhân vật hóm hỉnh
-D. Là nhân vật từ bi
-Câu 25: Đặc điểm lối chào của văn hóa giao tiếp người Việt Nam?
-*A. Phụ thuộc vào quan hệ xã hội và theo sắc thái tình cảm.
-B. Theo khuôn mẫu chung.
-C. Phân biệt kỹ lưỡng các lối chào.
-D. Phụ thuộc vào thời gian.
-Câu 26: Nguyên nhân khiến người Việt Nam cực kỳ coi trọng việc giao tiếp?
-A. Tính rụt rè.
-B. Tính tự ti làng xã.
-C. Tính thích tìm hiểu.
-*D. Tính cộng đồng làng xã nông nghiệp.
-Câu 27: Hát Chầu văn và kéo chữ là nét văn hóa đặc trưng của lễ hội nào của người Việt?
-A. Lễ hội Đền Hai Bà Trưng
-B. Lễ hội Đền Đô
-*C. Lễ hội Phủ Giầy
-D. Lễ hội Đền Hùng
-Câu 28: Thành Hoàng là vị thần như thế nào?
-A. Thần nghề nghiệp
-*B. Thần bảo vệ làng
-C. Thần bảo vệ di tích
-D. Thần giữ của
-Câu 29: Nhà mồ Tây Nguyên thường phải tuân theo một hướng nhất định là hướng nào?
-*A. Đông - Tây
-B. Đông Bắc
-C. Đông Nam
-D. Tây Nam
-Câu 30: Lễ tế Thành Hoàng hằng năm ở đình làng Việt gọi là lễ gì?
-*A. Lễ Kỳ Yên
-B. Lễ sắp ấn
-C. Lễ khai hạ
-D. Lễ Hạ điền
-Câu 31: Tên một lễ hội nông nghiệp đặc trưng ở vùng Việt Bắc?
-A. Lễ hội cúng trăng
-*B. Lễ hội Lồng Tồng
-C. Lễ hội Nàng Hai
-D. Lễ hội Hang Bua
-Câu 32: "Mương - Phai - Lái - Lịn" là những biểu tượng của văn hoá nông nghiệp của dân tộc nào ở vùng văn hoá Tây Bắc?
-A. Người Nùng
-*B. Người Thái
-C. Người Tày
-D. Người Lự
-Câu 33: Xuồng ba lá, ghe tam bản là những phương tiện đi lại và vận chuyển thuộc vùng đất nào ở nước ta?
-*A. Vùng Nam Bộ
-B. Vùng Thăng Long
-C. Vùng Nam Trung Bộ
-D. Vùng Trung Bộ
-Câu 34: Các báo "Lục tĩnh tân văn", "Nông cổ mín đàm", "Nữ giới chung" ra đời ở đâu?
-A. Bắc Bộ
-*B. Nam Bộ
-C. Hà Nội
-D. Trung Bộ
-Câu 35: Người Êđê gọi sử thi của mình là gì?
-A. Hri
-B. Truyện cổ tích
-C. Hmon
-*D. Kha
-Câu 36: Váy, xửa cơm (áo), khăn piêu là trang phục của phụ nữ dân tộc nào ở nước ta?
-A. Người La Ha
-B. Người La Chí
-C. Người Lô Lô
-*D. Người Thái
-Câu 37: Một biểu tượng của nghi lễ trong các dịp hỏi, cưới, đám tang, cúng giỗ của người Việt là?
-A. Cau và thuốc lào
-*B. Trầu và cau
-C. Trầu và bánh bèo
-D. Trầu và nước
-Câu 38: Mục đích lễ hội Chol Chnam Thmay (Chôl Chnăm Thmây) của người Khơme Nam Bộ là:
-A. Cúng trăng
-*B. Đón năm mới / lễ Tết
-C. Cúng thần lúa
-D. Ngày Phật đản
-Câu 39: Kinh rạch và cầu tre là biểu tượng của làng Việt ở vùng nào của nước ta?
-A. Vùng Trung Bộ
-*B. Vùng Nam Bộ
-C. Vùng Duyên hải Trung Bộ
-D. Vùng Bắc Bộ
-Câu 40: Dân tộc nào ở nước ta có tục "kéo vợ"?
-*A. Người Cờ Lao
-B. Người Hà Nhì
-C. Người Lô Lô
-D. Người Si La
-Câu 41: Hát Chầu văn, hát bóng liên quan đến hình thái tín ngưỡng nào của người Việt?
-*A. Thờ Mẫu
-B. Thờ Thuỷ thần
-C. Thờ Thiên thần
-D. Thờ phồn thực
-Câu 42: Nội dung Tết Đoan Ngọ của người Việt?
-A. Cúng hành khiển thần
-B. Hái thuốc nam để dành chữa bệnh
-*C. Diệt trừ sâu bọ, xua đuổi bệnh tật
-D. Giỗ Khuất Nguyên
-Câu 43: Nội dung, ý nghĩa lễ Trừ tịch trong đêm giao thừa của người Việt?
-*A. Cúng hành khiển thần
-B. Cúng Thổ thần
-C. Cúng chúng sinh, hành khiển thần
-D. Cúng chúng sinh
-Câu 44: Vùng văn hoá nào của nước ta mà trong suốt quá trình lịch sử trở thành "phên dậu" của Đại Việt chống lại mưu đồ thôn tính và đồng hoá của phong kiến phương Bắc?
-*A. Vùng Việt Bắc
-B. Vùng Trường Sơn - Tây Nguyên
-C. Vùng Tây Bắc
-D. Vùng Thăng Long
-Câu 45: Dân tộc nào của nước ta cho rằng trống là Mặt trời - tính nam, cồng chiêng là Mặt trời - tính nữ?
-*A. Người Êđê
-B. Người Lô Lô
-C. Người Mnông
-D. Người Khơ Mú
-Câu 46: Lượn cọi và lượn chương là những thể loại dân ca tiêu biểu của:
-*A. Cư dân Tày - Nùng ở Việt Bắc
-B. Cư dân Môn - Khơ Me
-C. Cư dân Tày - Thái ở Tây Bắc
-D. Cư dân Mông - Dao vùng Việt Bắc
-Câu 47: Biểu tượng của văn hoá Chăm Pa thuộc lĩnh vực kiến trúc là:
-A. Linga
-B. Tượng thần Siva
-*C. Tháp / Kalan
-D. Lăng mộ
-Câu 48: Vùng văn hoá nào của nước ta mà sinh hoạt hội chợ được coi như một sinh hoạt văn hoá đặc thù?
-A. Vùng Tây Nguyên
-B. Vùng Tây Ninh
-*C. Vùng Việt Bắc
-D. Vùng Tây Bắc
-Câu 49: Lễ pơ thi (bỏ mả), lễ cúng giằng và tục đâm trâu là những lễ hội đặc trưng của vùng văn hoá nào của nước ta?
-A. Vùng Việt Bắc
-B. Vùng Bắc Bộ
-*C. Vùng Tây Nguyên
-D. Vùng Tây Bắc
-Câu 50: Thiên Y A Na (Pô Nagar / Pô I Nu Nagar) là Thần Mẹ của dân tộc nào trên đất nước ta?
-A. Người Gia Rai
-*B. Người Chăm
-C. Người Raglai
-D. Người Chu Ru
-Câu 1: Trong đời sống tư tưởng Việt Nam từ thế kỷ nào thì có sự du nhập của Thiên chúa giáo, Kitô giáo?
-A. Thế kỷ XVIII
-B. Thế kỷ XV
-*C. Thế kỷ XVI
-D. Thế kỷ XII
-
-Câu 2: Ngôi nhà nào của người Chàm được xây dựng trước tiên trong khuôn viên?
-*A. Nhà tục
-B. Nhà bếp
-C. Nhà cặp đôi
-D. Nhà lới
-
-Câu 3: Các tộc người Cống, La Hư, Lô Lô thuộc nhóm văn hoá ngôn ngữ nào:
-*A. Tạng - Miến
-B. Mã Lai - Đa đảo
-C. Tày – Thái
-D. Môn - Khơ Me
-
-Câu 4: Phân biệt cửa sinh và cửa tử là một nét đặc trưng ngôi nhà truyền thống của dân tộc nào?
-*A. Người Chăm Ninh Thuận
-B. Người Chăm
-C. Người Tày
-D. Người Thái
-
-Câu 5: Từ nào được điền vào chỗ trống: “………. là truyền thống văn hoá lâu đời và tốt đẹp. Khái niệm này thiên về những giá trị tinh thần do những người có tài đức chuyên chở”:
-*A. Văn hiến
+Câu 1. Cấu trúc của hệ thống văn hoá gồm:
+A. Văn hóa nhận thức, Văn hóa tổ chức đời sống tập thể, Văn hóa tận dụng môi trường tự nhiên, Văn hóa tận dụng môi trường xã hội
+B. Văn hóa nhận thức, Văn hóa tổ chức cộng đồng, Văn hóa tận dụng môi trường tự nhiên, Văn hóa tận dụng môi trường xã hội
+*C. Văn hóa nhận thức, Văn hóa tổ chức cộng đồng, Văn hóa ứng xử với môi trường tự nhiên, Văn hóa ứng xử với môi trường xã hội
+D. Văn hóa nhận thức, Văn hóa tổ chức cộng đồng, Văn hóa đối phó với môi trường tự nhiên, Văn hóa đối phó với môi trường xã hội
+
+Câu 2. Chức năng điều chỉnh xã hội tương ứng với đặc trưng nào của văn hóa?
+A. Tính lịch sử
+*B. tính giá trị
+C. Tính nhân sinh
+D. Tính hệ thống
+
+Câu 3. Đặc trưng nào cho phép phân biệt văn hóa như một hiện tượng xã hội do con người tạo ra với các giá trị tự nhiên do thiên nhiên tạo ra?
+A. Tính lịch sử
+B. Tính giá trị
+*C. Tính nhân sinh
+D. Tính hệ thống
+
+Câu 4. Nói văn hóa “là một thứ gien xã hội di truyền phẩm chất con người lại cho các thế hệ mai sau” là muốn nhấn mạnh đến chức năng nào của văn hóa?
+A. Chức năng tổ chức
+B. Chức năng điều chỉnh xã hội
+C. Chức năng giao tiếp
+*D. Chức năng giáo dục
+
+Câu 5. Chức năng nào của văn hóa giúp xã hội định hướng các chuẩn mực và làm động lực cho sự phát triển?
+A. Chức năng tổ chức
+*B. Chức năng điều chỉnh xã hội
+C. Chức năng giao tiếp
+D. Chức năng giáo dục
+
+Câu 6. Văn minh là khái niệm:
+A. Thiên về giá trị tinh thần và chỉ trình độ phát triển
+B. Thiên về giá trị tinh thần và có bề dày lịch sử
+C. Thiên về giá trị vật chất và có bề dày lịch sử
+*D. Thiên về giá trị vật chất-kỹ thuật và chỉ trình độ phát triển
+
+Câu 7. Yếu tố nào sau đây mang tính quốc tế?
+A. Văn hóa
+B. Văn hiến
+*C. Văn minh
+D. Văn vật
+
+Câu 8. Xét về tính giá trị, sự khác nhau giữa văn hóa và văn minh là:
+A. Văn hóa gắn với phương Đông nông nghiệp, văn minh gắn với phương Tây đô thị
+B. Văn minh chỉ trình độ phát triển còn văn hóa có bề dày lịch sử
+*C. Văn minh thiên về vật chất-kỹ thuật còn văn hóa thiên về vật chất lẫn tinh thần
+D. Văn hóa mang tính dân tộc, văn minh mang tính quốc tế
+
+Câu 9. Các yếu tố văn hóa truyền thống lâu đời và tốt đẹp của dân tộc, thiên về giá trị tinh thần gọi là:
+A. Văn hóaVăn vật
 B. Văn vật
 C. Văn minh
-D. Văn hoá
+*D. Văn hiến
 
-Câu 6: Mối quan hệ giữa con người và văn hoá được bộc lộ ở các khía cạnh?
-A. Con người - sản phẩm của văn hoá
-B. Con người - chủ thể của văn hoá
-C. Con người - đại biểu mang giá trị văn hoá của chính mình
-*D. Tất cả
+Câu 10. Tín ngưỡng, phong tục… là những yếu tố thuộc thành tố văn hóa nào?
+A. Văn hóa nhận thức
+*B. Văn hóa nhận thức
+C. Văn hóa ứng xử với môi trường tự nhiên
+D. Văn hóa ứng xử với môi trường xã hội
 
-Câu 7: Người Việt xưng hô theo nguyên tắc nào?
-A. Xưng hô khiêm tốn
-B. Cung kính khiêm nhường
-*C. Xưng khiêm, hô tôn
-D. Trọng tình cảm
+Câu 11. Văn hóa giao tiếp là yếu tố thuộc thành tố văn
+A. Văn hóa nhận thức
+*B. Văn hóa tổ chức cộng đồng
+C. Văn hóa ứng xử với môi trường tự nhiên
+D. Văn hóa ứng xử với môi trường xã hội
 
-Câu 8: Nhà của người Việt được xây dựng trên những miền núi có địa hình khác nhau thì có sự khác nhau. Sự khác nhau đó có mục đích gì:
-A. Đối phó với lũ lụt
-B. Chiến thắng môi trường tự nhiên
-*C. Thích nghi với môi trường tự nhiên
-D. Giữ gìn những công trình văn hoá truyền thống
+Câu 12. Theo GS.Trần Ngọc Thêm, ăn, mặc, ở, đi lại là những yếu tố thuộc thành tố văn hóa nào?
+A. Văn hóa nhận thức
+B. Văn hóa tổ chức cộng đồng
+*C. Văn hóa ứng xử với môi trường tự nhiên
+D. Văn hóa ứng xử với môi trường xã hội
 
-Câu 9: Căn cứ theo nguồn gốc, các nền văn hoá phương Tây thuộc loại hình văn hoá nào:
-A. Văn hoá đồng quê
-B. Văn hóa công nghiệp
-*C. Văn hoá du mục
-D. Văn hoá nông nghiệp
+Câu 13. Vùng nông nghiệp Đông Nam Á được nhiều học giả phương Tây gọi là:
+*A. Xứ sở mẫu hệ
+B. Xứ sở phụ hệ
+C. Cả hai ý trên đều đúng
+D. Cả hai ý trên đều sai
 
-Câu 10: Có mấy nhóm ngôn ngữ tộc người Việt Nam?
-A. Sáu
-B. Năm
-*C. Tám
-D. Bảy
+Câu 14. Sự đa dạng của môi trường tự nhiên và sự đa dạng của các tộc người trong thành phần dân tộc đã tạo nên đặc điểm gì của văn hóa Việt Nam?
+*A. Mỗi vùng văn hóa có một bản sắc riêng, có tính thống nhất trong sự đa dạng
+B. Bản sắc chung của văn hóa
+C. Sự tương đồng giữa các vùng văn hóa
+D. Sự khác biệt giữa các vùng văn hóa
 
-Câu 11: Mục đích của chế độ thi cử thời xưa ở Việt Nam:
-A. Truyền bá Nho giáo
-B. Tuyển chọn người giỏi văn
-C. Cả ba
-*D. Tuyển chọn hiền tài
+Câu 15. Trong lối nhận thức, tư duy, loại hình văn hoá gốc nông nghiệp có đặc điểm:
+A. Tư duy thiên về phân tích và trọng yếu tố; cách nhìn thiên về chủ quan, cảm tính và kinh nghiệm
+*B. Tư duy thiên về tổng hợp và biện chứng; cách nhìn thiên về chủ quan, cảm tính và kinh nghiệm
+C. Tư duy thiên về tổng hợp và trọng yếu tố; cách nhìn thiên về chủ quan, lý tính và kinh nghiệm
+D. Tư duy thiên về tổng hợp và biện chứng; cách nhìn thiên về khách quan, cảm tính và thực nghiệm
 
-Câu 12: Từ nào được điền vào chỗ trống? Văn hoá Việt Nam là nền văn hoá ……….. trong đa dạng.
-A. Đa tộc
-B. Nông nghiệp
-*C. Thống nhất
-D. Lúa nước
+Câu 16. Trong sự giao lưu rộng rãi với các nền văn hóa Đông Tây, văn hóa Việt Nam chịu ảnh hưởng sâu đậm của nền văn hóa nào?
+*A. Trung Hoa
+B. Ấn Độ
+C. Pháp
+D. Mỹ
 
-Câu 13: Tác phẩm văn học nào được coi là tiểu thuyết đầu tiên của Việt Nam viết bằng chữ quốc ngữ?
-*A. Truyện thầy Lazarô Phiền
-B. Sống chết mặc bay
-C. Tố Tâm
-D. Phan yên ngoại sử
+Câu 17. Đặc điểm nào sau đây không phải là đặc trưng của loại hình văn hóa gốc nông nghiệp?
+*A. Con người luôn có tham vọng chinh phục tự nhiên
+B. Con người ưa sống theo nguyên tắc trọng tình
+C. Lối sống linh hoạt, luôn biến báo cho thích hợp với hoàn cảnh
+D. Con người có ý thức tôn trọng và ước vọng sống hòa hợp với tự nhiên
 
-Câu 14: Ai là người sáng lập ra Đạo Gia?
-A. Khổng Tử
-*B. Lão Tử
-C. Tăng Tử
-D. Trang Tử
+Câu 18. Lối ứng xử năng động và linh hoạt giúp người Việt thích nghi cao với mọi tình huống, nhưng đồng thời cũng mang lại thói xấu là:
+A. Thói đố kỵ cào bằng
+B. Thói dựa dẫm, ỷ lại
+*C. Thói tùy tiện
+D. Thói bè phái
 
-Câu 15: Một yếu tố văn hoá đặc thù được người Việt bảo vệ ở thời Bắc thuộc; thể hiện sự tồn tại dân tộc và thể hiện bản sắc dân tộc:
-A. Lễ hội dân tộc
-*B. Tiếng nói /Tiếng Việt
-C. Chữ viết
-D. Tín ngưỡng dân gian
+Câu 19. Nhóm cư dân Bách Việt là khối tộc người thuộc nhóm:
+*A. Austroasiatic
+B. Australoid
+C. Austronésien
+D. Mongoloid
 
-Câu 16: Các bức tranh: Đánh ghen, Thầy đồ cóc, là họa phẩm của dòng tranh dân gian cổ truyền nào của người Việt?
-*A. Tranh Đông Hồ
-B. Tranh Kim Hoàng
-C. Tranh Làng Sình
-D. Tranh Làng Hồ
+Câu 20. Người Việt (Kinh) tách ra từ khối Việt-Mường chung vào khoảng thời gian:
+A. 2000 năm trước Công nguyên
+B. 1000 năm trước Công nguyên
+C. Đầu thời kỳ Bắc thuộc (thế kỷ I-II)
+*D. Cuối thời kỳ Bắc thuộc (thế kỷ VII-VIII)
 
-Câu 17: Đơn vị quan trọng để cấu thành bộ khung nhà người Việt (Kinh) là:
-*A. Vì kèo
-B. Thượng lương
-C. Khung sườn
-D. Xà nóc
+Câu 21. Đặc trưng văn hóa của vùng văn hóa Tây Bắc là:
+*A. Nghệ thuật trang trí tinh tế trên trang phục, chăn màn…
+B. Lễ hội lồng tồng
+C. Văn hóa cồng chiêng
+D. Những trường ca (khan, k ămon) nổi tiếng ‟
 
-Câu 18: Trang trí cầu thang của nhà bằng việc chạm khắc nổi hình trăng khuyết và đôi bầu sữa mẹ là của dân tộc nào?
-A. Dân tộc Chu Ru
-B. Dân tộc Chăm
-C. Dân tộc Raglai
-*D. Dân tộc Ê Đê
+Câu 22. Đặc trưng văn hóa của vùng văn hóa Việt Bắc là:
+A. Nghệ thuật trang trí tinh tế trên trang phục, chăn màn…
+*B. Lễ hội lồng tồng
+C. Văn hóa cồng chiêng
+D. Những trường ca (khan, k ămon) nổi tiếng ‟
 
-Câu 19: Sau khi làm nhà xong, người Việt thường có lễ cái sáo. "Sáo" là:
-A. Thước thợ
-B. Thước vải
-*C. Thước tầm
-D. Thước dây
+Câu 23. Trong hệ thống các vùng văn hóa, vùng sớm có sự tiếp cận và đi đầu trong quá trình giao lưu hội nhập với văn hóa phương Tây là:
+A. Vùng văn hóa Trung Bộ
+B. Vùng văn hóa Bắc Bộ
+*C. Vùng văn hóa Nam bộ
+D. Vùng văn hóa Việt Bắc
 
-Câu 20: Một biểu tượng vật thể về chế độ mẫu hệ của người Ê Đê?
-A. Đại gia đình
-B. Nhà sàn
-C. Nhà trệt
-*D. Nhà dài
+Câu 24. Vùng văn hóa nào lưu giữ được truyền thống văn hóa bản địa đậm nét, gần gũi với văn hóa Đông Sơn nhất?
+A. Vùng văn hóa Việt Bắc
+B. Vùng văn hóa Tây Bắc
+C. Vùng văn hóa Bắc Bộ
+*D. Vùng văn hóa Tây Nguyên
 
-Câu 21: Lễ tế Thành Hoàng hằng năm ở đình làng Việt gọi là lễ gì?
-A. Lễ khai hạ
-B. Lễ sắp ấn
-C. Lễ Hạ điền
-*D. Lễ Kỳ Yên
+Câu 25. Vùng văn hóa nào có truyền thống lâu đời và là cái nôi hình thành văn hóa, văn minh của dân tộc Việt?
+A. Vùng văn hóa Trung Bộ
+*B. Vùng văn hóa Bắc Bộ
+C. Vùng văn hóa Nam bộ
+D. Vùng văn hóa Việt Bắc
 
-Câu 22: Một nhạc cụ quen thuộc của các dân tộc Thái, Mường, Lào là:
-A. Đàn lá
-B. Đàn tính
-*C. Khèn
-D. Sáo
+Câu 26. Làng Đông Sơn – chiếc nôi của nền văn minh Đông Sơn trong lịch sử thuộc khu vực văn hóa nào sau đây?
+A. Tây Bắc
+B. Việt Bắc
+*C. Bắc Bộ
+D. Đông Bắc
 
-Câu 23: Đặc điểm hướng nhà của người Thái?
-A. Hướng nhà là hướng núi.
-*B. Hướng nhà là hướng của dòng suối chảy.
-C. Hướng nhà là hướng của cả bản.
-D. Hướng nhà là hướng của rừng cây.
+Câu 27. Nền văn hóa nào đóng vai trò quyết định trong việc xác lập nên bản sắc văn hóa Việt?
+A. Văn hóa Sơn Vi
+B. Văn hóa Hòa Bình
+*C. Văn hóa Đông Sơn
+D. Văn hóa Sa Huỳnh
 
-Câu 24: Hát Chầu văn và kéo chữ là nét văn hóa đặc trưng của lễ hội nào của người Việt?
-*A. Lễ hội Phủ Giầy
-B. Lễ hội Đền Hùng
-C. Lễ hội Đền Hai Bà Trưng
-D. Lễ hội Đền Đô
+Câu 28. Theo GS.Trần Ngọc Thêm, tiến trình văn hóa Việt Nam có thể chia thành:
+*A. 3 lớp – 6 giai đoạn văn hóa
+B. 3 lớp – 3 giai doạn văn hóa
+C. 4 lớp – 6 giai đoạn văn hóa
+D. 6 lớp – 3 giai đoạn văn hóa
 
-Câu 25: Lễ Tam nguyên là lễ hội của:
-A. Nho giáo
-B. Đạo Mẫu
-*C. Đạo giáo
-D. Phật giáo
+Câu 29. Thời kỳ 938-1858 ứng với giai đoạn nào trong tiến trình lịch sử của văn hóa Việt Nam?
+A. Giai đọan văn hoá tiền sử
+B. Giai đoạn văn hóa Văn Lang- Âu Lạc
+C. Giai đoạn văn hóa thời kỳ Bắc thuộc
+*D. Giai đoạn văn hóa Đại Việt
 
-Câu 26: Đàn đá, chiêng, cồng, trống cơm là những nhạc cụ thuộc:
-A. Bộ dây
-B. Bộ hơi
-C. Bộ tự thân vang
-*D. Bộ gõ
+Câu 30. Thời kỳ 179TCN- 938 ứng với giai đoạn nào trong tiến trình lịch sử của văn hóa Việt Nam?
+A. Giai đoạn văn hoá tiền sử
+B. Giai đoạn văn hóa Văn Lang- Âu Lạc
+*C. Giai đoạn văn hóa thời kỳ Bắc thuộc
+D. Giai đoạn văn hóa Đại Việt
 
-Câu 27: Nguyên nhân khiến người Việt Nam cực kỳ coi trọng việc giao tiếp?
-A. Tính thích tìm hiểu.
-B. Tính tự ti làng xã.
-*C. Tính cộng đồng làng xã nông nghiệp
-D. Tính rụt rè.
+CHƯƠNG 2
 
-Câu 28: Đàn nguyệt còn được gọi là đàn gì?
-A. Đàn tranh
-B. Đàn cò
-C. Đàn bầu
-*D. Đàn kìm
+Câu 1. Thành tựu nổi bật của giai đoạn văn hóa Văn Lang – Âu Lạc là:
+A. Nghề thủ công mỹ nghệ
+*B. Kỹ thuật đúc đồng thau
+C. Nghề trồng dâu nuôi tằm
+D. Kỹ thuật chế tạo đồ sắt
 
-Câu 29: Hệ thống từ xưng hô của người Việt có những đặc điểm gì?
-A. Tính tôn ti kỹ lưỡng
-*B. Tất cả
-C. Tính cộng đồng cao
-D. Trọng tình cảm
+Câu 2. Trống đồng Đông Sơn là thành tựu của giai đoạn văn hóa nào?
+A. Giai đoạn văn hoá tiền sử
+*B. Giai đoạn văn hóa Văn Lang- Âu Lạc
+C. Giai đoạn văn hóa thời kỳ chống Bắc thuộc
+D. Giai đoạn văn hóa Đại Việt
 
-Câu 30: Dạ cổ hoài lang được mệnh danh là "bản nhạc vua" của loại hình sân khấu cổ truyền nào của người Việt?
-A. Hát xẩm
+Câu 3. Lớp văn hóa bản địa là thành tựu của giai đoạn văn hóa nào?
+*A. Giai đoạn văn hoá tiền sử và giai đoạn văn hóa Văn Lang- Âu Lạc
+B. Giai đoạn văn hóa Văn Lang- Âu Lạc và giai đoạn văn hóa thời kỳ Bắc thuộc
+C. Giai đoạn văn hóa thời kỳ Bắc thuộc và giai đoạn văn hóa Đại Việt
+D. Giai đoạn văn hóa Đại Việt và giai đoạn văn hóa Đại Nam
+
+Câu 4. Ở giai đoạn văn hóa tiền sử, thành tựu lớn nhất của cư dân Nam Á là:
+*A. Hình thành nghề nông nghiệp lúa nước
+B. Kỹ thuật luyện kim đồng
+C. Kỹ thuật luyện sắt
+D. Kỹ thuật luyện sắt
+
+Câu 5. Các luồng tư tưởng dân chủ tư sản, tư tưởng Mac- Lênin được truyền vào Việt Nam vào giai đoạn văn hóa nào?
+A. Giai đoạn văn hóa thời kỳ Bắc thuộc
+B. Giai đoạn văn hóa Đại Việt
+*C. Giai đoạn văn hóa thời kỳ Pháp thuộc
+D. Giai đoạn văn hóa hiện đại
+
+Câu 6. Đặc điểm nổi bật nhất của giai đoạn văn hóa Việt Nam thời kỳ Bắc thuộc là:
+A. Ý thức đối kháng bất khuất trước sự xâm lăng của phong kiến phương Bắc
+*B. Tiếp biến văn hóa Hán để làm giàu cho văn hóa dân tộc
+C. Giao lưu tự nhiên với văn hóa Ấn Độ
+D. Giữ gìn, bảo tồn bản sắc văn hóa dân tộc
+
+Câu 7. Thời kỳ văn hóa Văn Lang-Âu Lạc có ba trung tâm văn hóa lớn là:
+A. Văn hóa Đông Sơn – Văn hóa Sa Huỳnh – Văn hóa Óc Eo
+B. Văn hóa Hòa Bình – Văn hóa Sơn Vi – Văn hóa Phùng Nguyên
+*C. Văn hóa Đông Sơn – Văn hóa Sa Huỳnh – Văn hóa Đồng Nai
+D. Văn hóa châu thổ Bắc Bộ – Văn hóa Chămpa – Văn hóa Óc Eo
+
+Câu 8. Năm 1943, Đề cương văn hóa của Đảng Cộng sản Đông dương ra đời đã vạch ra con đường phát triển văn hóa dân tộc theo nguyên tắc:
+*A. Dân tộc hóa, đại chúng hóa và khoa học hóa
+B. Nhân văn, dân chủ và tiến bộ
+C. Xây dựng nền văn hóa tiên tiến, đậm đà bản sắc dân tộc
+D. Chấn hưng dân khí, khai thông dân trí, mở rộng dân quyền, cải thiện dân sinh
+
+Câu 9. Dưới ảnh hưởng của văn hóa phương Tây, nền giáo dục Nho học của Việt Nam dần tàn lụi và hoàn toàn chấm dứt vào năm:
+A. 1898
+B. 1906
+C. 1915
+*D. 1919
+
+Câu 10. Điệu múa xòe là đặc sản nghệ thuật của vùng văn hóa nào?
+*A. Vùng văn hóa Tây Bắc
+B. Vùng văn hóa Bắc Bộ
+C. Vùng văn hóa Việt Bắc
+D. Vùng văn hóa Trung Bộ
+
+Câu 11. Hệ thống “Mương – Phai – Lái – Lịn” là hệ thống tưới tiêu nổi tiếng của văn hóa nông nghiệp thuộc vùng nào?
+*A. Vùng văn hóa Tây Bắc
+B. Vùng văn hóa Bắc Bộ
+C. Vùng văn hóa Việt Bắc
+D. Vùng văn hóa Trung Bộ
+
+Câu 12. Chợ tình là sinh hoạt văn hóa đặc thù của vùng văn hóa nào?
+A. Vùng văn hóa Tây Bắc
+B. Vùng văn hóa Bắc Bộ
+*C. Vùng văn hóa Việt Bắc
+D. Vùng văn hóa Trung Bộ
+
+Câu 13. Sự tương đồng giữa văn hóa Việt Nam và văn hóa các dân tộc Đông Nam Á được hình thành từ:
+*A. Lớp văn hóa bản địa với nền của văn hóa Nam Á và Đông Nam Á
+B. Lớp văn hóa giao lưu với Trung Hoa và khu vực
+C. Lớp văn hóa giao lưu với phương Tây
+D. Sự mở cửa giao lưu với các nền văn hóa trên toàn thế giới
+
+Câu 14. Mai táng bằng chum gốm là phương thức mai táng đặc thù của cư dân thuộc nền văn hóa nào?
+A. Văn hóa Đông Sơn
+*B. Văn hóa Sa Huỳnh
+C. Văn hóa Óc Eo
+D. Văn hóa Đồng Nai
+
+Câu 15. Kiểu nhà ở phổ biến của cư dân văn hóa Đông Sơn là:
+A. Nhà thuyền
+B. Nhà đất bằng
+C. Nhà bè
+*D. Nhà sàn
+
+Câu 16. Chế phẩm đặc thù của văn hóa Đồng Nai là:
+A. Khuyên tai hai đầu thú
+B. Mộ chum gốm
+C. Trang sức bằng vàng
+*D. Đàn đá
+
+Câu 17. Nền văn học chữ viết của người Việt chính thức xuất hiện vào thời kỳ nào?
+A. Thời Bắc thuộc
+*B. Thời Lý – Trần
+C. Thời Minh thuộc
+D. Thời Hậu Lê
+
+Câu 18. Các định lệ khuyến khích người đi học như lễ xướng danh, lễ vinh quy bái tổ, lễ khắc tên lên bia tiến sĩ… được triều đình ban hành vào thời kỳ nào?
+A. Thời Bắc thuộc
+B. Thời Lý – Trần
+*C. Thời Hậu Lê
+D. Thời nhà Nguyễn
+
+Câu 19. Theo quan niệm của đồng bào Giẻ (Triêng) ở Tây Nguyên, cồng chiêng là biểu tượng cho:
+A. Thần Sấm – tính Nam
+B. Mặt trời – tính Nam
+*C. Mặt trăng – tính Nữ
+D. Đất – tính Nữ
+
+Câu 20. Kinh thành Thăng Long được chia thành 36 phố phường vào thời kỳ nào?
+A. Thời Lý – Trần
+B. Thời Minh thuộc
+*C. Thời Hậu Lê
+D. Thời nhà Nguyễn
+
+Câu 21. Dưới góc độ triết học, nội dung của triết lý âm dương bàn về:
+A. Hai tố chất cơ bản tạo ra vũ trụ và vạn vật
+*B. Bản chất chuyển hóa của vũ trụ và vạn vật
+C. Các cặp đối lập trong vũ trụ
+D. Quy luật âm dương chuyển hóa
+
+Câu 22. Xét dưới góc độ triết lý âm dương, loại hình văn hóa gốc nông nghiệp được gọi là:
+A. Văn hóa trọng dương
+*B. Văn hóa trọng âm
+C. Cả hai ý trên đều đúng
+D. Cả hai ý trên đều sai
+
+Câu 23. Câu tục ngữ : “Không ai giàu ba họ, không ai khó ba đời” phản ánh quy luật nào của triết lý âmdương ?
+A. Quy luật về bản chất các thành tố
+*B. Quy luật về quan hệ giữa các thành tố
+C. Quy luật nhân quả
+D. Quy luật chuyển hóa
+
+Câu 24. Thành ngữ : “Trong cái rủi có cái may” phản ánh quy luật nào của triết lý âm-dương?
+*A. Quy luật về bản chất các thành tố
+B. Quy luật về quan hệ giữa các thành tố
+C. Quy luật nhân quả
+D. Quy luật chuyển hóa
+
+Câu 25. Biểu tượng âm dương truyền thống lâu đời của người Việt là:
+A. Công cha nghĩa mẹ
+B. Con Rồng Cháu Tiên
+*C. Biểu tượng vuông tròn
+D. Ông Tơ bà Nguyệt
+
+Câu 26. Việc nhận thức rõ hai quy luật của triết lý âm dương đã mang lại ưu điểm gì trong quan niệm sống của người Việt ?
+A. Sống hài hòa với thiên nhiên
+B. Giữ sự hài hòa âm dương trong cơ thể
+C. Giữ gìn sự hòa thuận, sống không mất lòng ai
+*D. Triết lý sống quân bình
+
+Câu 27. Trong Ngũ hành, hành nào được đặt vào vị trí trung tâm, cai quản bốn phương?
+*A. Hành Thổ
+B. Hành Mộc
+C. Hành Thủy
+D. Hành Kim
+
+Câu 28. Theo Hà đồ, hành Hoả trong Ngũ Hành ứng với:
+A. Phương Đông
+*B. Phương Nam
+C. Phương Tây
+D. Phương Bắc
+
+Câu 29. Phương Tây ứng với hành nào trong Ngũ hành?
+A. Hành Thổ
+B. Hành Mộc
+C. Hành Thủy
+*D. Hành Kim
+
+Câu 30. Hành Hỏa tương khắc với hành nào trong Ngũ hành?
+A. Hành Thổ
+B. Hành Mộc
+*C. Hành Thủy
+D. Hành Kim
+
+CHƯƠNG 3
+
+Câu 1. Hành Thủy tương sinh với hành nào trong Ngũ hành?
+A. Hành Thổ
+*B. Hành Mộc
+C. Hành Kim
+D. Hành Hoả
+
+Câu 2. Màu biểu của phương Đông là màu nào?
+A. Đỏ
+*B. Xanh
+C. Đen
+D. Trắng
+
+Câu 3. Màu biểu của phương Tây là màu nào?
+A. Đỏ
+B. Xanh
+C. Đen
+*D. Trắng
+
+Câu 4. Lịch cổ truyền của Việt Nam là loại lịch nào?
+A. Lịch thuần dương
+B. Lịch thuần âm
+*C. Lịch âm dương
+D. Âm lịch
+
+Câu 5. Lịch cổ truyền Á Đông trong khoảng bao nhiêu năm thì có một tháng nhuận?
+A. 4 năm
+B. gần 4 năm
+C. 3 năm
+*D. gần 3 năm
+
+Câu 6. Lịch cổ truyền Á Đông được xây dựng trên cơ sở:
+A. Phản ánh chu kỳ chuyển động của mặt trời
+B. Phản ánh chu kỳ hoạt động của mặt trăng
+C. Phản ánh sự biến động thời tiết có tính chu kỳ của vũ trụ
+*D. Kết hợp cả chu kỳ hoạt động của mặt trăng lẫn mặt trời
+
+Câu 7. Trong lịch Á Đông cổ truyền, việc xác định các tháng trong năm thường dựa theo:
+A. Chu kỳ hoạt động của mặt trăng
+*B. Chu kỳ hoạt động của mặt trời
+C. Sự biến động thời tiết của vũ trụ
+D. Hiện tượng thủy triều
+
+Câu 8. Trong lịch Á Đông cổ truyền, việc xác định các ngày trong tháng thường dựa theo:
+*A. Chu kỳ hoạt động của mặt trăng
+B. Chu kỳ hoạt động của mặt trời
+C. Sự biến động thời tiết của vũ trụ
+D. Hiện tượng thủy triều
+
+Câu 9. Theo hệ đếm can chi, giờ khắc khởi đầu của một ngày, khi dương khí bắt đầu sinh ra gọi là giờ:
+*A. Tí
+B. Thìn
+C. Ngọ
+D. Dần
+
+Câu 10. Việc áp dụng các mô hình nhận thức về vũ trụ vào việc nhận thức về con người tự nhiên được hình thành trên cơ sở:
+A. Sự gắn bó mật thiết giữa con người nông nghiệp với thiên nhiên
+B. Quy luật tương tác giữa các hành trong Ngũ hành
+C. Đoán định vận mệnh của con người trong các mối quan hệ xã hội
+*D. Quan niệm “thiên địa vạn vật nhất thể”, coi con người là một vũ trụ thu nhỏ
+
+Câu 12. Đối với Ngũ tạng bên trong cơ thể con người, khi khám chữa bệnh, y học cổ truyền Việt Nam coi trọng nhất là tạng nào?
+A. Tì
+*B. Thận
+C. Can
+D. Phế
+
+Câu 13. Nếu xem 5 ngón tay trên một bàn tay là một hệ thống Ngũ hành thì ngón cái thuộc hành nào?
+A. Hỏa
+*B. Mộc
+C. Kim
+D. Thổ
+
+Câu 14. Theo quan niệm truyền thống, mỗi cá nhân trong xã hội đều mang đặc trưng của một hành trong Ngũ hành. Việc quy hành cho mỗi người được tiến hành trên cơ sở:
+A. Căn cứ vào đặc điểm tính cách của cá nhân
+B. Căn cứ vào mối quan hệ gia đình, bạn bè, hôn nhân…
+*C. Căn cứ vào thời điểm ra đời của cá nhân được xác định theo hệ can chi
+D. Căn cứ vào nho-y-lý-số
+
+Câu 15. Thốn là đơn vị đo dùng trong y học phương Đông, được tính bằng:
+A. Đốt giữa ngón tay út của người bệnh
+B. Đốt gốc ngón tay út của người bệnh
+*C. Đốt giữa ngón tay giữa của người bệnh
+D. Đốt gốc ngón tay giữa của người bệnh
+
+Câu 16. Theo Ngũ hành, vật biểu cho phương nam là con vật nào?
+A. Rùa
+*B. Chim
+C. Rồng
+D. Hồ
+
+Câu 17. Trong truyền thuyết Nam Tào – Bắc Đẩu, thần nào là thần giữ sổ sinh, ở cung hướng nào? Khi chầu Ngọc Hoàng đứng bên trái hay bên phải?
+A. Bắc Đẩu/Nam/trái
+B. Bắc Đẩu/Bắc/phải
+*C. Nam Tào/Nam/trái
+D. Nam Tào/Bắc/phải
+
+Câu 18. Sự tích Trầu Cau trong kho tàng văn học dân gian Việt Nam thể hiện triết lý gì của văn hóa nhận thức?
+A. Âm dương
+*B. Tam tài
+C. Ngũ hành
+D. Bát quái
+
+Câu 19. Trong Hà đồ, con số mấy được gọi là số ”tham thiên lưỡng địa”?
+A. 2
+*B. 5
+C. 7
+D. 9
+
+Câu 20. Theo lịch âm dương, ngày nóng nhất trong năm là ngày nào?
+A. Lập hạ
+*B. Hạ chí
+C. Đoan ngọ
+D. Đoan dương
+
+Câu 21. Theo Ngũ hành, vật biểu cho phương đông là con vật nào?
+A. Rùa
+B. Chim
+C. Rồng
+*D. Hổ
+
+Câu 22. Trong cơ cấu tổ chức xã hội Việt Nam truyền thống, lĩnh vực nào đóng vai trò quan trọng, chi phối cả diện mạo xã hội lẫn tính cách con người?
+A. Tổ chức gia tộc
+*B. Tổ chức nông thôn
+C. Tổ chức đô thị
+D. Tổ chức quốc gia
+
+Câu 23. Khu vực lưu giữ, bảo tồn được những giá trị văn hóa cổ truyền, mang đậm bản sắc văn hóa Việt chính là:
+A. Tổ chức gia tộc
+*B. Tổ chức nông thôn
+C. Tổ chức đô thị
+D. Tổ chức quốc gia
+
+Câu 24. Hình thức tổ chức nông thôn theo truyền thống nam giới (chỉ có đàn ông tham gia) tạo nên đơn vị gọi là:
+A. Phường
+*B. Giáp
+C. Hội
+D. Gia tộc
+
+Câu 25. Nguyên tắc tổ chức nông thôn theo huyết thống là cơ sở hình thành nên nhược điểm nào trong tính cách của người Việt?
+A. Thói dựa dẫm, ỷ lại
+*B. Thói gia trưởng, tôn ti
+C. Thói cào bằng, đố kị
+D. Thủ tiêu ý thức về con người cá nhân
+
+Câu 26. Tài sản của tộc họ do các thế hệ trước để lại (thường là ruộng đất) dùng vào việc hương khói, giỗ chạp, cúng tế… hoặc giúp đỡ các thành viên trong họ được gọi là:
+A. Công điền
+B. Tư điền
+C. Từ đường
+*D. Hương hỏa
+
+Câu 27. Việc phân biệt dân chính cư và dân ngụ cư trong tổ chức nông thôn Việt Nam cổ truyền nhằm mục đích:
+A. Buộc người dân đời đời kiếp kiếp gắn bó với quê cha đất tổ
+B. Hạn chế không cho người dân bỏ làng đi ra ngoài
+C. Hạn chế không cho người ngoài vào sống ở làng
+*D. Duy trì sự ổn định của làng xã
+
+Câu 28. Muốn chuyển thành dân chính cư, dân ngụ cư phải thỏa mãn điều kiện nào sau đây?
+A. Đã cư trú lâu năm ở làng và phải có nhiều tài sản
+*B. Đã cư trú ở làng 3 năm trở lên và phải có ít điền sản
+C. Đã kết hôn với người dân trong làng và có cuộc sống ổn định
+D. Đã tham gia vào hội đồng kỳ mục của làng
+
+Câu 29. Hình ảnh nào là biểu tượng truyền thống của tính tự trị trong làng xã Việt Nam ?
+*A. Lũy tre
+B. Sân đình
+C. Bến nước
+D. Cây đa
+
+Câu 30. Mối quan hệ dân chủ đặc biệt giữa nhà nước phong kiến với làng xã Việt Nam được thể hiện qua tình trạng:
+*A. Phép vua thua lệ làng
+B. Đóng cửa bảo nhau khi có sai phạm
+C. Thánh làng nào làng nấy thờ
+D. Cha chung không ai khóc
+
+Câu 11. [Không tìm thấy nội dung câu hỏi và các phương án trong file gốc]
+*B. [Đáp án đúng theo bảng đáp án, nhưng thiếu phương án cụ thể trong file]
+
+CHƯƠNG 4
+
+Câu 1. Những tập tục, quy tắc, lề thói… do dân làng đặt ra, được ghi chép thành văn bản và có giá trị như một bộ luật riêng của làng, được gọi là:
+A. Hương hỏa
+B. Gia lễ
+*C. Hương ước
+D. Gia pháp
+
+Câu 2. Nói về làng Nam Bộ, nhận xét nào sau đây là không đúng?
+A. Thôn ấp ở Nam Bộ trải dài dọc theo các kênh rạch, các trục giao thông thuận tiện…
+*B. Làng Nam Bộ không có đình làng và tín ngưỡng thờ Thành Hoàng
+C. Dân cư của làng Nam Bộ thường biến động bởi người dân hay rời làng đi nơi khác
+D. Làng Nam Bộ có tính mở
+
+Câu 3. Câu “Khôn độc không bằng ngốc đàn” là biểu hiện của đặc điểm gì trong tính cách người Việt?
+A. Tính cộng đồng
+B. Tính dân chủ
+C. Thói dựa dẫm
+*D. Thói dựa dẫm
+
+Câu 4. Truyền thống hiếu học và tinh thần “Tôn sư trọng đạo” trong văn hóa Việt Nam có nguồn gốc từ quan niệm nào trong xã hội phong kiến?
+A. Thái độ khinh rẻ nghề buôn
+*B. Việc coi trọng chế độ khoa cử
+C. Quan niệm “Nhất sĩ nhì nông”
+D. Quan niệm “Không thầy đố mày làm nên”
+
+Câu 5. Cơ cấu tổ chức xã hội truyền thống theo mô hình nhà-làng-nước được hình thành vào giai đoạn nào?
+A. Văn hóa tiền sử
+*B. Văn hóa Văn Lang-Âu Lạc
+C. Văn hóa thời Bắc thuộc
+D. Văn hóa Đại Việt
+
+Câu 6. Trong xã hội Việt Nam truyền thống, nghề nào được coi trọng nhất và đứng đầu danh mục các nghề trong xã hội?
+*A. Sĩ
+B. Nông
+C. Công
+D. Thương
+
+Câu 7. Vào thời Hậu Lê, đối tượng nào sau đây không được đi học, đi thi?
+*A. Con nhà xướng ca
+B. Con nhà nghèo
+C. Con nhà buôn bán
+D. Con nhà tá điền
+
+Câu 8. Bộ luật Hồng Đức đánh dấu một bước phát triển quan trọng của lịch sử pháp quyền Việt Nam. Bộ luật này được ban hành vào thời kỳ nào ?
+A. Thời nhà Lý
+B. Thời nhà Trần
+*C. Thời nhà Hậu Lê
+D. Thời nhà Nguyễn
+
+Câu 9. Hình thức lãnh đạo tập thể (vua anh-vua em, vua cha-vua con, vua-chúa…) thể hiện đặc điểm gì trong tổ chức quốc gia Việt Nam?
+A. Tinh thần dân tộc mạnh mẽ
+B. Ý thức quốc gia
+*C. Truyền thống dân chủ của văn hóa nông nghiệp
+D. Thái độ trọng tình, trọng đức, trọng văn
+
+Câu 10. Việc tuyển chọn người tài vào bộ máy quan lại bằng hình thức thi cử thể hiện đặc điểm gì trong tổ chức quốc gia Việt Nam?
+A. Tinh thần dân tộc mạnh mẽ
+B. Ý thức quốc gia
+*C. Truyền thống dân chủ của văn hóa nông nghiệp
+D. Thái độ trọng tình, trọng đức, trọng văn
+
+Câu 11. Việt Nam là một quốc gia chậm phát triển vì:
+A. Nền văn hóa nông nghiệp lạc hậu, khoa học kỹ thuật kém phát triển
+B. Chính sách „„bế quan tỏa cảng đã kìm hãm sức vươn lên của xã hội ‟‟
+*C. Khả năng bảo tồn mạnh, tạo nên sự bảo thủ, kìm giữ sức vươn lên của xã hội
+D. Đô thị bị lệ thuộc vào nông thôn, không phát huy được sức mạnh
+
+Câu 12. Xét về chức năng, đô thị truyền thống của Việt Nam có đặc điểm nào nổi bật ?
+A. Do nhà nước sản sinh ra
+B. Do nhà nước sản sinh ra
+*C. Chủ yếu thực hiện chức năng hành chính
+D. Hình thành một cách tự phát
+
+Câu 13. Các đô thị cổ của Việt Nam đa số được hình thành theo hướng:
+A. Bộ phận làm kinh tế xuất hiện trước
+*B. Bộ phận quản lý hành chính có trước
+C. Bộ phận kinh tế-hành chính xuất hiện đồng thời
+D. Nông thôn phát triển thành đô thị
+
+Câu 14. Trong các đô thị cổ của Việt Nam, đô thị nào được hình thành theo hướng từ thị đến đô ?
+A. Thăng Long
+B. Phú Xuân
+*C. Phố Hiến
+D. Cổ Loa
+
+Câu 15. Bàn về đặc điểm của tổ chức đô thị Việt Nam truyền thống, nhận định nào sau đây là không đúng ?
+A. Đô thị do nhà nước sinh ra, chủ yếu thực hiện chức năng hành chánh
+B. Đô thị chịu ảnh hưởng của nông thôn và mang đặc tính nông thôn khá đậm nét
+*C. Đô thị hình thành một cách tự phát
+D. Đô thị luôn có nguy cơ bị nông thôn hóa
+
+Câu 16. Lối tổ chức buôn bán quần tụ theo kiểu phố phường làm thương nghiệp Việt Nam có gì khác biệt so với thương nghiệp phương Tây?
+A. Thương nhân cố gắng chiếm giữ lòng tin của khách hàng
+*B. Thương nhân cố gắng chiếm giữ lòng tin của khách hàng
+C. Thương nhân liên kết với khách hàng và tính toán để chèn ép nhau
+D. Tính cạnh tranh cao
+
+Câu 17. Đô thị Việt Nam bắt đầu phát triển theo mô hình đô thị công-thương nghiệp, chú trọng vào chức năng kinh tế từ thời kỳ nào?
+A. Thời kỳ Bắc thuộc
+B. Thời kỳ tự chủ
+*C. Thời kỳ Pháp thuộc
+D. Thời kỳ hiện đại
+
+Câu 18. Các ngành công nghiệp khai thác mỏ, chế biến nông lâm sản… xuất hiện ở Việt Nam vào thời kỳ nào?
+A. Thời kỳ Bắc thuộc
+B. Thời kỳ tự chủ
+*C. Thời kỳ Pháp thuộc
+D. Thời kỳ hiện đại
+
+Câu 19. Thành ngữ “Sống lâu lên lão làng” phản ánh đặc điểm gì trong văn hóa tổ chức nông thôn của người Việt?
+*A. Tính tôn ti trật tự
+B. Tính gia trưởng
+C. Thói bè phái
+D. Thói dựa dẫm, ỷ lại
+
+Câu 20. Chế độ thị tộc phụ quyền xuất hiện trong xã hội Việt Nam vào thời kỳ văn hóa nào?
+A. Văn hóa thời kỳ tiền sử
+B. Văn hóa Văn Lang – Âu Lạc
+*C. Văn hóa thời kỳ Bắc thuộc
+D. Văn hóa Đại Việt
+
+Câu 21. Theo điều „„Tam bất khả xuất trong luật Gia Long, trường hợp nào sau đây thì người đàn ông không được phép bỏ vợ? ‟‟
+A. Người vợ không có con
+*B. Người vợ đã để tang cha mẹ chồng
+C. Người vợ cãi cha mẹ chồng
+D. Người vợ hay ghen tuông
+
+Câu 22. Theo điều “Thất xuất” trong luật Gia Long, trường hợp nào sau đây thì người đàn ông được phép bỏ vợ?
+A. Người vợ không cưới nàng hầu cho chồng
+B. Người vợ không nuôi con riêng của chồng
+C. Người vợ không còn nơi nương tựa
+*D. Người vợ hay ghen tuông
+
+Câu 23. Dưới thời các vua Hùng, kinh đô của nhà nước Văn Lang được đặt ở đâu ?
+A. Cổ Loa
+*B. Phong Châu
+C. Mê Linh
+D. Vạn An
+
+Câu 24. Quốc hiệu Đại Việt được sử dụng ở nước ta vào thời kỳ nào?
+A. Thời nhà Đinh
+*B. Thời nhà Lý
+C. Thời nhà Hồ
+D. Thời nhà Nguyễn
+
+Câu 25. Năm Ất Mão (1075), vua Lý Nhân Tông (1072-1127) cho mở khoa thi đầu tiên để tuyển lựa nhân tài. Người đỗ đầu trong kỳ thi đó là nhà Nho:
+A. Lê Văn Hưu
+B. Chu Văn An
+*C. Lê Văn Thịnh
+D. Nguyễn Hiền
+
+Câu 26. Hệ thống chùa Tứ Pháp vốn là những đền miếu dân gian thờ các vị thần cai quản các hiện tượng tự nhiên, gồm:
+A. Thần Mây – Thần Mưa – Thần Gió – Thần Sấm
+*B. Thần Mây – Thần Mưa – Thần Sấm – Thần Chớp
+C. Bà Trời – Bà Đất – Bà Nước – Bà Chúa Xứ
+D. Thần Mây – Thần Mưa – Thần Sấm – Thần Sét
+
+Câu 27. Tục thờ Tứ bất tử là một giá trị văn hóa tinh thần rất đẹp của người Việt, thờ bốn vị:
+A. Vua Hùng, Thành Hoàng, Thổ Công, Thổ Địa
+B. Pháp Vân, Pháp Vũ, Pháp Lôi, Pháp Điện
+*C. Tản Viên, Thánh Gióng, Chử Đồng Tử , Liễu Hạnh
+D. Mẫu Thượng Thiên, Mẫu Thượng Ngàn, Mẫu Thoải, Mẫu Địa
+
+Câu 28. Trong tục thờ Tứ bất tử, Chử Đồng Tử là biểu tượng cho ước mơ gì của người Việt ?
+A. Sức mạnh đoàn kết ứng phó với môi trường tự nhiên
+B. Sức mạnh đoàn kết chống giặc ngoại xâm
+*C. Xây dựng cuộc sống phồn vinh về vật chất
+D. Xây dựng cuộc sống hạnh phúc về tinh thần
+
+Câu 29. Hình thức tín ngưỡng phổ biến và tiêu biểu nhất của người Việt (gần như trở thành một thứ tôn giáo) là :
+A. Tín ngưỡng phồn thực
+B. Tín ngưỡng thờ Mẫu
+*C. Tín ngưỡng thờ cúng tổ tiên
+D. Tục thờ Tứ bất tử
+
+Câu 30. Chế độ mẫu hệ đã làm “nguyên lý Mẹ” ăn sâu trong tâm tí và tính cách của người Việt, thể hiện độc đáo trong đời sống tâm linh qua:
+A. Tín ngưỡng phồn thực
+*B. Tín ngưỡng thờ Mẫu
+C. Tín ngưỡng thờ cúng tổ tiên2
+D. Tục thờ Tứ bất tử
+
+CHƯƠNG 5
+
+Câu 1. Trong mảng tín ngưỡng sùng bái giới tự nhiên của người Việt, loài thực vật nào được tôn sùng và được thờ cúng nhiều nhất ?
+*A. Cây Lúa
+B. Cây Đa
+C. Cây Dâu
+D. Quả Bầu
+
+Câu 2. Vị thần quan trọng nhất trong các làng quê Việt Nam, có vai trò cai quản, che chở, định đoạt phúc họa cho dân làng là:
+*A. Thành Hoàng
+B. Thổ Công
+C. Thổ Địa
+D. Thần Tài
+
+Câu 3. Đối tượng thờ cúng của tín ngưỡng phồn thực là:
+A. Linga và yoni
+B. Biểu tượng về sinh thực khí
+C. Hành vi giao phối
+*D. Sinh thực khí nam nữ và hành vi giao phối
+
+Câu 4. Ý nghĩa của tín ngưỡng phồn thực là:
+A. Cầu mong sự may mắn, no đủ cho cả năm
+B. Làm ma thuật để truyền sinh cho mùa màng
+C. Cầu cho đông con, nhiều cháu
+*D. Cầu mong mùa màng và con người sinh sôi nảy nở
+
+Câu 5. Trong phạm vi gia đình, vị thần canh giữ gia cư, chống lại ma quỷ quấy nhiễu và mang may mắn đến cho gia đình là:
+A. Thành Hoàng
+*B. Thổ Công
+C. Tổ Sư
+D. Thần Tài
+
+Câu 6. Năm 1572, vua Lê Anh Tông ra lệnh sưu tầm và soạn ra thần tích của Thành Hoàng các làng để vua ban sắc phong thần. Các vị Thành Hoàng được vua ban sắc phong được gọi chung là:
+A. Thượng đẳng thần
+B. Trung đẳng thần
+C. Hạ đẳng thần
+*D. Phúc thần
+
+Câu 7. Tà thần là những người có lý lịch không hay ho gì (trẻ con, người ăn mày, người ăn trộm, người chết trôi…) nhưng vẫn được người dân thờ làm Thành Hoàng làng vì :
+A. Thần giúp cho mưa thuận gió hòa, mùa màng tươi tốt
+*B. Thần chết vào giờ thiêng nên ra oai tác quái, khiến dân làng nể sợ
+C. Thần bảo trợ cho dân làng khỏi thiên tai, dịch bệnh
+D. Thần bảo trợ cho dân làng khỏi thiên tai, dịch bệnh
+
+Câu 8. Dân gian có câu : “Trống làng nào làng ấy đánh, Thánh làng nào làng ấy thờ”. Vị thánh trong câu ca dao trên là vị nào ?
+*A. Thành Hoàng
+B. Thổ Công
+C. Thổ Địa
+D. Thần Tài
+
+Câu 9. Những thói quen, những nếp sống có ý nghĩa tốt đẹp của một cộng đồng dân tộc đã ăn sâu vào đời sống xã hội, được đa số mọi người thừa nhận và làm theo gọi là:
+A. Tín ngưỡng
+B. Tôn giáo
+*C. Phong tục
+D. Tập quán
+
+Câu 10. Trong tập tục hôn nhân cổ truyền của người Việt, khi hai họ tính chuyện dựng vợ gả chồng cho con cái, yếu tố nào sau đây được quan tâm hàng đầu ?
+A. Quyền lợi của làng xã
+*B. Quyền lợi của gia tộc
+C. Sự phù hợp của đôi trai gái
+D. Sự phù hợp giữa mẹ chồng – nàng dâu
+
+Câu 11. Tục “giã cối đón dâu” của người Việt trong nghi lễ hôn nhân cổ truyền có ý nghĩa :
+*A. Cầu chúc cho đôi vợ chồng trẻ được đông con nhiều cháu
+B. Cầu chúc cho lứa đôi hạnh phúc đến đầu bạc răng long
+C. Cầu chúc cho đại gia đình trên thuận dưới hòa
+D. Chúc cho cô dâu đảm đang, tháo vát, làm lợi cho gia đình nhà chồng
+
+Câu 12. Tính pháp lý của hôn nhân cổ truyền được chính quyền làng xã công nhận bằng tập tục:
+A. Thách cưới
+*B. Nộp tiền cheo
+C. Ông mai bà mối
+D. Bái yết gia tiên
+
+Câu 13. Câu tục ngữ “Lấy chồng khó giữa làng hơn lấy chồng sang thiên hạ” phản ánh :
+A. Tâm lý coi trọng bà con hàng xóm láng giềng
+*B. Tâm lý coi trọng sự ổn định làng xã, khinh rẻ dân ngụ cư
+C. Tâm lý trọng tình trọng nghĩa
+D. Tâm lý coi khinh tiền tài vật chất
+
+Câu 14. Tục lệ nào sau đây được tiến hành trong lễ hợp cẩn để cầu chúc cho hai vợ chồng mới cưới luôn gắn bó yêu thương nhau ?
+A. Tục trao cho nhau nắm đất và gói muối
+B. Mẹ chồng ôm bình vôi lánh sang nhà hàng xóm
+C. Tục giã cối đón dâu
+*D. Tục uống rượu, ăn cơm nếp
+
+Câu 15. Khi chôn cất người chết, người ta thường đặt trên mộ bát cơm, quả trứng và đôi đũa. Những lễ vật này có ý nghĩa:
+*A. Cầu chúc cho người chết sớm đầu thai trở lại
+B. Thể hiện lòng tiếc thương của người sống với người chết
+C. Mong người chết được no đủ ở thế giới bên kia
+D. Cúng cho các vong hồn khác khỏi quấy phá người chết
+
+Câu 16. Trong các nghi thức của đám tang, lễ phạn hàm là lễ:
+A. Tắm rửa cho người chết
+*B. Bỏ tiền và nhúm gạo nếp vào miệng người chết
+C. Đặt tên thụy cho người chết
+D. Khâm liệm cho người chết
+
+Câu 17. Trong đám tang, tại sao chắt, chút khi để tang cho cụ, kị lại đội khăn đỏ, khăn vàng ?
+A. Vì màu đỏ, màu vàng là những màu tốt trong ngũ hành
+*B. Vì đó là một sự mừng, là bằng chứng cho thấy các cụ sống lâu, nhiều con cháu
+C. Vì đó là cách để phân biệt tôn ti trật tự trong gia đình
+D. Vì đó là sản phẩm của triết lý âm dương trong nền văn hóa nông nghiệp
+
+Câu 18. Về loại số, theo triết lý âm dương, những thứ liên quan đến người chết (hoa cúng, lạy trước quan tài…) đều phải sử dụng:
+A. Số lẻ
+*B. Số chẵn
+C. Cả hai ý trên đều đúng
+D. Cả hai ý trên đều sai
+
+Câu 19. Nói về lễ hội, nhận định nào sau đây là không đúng ?
+*A. Lễ hội được phân bố theo thời gian trong năm, xen vào các khoảng trống trong thời vụ
+B. Lễ hội là một sinh hoạt văn hóa, tín ngưỡng truyền thống của cộng đồng
+C. Các trò chơi ở lễ hội phản ánh những ước vọng thiêng liêng của con người
+D. Lễ hội bao gồm cả phần lễ (nghi lễ, lễ thức cúng tế…) và phần hội (các trò diễn, trò chơi dân gian…).
+
+Câu 20. Lễ hội cổ truyền thường diễn ra vào những mùa nào trong năm ?
+A. Mùa xuân và mùa hạ
+*B. Mùa xuân và mùa thu
+C. Mùa xuân và mùa đông
+D. Tất cả các mùa
+
+Câu 21. Người Việt Nam đặc biệt coi trọng giao tiếp và rất thích giao tiếp. Đặc điểm này thể hiện trong thói quen:
+*A. Thích thăm viếng, hiếu khách
+B. Ưa tìm hiểu, quan sát, đánh giá đối tượng giao tiếp
+C. Tế nhị, ý tứ trong giao tiếp
+D. Xem trọng nghi thức giao tiếp
+
+Câu 22. Thói quen nói chuyện “vòng vo tam quốc”, luôn đắn đo cân nhắc kỹ càng khi nói phản ánh đặc điểm gì trong văn hóa giao tiếp của người Việt ?
+A. Trọng danh dự
+*B. Tế nhị, ý tứ
+C. Trọng tình cảm
+D. Trọng nghi thức
+
+Câu 23. Câu ca dao “Yêu nhau yêu cả đường đi, ghét nhau ghét cả tông ti họ hàng” phản ánh đặc điểm gì trong văn hóa giao tiếp của người Việt?
+A. Tế nhị, ý tứ, trọng sự hòa thuận
+B. Đắn đo, cân nhắc kỹ càng khi nói
+C. Thiếu tính quyết đoán
+*D. Luôn lấy tình cảm làm nguyên tắc ứng xử
+
+Câu 24. Câu đối là một sản phẩm văn chương đặc biệt phản ánh đặc điểm nào của nghệ thuật ngôn từ Việt Nam?
+A. Xu hướng ước lệ
+*B. Xu hướng trọng sự cân đối, hài hòa
+C. Giàu chất biểu cảm
+D. Khuynh hướng thiên về thơ ca
+
+Câu 25. Trong tiếng Việt, lớp từ xanh lơ, xanh ngắt, đỏ rực, đỏ au, vàng chóe, vàng mơ, trắng tinh, trắng phau… góp phần phản ánh đặc điểm gì của nghệ thuật ngôn từ Việt Nam?
+A. Xu hướng ước lệ
+B. Xu hướng trọng sự cân đối, hài hòa
+*C. Giàu chất biểu cảm
+D. Khuynh hướng thiên về thơ ca
+
+Câu 26. Cấu trúc “iếc hóa” trong ngữ pháp tiếng Việt (sách siếc, bàn biếc, yêu iếc, chồng chiếc…) phản ánh đặc điểm gì của nghệ thuật ngôn từ Việt Nam?
+A. Tính biểu trưng
+B. Tính linh hoạt
+*C. Giàu chất biểu cảm
+D. Tính ước lệ
+
+Câu 27. Trong các loại hình nghệ thuật sân khấu truyền thống của Việt Nam, loại hình nào chịu ảnh hưởng của văn hóa phương Tây sớm nhất?
+A. Chèo
 B. Tuồng
-*C. Cải lương
-D. Chèo
+C. Múa rối
+*D. Cải lương
 
-Câu 31: Biểu tượng của văn hoá ChămPa thuộc lĩnh vực kiến trúc?
-A. Tượng thần Siva
-*B. Tháp/Kalan
-C. Lăng mộ
-D. Linga
+Câu 28. Trong các loại hình nghệ thuật sân khấu truyền thống của Việt Nam, loại hình nào chịu ảnh hưởng của văn hóa Trung Hoa nhiều nhất?
+A. Chèo
+*B. Tuồng
+C. Múa rối
+D. Cải lương
 
-Câu 32: Thiên Y A Na (Pô-I-Nu-Narga) là Thần Mẹ của dân tộc nào trên đất nước ta?
-*A. Người Chăm
-B. Người Chu Ru
-C. Người Gia Rai
-D. Người Raglai
+Câu 29. Nói về nghệ thuật chèo truyền thống của Việt Nam, nhận định nào sau đây là không đúng ?
+*A. Chèo là loại hình sân khấu tổng hợp có tính cách chuyên nghiệp
+B. Chèo ra đời khá sớm và phát triển mạnh ở Bắc Bộ
+C. Kịch bản của chèo thường lấy từ thần thoại, cổ tích và truyện nôm
+D. Diễn xuất chèo có tính linh hoạt, không tuân thủ nghiêm ngặt theo kịch bản
 
-Câu 33: Mục đích lễ hội Chol Chnam Thmay của người Khơme Nam Bộ?
-A. Cúng trăng
-*B. Đón năm mới / lễ Tết
-C. Cúng thần lúa
-D. Ngày Phật đản
+Câu 30. Nói về nghệ thuật tuồng của Việt Nam, nhận định nào sau đây là không đúng ?
+*A. Tuồng là loại hình sân khấu dân gian không chuyên nghiệp
+B. Tuồng phát triển mạnh ở Trung Bộ
+C. Kịch bản của tuồng thường lấy từ truyện cổ Trung Quốc
+D. Người được tôn vinh là Ông tổ của nghệ thuật tuồng hát tuồng là Đào Duy Từ
 
-Câu 34: Các báo "Lục tĩnh tân văn", "Nông cổ mín đàm", "Nữ giới chung" ra đời ở đâu?
-A. Hà Nội
-B. Bắc Bộ
-*C. Nam Bộ
-D. Trung Bộ
+CHƯƠNG 6
 
-Câu 35: Lễ pơ thi (bỏ mả), lễ cúng giằng và tục đâm trâu là những lễ hội đặc trưng của vùng văn hoá nào của nước ta?
-A. Vùng Tây Bắc
-B. Vùng Bắc Bộ
-C. Vùng Việt Bắc
-*D. Vùng Tây Nguyên
+Câu 1. Trong các loại hình nghệ thuật sân khấu truyền thống, loại hình nào phản ánh hiện thực xã hội một cách sống động và sâu sắc nhất ?
+A. Chèo
+B. Tuồng
+C. Múa rối
+*D. Cải lương
 
-Câu 36: Các biểu tượng tiêu biểu và tương đối phổ biến của làng Việt là gì?
-A. Đình làng, luỹ tre, cổng làng
-B. Đình, đền, chùa, miếu
-C. Đình, điếm canh, chùa
-*D. Đình làng, bến nước, cây đa
+Câu 2. Loại hình sân khấu dân gian đặc sắc gắn liền với thiên nhiên, phản ánh quá trình thích ứng với tự nhiên của người Việt trong đời sống nông nghiệp là:
+A. Chèo
+B. Tuồng
+*C. Múa rối
+D. Cải lương
 
-Câu 37: Lượn cọi và lượn chương là những thể loại dân ca tiêu biểu?
-A. Cư dân Môn - Khơ Me
-B. Cư dân Mông - Dao vùng Việt Bắc
-C. Cư dân Tày - Thái ở Tây Bắc
-*D. Cư dân Tày - Nùng ở Việt Bắc
+Câu 3. Thủ pháp ước lệ trên sân khấu (chỉ dùng bộ phận, chi tiết để gợi cho người xem hình dung ra sự thực ngoài đời) phản ánh đặc điểm gì của nghệ thuật thanh sắc và hình khối ?
+*A. Tính biểu trưng
+B. Tính biểu cảm
+C. Tính tổng hợp
+D. Tính linh hoạt
 
-Câu 38: Dân tộc nào ở nước ta có tục "kéo vợ"?
-A. Người Hà Nhì
-*B. Người Cờ Lao
-C. Người Si La
-D. Người Lô Lô
+Câu 4. Sân khấu truyền thống Việt Nam thường có sự giao lưu rất mật thiết với người xem (sàn diễn là sân đình, khán giả có thể tham gia bình phẩm khen chê và chen vào vài câu ngẫu hứng…). Điều này phản ánh đặc điểm gì của nghệ thuật sân khấu truyền thống?
+A. Tính biểu trưng
+B. Tính biểu cảm
+C. Tính tổng hợp
+*D. Tính linh hoạt
 
-Câu 39: Tháp Pô Nagar ở Nha Trang thờ ai?
-A. Thánh mẫu người Việt
-*B. Thánh mẫu người Chăm
-C. Thần tài lộc (Kubêra)
-D. Thần Siva
+Câu 5. Theo quan niệm của người Chàm, thần thánh thường ngự trị ở hướng nào của làng?
+*A. Đông
+B. Tây
+C. Nam
+D. Bắc
 
-Câu 40: Váy, xửa cơm (áo), khăn piêu là trang phục của phụ nữ dân tộc nào ở nước ta?
-A. Người La Chí
-B. Người Lô Lô
-C. Người La Ha
-*D. Người Thái
+Câu 6. Vùng đất chôn cất người chết của người Tây Nguyên thường nằm về hướng nào của làng?
+A. Đông
+*B. Tây
+C. Nam
+D. Bắc
 
-Câu 41: Tộc người nào ở nước ta cho rằng trong con người có tất cả 80 hồn; và người chết không biến mất mà trở về sống ở bản của tổ tiên?
-A. Người Khơ Me
-B. Người Thái
-C. Người Hrê
-*D. Người Giẻ Triêng
+Câu 7. Lễ Hạ điền là lễ hội nông nghiệp thường được tổ chức vào thời điểm:
+A. Gặt lúa mới
+*B. Đầu mùa cấy lúa
+C. Giữa mùa lúa
+D. Hết mùa cấy
 
-Câu 42: Nội dung ý nghĩa lễ Trừ tịch trong đêm giao thừa của người Việt?
-A. Cúng Thổ thần
-B. Cúng chúng sinh, hành khiển thần
-*C. Cúng hành khiển thần
-D. Cúng chúng sinh
+Câu 8. Trong tác phẩm “Lục Vân Tiên” của Nguyễn Đình Chiểu có câu : “Thà đui mà giữ đạo nhà, Còn hơn sáng mắt ông cha không thờ”. Đạo nhà trong câu thơ trên là đạo nào ?
+A. Đạo Phật
+*B. Đạo thờ cúng tổ tiên
+C. Đạo Hòa Hảo
+D. Đạo Cao Đài
 
-Câu 43: Người Êđê gọi sử thi của mình là gì?
-A. Hmon
-B. Truyện cổ tích
-*C. Kha (Khan)
-D. Hri
+Câu 9. Vào ngày tết, mâm ngũ quả để thờ của người dân Nam Bộ thường có 5 loại trái : mãng cầu, sung, dừa, đu đủ, xoài. Điều này phản ánh đặc điểm gì trong nghệ thuật trang trí của người Việt?
+A. Thủ pháp ước lệ
+B. Mô hình mang ý nghĩa phồn thực
+*C. Thủ pháp liên tưởng bằng ngôn từ
+D. Thủ pháp liên tưởng bằng hình thức
 
-Câu 44: Một biểu tượng về nghệ thuật của vùng văn hoá Tây Bắc là gì?
-A. Múa xoan
-B. Múa chèo tàu
-C. Múa đạp lửa
-*D. Múa xoè
+Câu 10. Hát chầu văn, hát bóng, múa bóng, hầu bóng, lên đồng…là những nghi thức hành lễ của tín ngưỡng nào?
+A. Tín ngưỡng phồn thực
+*B. Tín ngưỡng thờ Mẫu
+C. Tín ngưỡng thờ Thành Hoàng
+D. Tục thờ Tứ bất tử
 
-Câu 45: Vùng văn hoá nào của nước ta mà sinh hoạt hội chợ được coi như một sinh hoạt văn hoá đặc thù?
-A. Vùng Tây Nguyên
-B. Vùng Tây Ninh
-*C. Vùng Việt Bắc
-D. Vùng Tây Bắc
+Câu 11. Tập tục đi thăm mồ mả, lăng tẩm để quét dọn, sửa sang, tu bổ nơi an nghỉ của những người quá cố được người Việt tiến hành vào dịp nào trong năm?
+A. Tết Đoan Ngọ
+B. Lễ Vu Lan
+*C. Tết Thanh Minh
+D. Tết Nguyên Đán
 
-Câu 46: Một biểu tượng của nghi lễ trong các dịp hỏi, cưới, đám tang, cúng giỗ của người Việt là?
-A. Trầu và bánh bèo
-B. Cau và thuốc lào
-C. Trầu và nước
-*D. Trầu và cau
+Câu 12. Kinh đô Hoa Lư (Ninh Bình) là đất tổ của sân khấu chèo, và người được tôn vinh Tổ nghề hát chèo là:
+A. Bà Hà Thị Cầu
+B. Ông Đào Duy Từ
+*C. Bà Phạm Thị Trân
+D. Ông Tào Mạt
 
-Câu 47: Dân tộc nào trong các dân tộc dưới đây có làn điệu dân ca NiCa?
-A. Người La Chí
-*B. Người La Ha
-C. Người Pu Péo
-D. Người La Hủ
+Câu 13. Trong nghệ thuật hóa trang trên sân khấu tuồng, những kép hát vẽ mặt nạ màu đỏ là hóa thân của loại nhân vật nào?
+*A. Người anh hùng, trung dũng
+B. Kẻ nóng nảy bộp chộp
+C. Kẻ nịnh thần, phản trắc
+D. Hào kiệt nơi rừng núi
 
-Câu 48: Kinh rạch và cầu tre là biểu tượng của làng Việt ở vùng đất nào của nước ta?
-*A. Vùng Nam Bộ
-B. Vùng Bắc Bộ
-C. Vùng Trung Bộ
-D. Vùng duyên hải Trung Bộ
+Câu 14. Loại hình nghệ thuật truyền thống đầu tiên ở Việt Nam được UNESCO công nhận là Kiệt tác di sản văn hóa phi vật thể và truyền khẩu của nhân loại là:
+*A. Nhã nhạc cung đình Huế
+B. Dân ca quan họ
+C. Ca trù
+D. Đờn ca tài tử Nam Bộ
 
-Câu 49: Sông Lô, Sông Gâm, Sông Cầu, Sông Kỳ Cùng, Hồ Ba Bể gắn với vùng đất/vùng văn hoá nào của nước ta?
-*A. Vùng Việt Bắc
-B. Vùng Trung Bộ
-C. Vùng Nam Bộ
-D. Vùng Tây Bắc
+Câu 15. Bộ Tứ linh Long-Lân-Quy-Phụng được sử dụng phổ biến trong hội họa, điêu khắc truyền thống với nhiều ý nghĩa sâu sắc. Trong đó, hình tượng con Lân mang ý nghĩa:
+*A. Biểu trưng cho ước vọng thái bình
+B. Biểu trưng cho uy lực
+C. Biểu trưng cho sự sống lâu
+D. Biểu trưng cho hạnh phúc
 
-Câu 50: Xuồng ba lá, Ghe tam bản là những phương tiện đi lại và vận chuyển thuộc vùng đất nào ở nước ta?
-*A. Vùng Nam Bộ
-B. Vùng Thăng Long
-C. Vùng Trung Bộ
-D. Vùng Nam Trung Bộ
+Câu 16. Tính dung chấp của văn hóa Việt Nam được xác định bằng công cụ nghiên cứu:
+A. Địa – văn hóa
+B. Nhân học văn hóa
+C. Giao lưu – tiếp biến văn hóa
+*D. Cả ba phương án đều đúng
 
-Câu 51: Chọn luận điểm đúng.
-A. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là sự trao đổi văn hoá là sự trao đổi hàng hoá.
-B. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là sự trao đổi văn hoá là sự trao đổi vật phẩm tôn giáo.
-*C. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là sự trao đổi kinh tế.
-D. Hoạt động có ý nghĩa đặc biệt đối với giao lưu văn hoá là do các cuộc thiên di thời cổ đại.
+Câu 17. Tín ngưỡng phổ biến nhất ở Việt Nam là?
+A. Thờ Thổ công
+B. Thờ Thành Hoàng
+C. Phồn thực
+*D. Thờ Tổ tiên
 
-Câu 52: Hồ Nguyệt Cô hóa cáo, Chém Tá, Lan Anh đẻ, là những lớp trò thuộc loại hình sân khấu cổ truyền nào của người Việt?
-A. Rối nước
-B. Cải lương
-C. Hát chèo
-*D. Hát tuồng
+Câu 18. Trong lịch sử Việt Nam, tôn giáo từng gắn với chủ nghĩa yêu nước là?
+A. Thiên Chúa giáo
+*B. Phật giáo
+C. Bà la môn giáo
+D. Đạo giáo
 
-Câu 53: Ai trong số các đối tượng sau được tôn là một vị thánh trong Tứ bất tử?
-A. Trần Cảnh
-B. Trần Hưng Đạo
-*C. Thánh Gióng
-D. Chiêu Hoàng
+Câu 19. Cơ sở hình thành nên những phẩm chất nổi trội trong tính cách của người Việt là?
+A. Kinh tế – xã hội
+B. Lịch sử
+C. Lịch sử
+*D. Cả 3 phương án đều đúng
 
-Câu 54: Lễ hội Chùa Hương, hội Phủ Giầy, hội Giáng Sinh thuộc loại lễ hội:
-A. Lễ hội nghề nghiệp
-*B. Lễ hội tôn giáo và văn hóa
-C. Lễ hội văn hóa
-D. Lễ hội tôn giáo
+Câu 20. Đối tượng nghiên cứu Đại cương văn hóa Việt Nam là?
+*A. Các yếu tố tạo thành bản sắc văn hóa Việt Nam
+B. Các yếu tố văn hóa mang tính khu vực
+C. Các yếu tố văn hóa của Việt Nam
+D. Các yếu tố văn hóa mang tính nhân loại
 
-Câu 55: Ngôi nhà cộng đồng của người Cơ Tu gọi là?
-A. Nhà rường
-B. Nhà dài
-*C. Nhà gươl
-D. Nhà rông
+Câu 21. Phật giáo được đưa lên làm quốc giáo ở Việt Nam trong thời kỳ:
+A. Hậu Lê
+*B. Lý – Trần
+C. Nguyễn
+D. Đinh – Lê
 
-Câu 56: Lễ Tam nguyên là lễ hội của:
-*A. Đạo giáo
-B. Đạo Mẫu
-C. Phật giáo
+Câu 22. Khái niệm văn vật dùng để chỉ:
+A. Các yếu tố văn hóa vật thể và phi vật thể
+B. Giá trị văn hóa tinh thần
+C. Giá trị văn hóa vật chất và tinh thần
+*D. Giá trị văn hóa vật chất
+
+Câu 23. “Phép vua thua lệ làng” là sản phẩm của:
+*A. Chủ nghĩa cục bộ địa phương
+B. Tính bảo thủ
+C. Tính tập thể
+D. Tính tự quản
+
+Câu 24. “Ta về ta tắm ao ta, dù trong dù đục ao nhà vẫn hơn” là sản phẩm của:
+A. Tính tập thể
+B. Chủ nghĩa cục bộ địa phương
+*C. Tính bảo thủ
+D. Tính tự quản
+
+Câu 25. Đôi đũa được sử dụng trong bữa ăn của người Việt Nam thể hiện:
+A. Tính tổng hợp
+B. Tính biện chứng
+*C. Tính linh hoạt
+D. Cả ba phương án trên
+
+Câu 26. An nam tứ đại khí là 4 di sản của văn hóa:
+A. Nho giáo
+B. Đạo giáo
+C. Thiên chúa giáo
+*D. Phật giáo
+
+Câu 27. Chiếc áo dài của người phụ nữ Việt Nam là sản phẩm của:
+*A. Sự kết hợp giữa văn hóa truyền thống và văn hóa phương Tây
+B. Sự tiếp thu văn hóa phương Tây
+C. Sự tiếp thu văn hóa truyền thống
+D. Sự tiếp thu văn hóa Trung Hoa
+
+Câu 28. Công cụ nghiên cứu được sử dụng phổ biến để nghiên cứu văn hóa dân gian và văn hóa tộc người là?
+A. Các yếu tố văn hóa vật thể và phi vật thể
+*B. Địa – văn hóa
+C. Giá trị văn hóa vật chất và tinh thần
+D. Giá trị văn hóa tinh thần
+
+Câu 29. “Văn hoá là tổ hợp những phương thức hoạt động và niềm tin tạo thành trụ cột của cuộc sống chúng ta được kế thừa về mặt xã hội” thuộc cách định nghĩa:
+A. Cấu trúc
+B. Tâm lý học
+C. Liệt kê
+*D. Lịch sử
+
+Câu 30. Chùa ở Việt Nam là nơi thờ:
+A. Các vị anh hùng có công với nước
+B. Cả ba phương án đều đúng
+*C. Phật
+D. Các vị thần
+
+CHƯƠNG 7
+
+Câu 1. Địa văn hóa là công cụ nghiên cứu văn hóa bằng:
+A. Không gian
+*B. Hoàn cảnh địa lý
+C. Thời gian
+D. Cả ba phương án đều đúng
+
+Câu 2. Theo triết lý Âm dương, khí âm và khí dương chính là?
+A. Vật chất và ý thức
+B. Nam và nữ
+*C. Yếu tố vật chất
+D. Yếu tố tinh thần
+
+Câu 3. Thái độ “vừa cởi mở, vừa rụt rè” trong giao tiếp là của:
+A. Người Mỹ
+B. Người Pháp
+C. Người Trung Quốc
+*D. Người Việt Nam
+
+Câu 4. “Tập tính kém hạch toán, không quen lường tính xa” là đặc điểm tính cách của người Việt được hình thành từ :
+A. Điều kiện lịch sử
+*B. Kinh tế tiểu nông
+C. Kinh tế tiểu nông
+D. Điều kiện xã hội
+
+Câu 5. Ngôi nhà của người Việt Nam mang dấu ấn của:
+*A. Môi trường sông nước
+B. Tôn giáo
+C. Tính cộng đồng
+D. Cả ba phương án đều đúng
+
+Câu 6. “Tác phong tùy tiện, kỷ luật không chặt chẽ” trong tính cách của người Việt Nam là sản phẩm của:
+A. Hoàn cảnh địa lý
+B. Điều kiện lịch sử
+*C. Kinh tế nông nghiệp
+D. Cả ba phương án đều đúng.
+
+Câu 7. “Vì lẽ sinh tồn cũng như vì mục đích cuộc sống, loài người mới sáng tạo và phát minh ra ngôn ngữ, chữ viết, đạo đức, pháp luật, khoa học, tôn giáo, văn học, nghệ thuật, những công cụ sinh hoạt hàng ngày về mặc, ăn, ở và phương thức sử dụng. Toàn bộ những sáng tạo và phát minh đó là văn hoá” là định nghĩa của:
+*A. Hồ Chí Minh
+B. Phan Ngọc
+C. UNESCO
+D. Đào Duy Anh
+
+Câu 8. “Chúng tôi gọi tất cả những gì phân biệt giữa con người với động vật là văn hóa” thuộc cách định nghĩa:
+A. Lịch sử
+B. Tâm lý học
+*C. Nguồn gốc
+D. Chuẩn mực
+
+Câu 9. Luận điểm “Văn hóa Việt Nam là sự thống nhất trong đa dạng” được rút ra từ công cụ nghiên cứu:
+*A. Nhân học – văn hóa
+B. Giao lưu – tiếp biến văn hóa
+C. Tọa độ văn hóa
+D. Địa – văn hóa.
+
+Câu 10. “Càng gần trung tâm, ảnh hưởng của văn hóa gốc càng sâu đậm, càng xa trung tâm, ảnh hưởng của văn hóa gốc càng phai nhạt” là luận điểm được rút ra từ công cụ nghiên cứu:
+A. Tọa độ văn hóa
+B. Nhân học – văn hóa
+C. Địa – văn hóa
+*D. Giao lưu – tiếp biến văn hóa
+
+Câu 11. Văn miếu là nơi thờ:
+A. Ông tổ của nghề y
+B. Ông tổ của nghề buôn bán
+*C. Ông tổ của nghề dạy học
+D. Ông tổ của nghệ thuật
+
+Câu 12. Trong lịch sử Việt Nam, tôn giáo từng là cơ sở cho khối đại đoàn kết dân tộc là?
+A. Đạo giáo
+*B. Phật giáo
+C. Thiên Chúa giáo
 D. Nho giáo
 
-Câu 57: Trong câu “tháng 8 giỗ cha, tháng ba giỗ mẹ”, người Việt tôn ai là cha, ai là mẹ?
-A. Pháp Vân và Thạch Quang
-B. Pháp Vân và Ngọc Hoàng
-*C. Liễu Hạnh và Trần Hưng Đạo
-D. Liễu Hạnh và Ngọc Hoàng
+Câu 13. “Lối sống mà một công xã hay bộ lạc tuân thủ được gọi là văn hoá” thuộc cách định nghĩa:
+A. Liệt kê
+B. Cấu trúc
+C. Nguồn gốc
+*D. Chuẩn mực
 
-Câu 58: Hề chèo là nhân vật như thế nào?
-A. Là nhân vật trữ tình
-*B. Là nhân vật hài hước, châm biếm
-C. Là nhân vật hóm hỉnh
-D. Là nhân vật từ bi
+Câu 14. “Chủ nghĩa yêu nước” của người Việt Nam là sản phẩm của văn hóa:
+*A. Nhà nước – dân tộc
+B. Đô thị
+C. Tộc người
+D. Làng xã
 
-Câu 59: Đặc điểm lối chào của văn hóa giao tiếp người Việt Nam?
-*A. Phụ thuộc vào quan hệ xã hội và theo sắc thái tình cảm
-B. Theo khuôn mẫu chung
-C. Phân biệt kỹ lưỡng các lối chào
-D. Phụ thuộc vào thời gian
+Câu 15. Để xác định đối tượng nghiên cứu của Đại cương văn hóa Việt Nam, các nhà văn hóa học sử dụng phương pháp:
+A. Qui nạp và diễn dịch
+B. Lịch sử
+C. Logic
+*D. Logic kết hợp với lịch sử
 
-Câu 60: Thành Hoàng là vị thần như thế nào?
-A. Thần nghề nghiệp
-*B. Thần bảo vệ làng
-C. Thần bảo vệ di tích
-D. Thần giữ của
+Câu 16. Phẩm chất “Trọng tuổi tác, trọng người già” trong tính cách của người Việt Nam được tạo bởi:
+A. Sự lễ phép
+B. Ảnh hưởng của Nho giáo
+C. Ảnh hưởng của Phật giáo
+*D. Kinh tế nông nghiệp
 
-Câu 61: Nhà mồ Tây Nguyên thường phải tuân theo một hướng nhất định là hướng nào?
-*A. Đông Tây
-B. Đông Bắc
-C. Đông Nam
-D. Tây Nam
+Câu 17. “Tính tự quản” của người Việt Nam là sản phẩm của văn hóa:
+A. Đô thị
+*B. Làng xã
+C. Nhà nước – dân tộc
+D. Gia đình
 
-Câu 62: Tên một lễ hội nông nghiệp đặc trưng ở vùng Việt Bắc:
-A. Lễ hội cúng trăng
-*B. Lễ hội Lồng Tồng
-C. Lễ hội Nàng Hai
-D. Lễ hội Hang Bua
+Câu 18. “Tinh thần đoàn kết, cố kết cộng đồng để vượt qua mọi khó khăn gian khổ” là đặc điểm tính cách của người Việt được hình thành từ:
+A. Điều kiện địa lý
+B. Điều kiện kinh tế
+C. Điều kiện lịch sử
+*D. Cả 3 phương án đều đúng
 
-Câu 63: “Mương – Phai – Lái – Lịn” là những biểu tượng của văn hóa nông nghiệp của dân tộc nào ở vùng văn hóa Tây Bắc?
-A. Người Nùng
-*B. Người Thái
-C. Người Tày
-D. Người Lự
+Câu 19. Nho giáo được đưa lên làm quốc giáo ở Việt Nam trong thời kỳ:
+A. Đinh – Lê
+B. Lý – Trần
+*C. Hậu Lê
+D. Nguyễn
 
-Câu 64: Xuồng ba lá, Ghe tam bản là những phương tiện đi lại và vận chuyển vùng đất nào ở nước ta?
-*A. Vùng Nam Bộ
-B. Vùng Thăng Long
-C. Vùng Nam Trung Bộ
-D. Vùng Trung Bộ
-
-Câu 65: Các báo “Lục tĩnh tân văn”, “Nông cổ mín đàm”, “Nữ giới chung” ra đời ở đâu?
-A. Bắc Bộ
-*B. Nam Bộ
-C. Hà Nội
-D. Trung Bộ
-
-Câu 66: Hát Chầu văn, hát bóng liên quan đến hình thái tín ngưỡng nào của người Việt?
-*A. Thờ Mẫu
-B. Thờ Thủy thần
-C. Thờ Thiên thần
-D. Thờ phồn thực
-
-Câu 67: Nội dung Tết Đoan Ngọ của người Việt?
-A. Cúng hành khiển thần
-B. Hái thuốc nam để dành chữa bệnh
-*C. Diệt trừ sâu bọ, xua đuổi bệnh tật
-D. Giỗ Khuất Nguyên
-
-Câu 68: Vùng văn hóa nào của nước ta mà trong suốt quá trình lịch sử trở thành “phên dậu” của Đại Việt chống lại mưu đồ thôn tính và đồng hóa của phong kiến phương Bắc?
-*A. Vùng Việt Bắc
-B. Vùng Trường Sơn - Tây Nguyên
-C. Vùng Tây Bắc
-D. Vùng Thăng Long
-
-Câu 69: Dân tộc nào của nước ta cho rằng Trống là Mặt trời – tính nam, Cồng chiêng là Mặt trời – tính nữ?
-*A. Người Êđê
-B. Người Lô Lô
-C. Người Mnông
-D. Người Khơ Mú
-
-Câu 70: Lượn cọi và lượn chương là những thể loại dân ca tiêu biểu?
-*A. Cư dân Tày – Nùng ở Việt Bắc
-B. Cư dân Môn – Khơ Me
-C. Cư dân Tày – Thái ở Tây Bắc
-D. Cư dân Mông – Dao ở vùng Việt Bắc
-
-Câu 71: Lễ pơ thi (bỏ mả), lễ cúng giằng và tục đâm trâu là những lễ hội đặc trưng của vùng văn hóa nào của nước ta?
-A. Vùng Việt Bắc
-B. Vùng Bắc Bộ
-*C. Vùng Tây Nguyên
-D. Vùng Tây Bắc
-
-Câu 72: Người lo việc xới bài, chia bài và gọi tên con bài theo lối hát dân ca địa phương, ngân thơ, nói vè trong bài chòi là:
-A. Anh lính
-*B. Anh hiệu
-C. Anh hề
-D. Anh Tễu
-1. Nhiều ý kiến cho rằng, nguyên nhân khởi phát của tín ngưỡng thờ Mẫu là từ?
-*A. Chế độ mẫu hệ
-B. Tư tưởng phụ quyền trong xã hội xưa
-C. Ảnh hưởng của Đạo giáo Trung Hoa
-D. Tín ngưỡng phồn thực
-
-2.Minh chứng của việc đan xen giữa tín ngưỡng thờ Mẫu và Phật giáo được thể hiện qua
-*A. Huyền thoại về Man nương và nhà sư Khâu đà la
-B. Các ngôi chùa đồng thời thờ Phật và thờ Mẫu
-C. Sự xuất hiện của Mẫu Liễu Hạnh trong các ngôi chùa cổ
-D. Nghi thức cầu tự vừa theo đạo Phật vừa theo đạo Mẫu
-
-3.4 nữ thần trong câu chuyện trong video đại diện cho
-*A. Mây, mưa, sấm, chớp
-B. Đất, nước, gió, lửa
-C. Xuân, hạ, thu, đông
-D. Phúc, lộc, thọ, tài
-
-4. Hệ thống điện thần gồm 
-A. 9 bậc thần
-*B. 5 bậc thần
-C. 8 bậc thần
-D. 7 bậc thần
-
-5. Ai là vị thánh cao nhất trong đạo thờ Mẫu
-A. Ngọc hoàng
-*B. Thánh Mẫu Liễu Hạnh
-C. Phật Bà Quan Âm
-D. Vua Cha Bát Hải Động Đình
-
-6. Tứ phủ thánh mẫu gồm:
-*A. Mẫu đệ nhất Thượng Thiên – Mẫu đệ nhị Thượng Ngàn – Mẫu đệ tam Thoải phủ – Mẫu Địa
-B. Mẫu Thoải – Mẫu Địa – Mẫu Liễu – Mẫu Núi
-C. Mẫu Trời – Mẫu Nước – Mẫu Đất – Mẫu Rừng
-D. Mẫu Cửu Trùng – Mẫu Thần Nông – Mẫu Sơn Tinh – Mẫu Biển
-
-7. Chầu đệ nhất là hóa thân của 
-*A.Mẫu Thượng Thiên
-B. Mẫu Thuợng Ngàn
-C. Mẫu Thoải
-D. Thánh Mẫu Thiên phủ
-
-8. Lên đồng là
-*A. Hiện tượng nhập hồn nhiều lần của các thần linh trong điện thần, của đạo mẫu và các ông đồng, bà đồng để cầu sức khoẻ, may mắn và tài lộc.
-B. Một nghi lễ múa hát dân gian để tưởng nhớ tổ tiên
-C. Hình thức hát chầu văn thuần túy để cầu tài lộc
-D. Nghi lễ cúng tế thần linh bằng lễ vật truyền thống
-
-9. Sự khác nhau tín ngưỡng xuất phát chủ yếu từ
-*A. Điều kiện tự nhiên
-B. Điều kiện lịch sử
-C. Điều kiện văn hoá
-D. Điều kiện kinh tế
-
-10. Tín ngưỡng thờ thần rừng, thần núi, thần cây và các loài vật linh thiêng như hổ,
-gấu của người miền núi do đâu
-*A. Sự kính sợ và tôn trọng trước sức mạnh bí ẩn của tự nhiên
-B. Ảnh hưởng từ truyền thuyết dân gian và anh hùng ca
-C. Tập tục săn bắn và sinh hoạt cộng đồng
-D. Mong muốn bảo vệ mùa màng và tránh tai ương
-
-Câu 11: Tín ngưỡng phồn thực chủ yếu gắn liền với mong muốn nào của con người
-trong xã hội nông nghiệp?
-A. Cầu mong sự sung túc, tài lộc
-*B. Cầu mong sinh sôi, nảy nở
-C. Cầu mong sức khỏe, bình an
-D. Cầu mong sự che chở từ thần linh
-
-Câu 12: Thành hoàng làng trong tín ngưỡng Việt Nam thường được coi là:
-A. Người sáng lập ra làng
-B. Thần cai quản nghề nông
-*C. Vị thần bảo trợ, che chở cho cả cộng đồng làng xã
-D. Thần núi, thần sông trong thiên nhiên
-
-Câu 13: Tín ngưỡng thờ Mẫu phản ánh sâu sắc nhất điều gì trong đời sống tinh 
-thần người Việt?
-A. Ý thức cộng đồng
-B. Tinh thần thượng võ
-*C. Đề cao vai trò người mẹ và sự sinh sôi của vũ trụ
-D. Tín ngưỡng đa thần cổ xưa
-
-Câu 14 Điểm chung giữa tín ngưỡng thờ thành hoàng và tín ngưỡng thờ Mẫu là:
-A. Đều gắn với thờ phụng thiên nhiên
-*B. Đều thể hiện niềm tin vào sự bảo trợ, che chở cho cộng đồng
-C. Đều nhằm cầu mùa màng bội thu
-D. Đều chỉ gắn với tín ngưỡng dân gian địa phương
-
-Câu 15: Tín ngưỡng phồn thực được coi là sản phẩm tất yếu của xã hội nông 
-nghiệp vì:
-A. Phản ánh sự giao lưu văn hóa với phương Bắc
-B. Thể hiện sức mạnh của nam giới trong xã hội cổ
-*C. Xuất phát từ nhu cầu cầu mùa màng, sinh sản của con người
-D. Do chính quyền phong kiến cổ vũ và tổ chức
-
-Câu 16: Việc nhà Lê cho san định thần tích năm 1572 phản ánh ý nghĩa nào trong 
-sự phát triển tín ngưỡng thờ thành hoàng?
-A. Chứng minh tín ngưỡng này có từ rất sớm
-B. Nhà nước muốn áp đặt tôn giáo chính thống
-*C. Tín ngưỡng dân gian được chính quyền thừa nhận và quản lý
-D. Cho thấy sự cạnh tranh với tín ngưỡng phồn thực
-
-Câu 17: Trong tín ngưỡng thờ Mẫu, Tam phủ – Tứ phủ thể hiện quan niệm gì?
-A. Mỗi phủ tượng trưng cho một dòng họ
-*B. Mỗi phủ ứng với một miền vũ trụ – thiên nhiên khác nhau
-C. Chỉ thờ những người phụ nữ có công
-D. Chỉ dành cho tầng lớp quý tộc
-
-Câu 18: Một ngôi làng ở đồng bằng Bắc Bộ tổ chức lễ hội cầu mùa, diễn xướng tục
-giã gạo, hát giao duyên, rước nước từ sông về. Đây là biểu hiện của loại tín ngưỡng
-nào?
-A. Thờ thành hoàng
-B. Thờ Mẫu
-*C. Phồn thực
-D. Tôn giáo ngoại lai
-
-Câu 19: Khi phân tích tín ngưỡng thờ Mẫu, một sinh viên cho rằng tín ngưỡng này 
-phản ánh sự tôn vinh nữ giới, đồng thời gắn kết cộng đồng qua các lễ hội chầu văn.
-Nhận định này:
-*A. Hoàn toàn chính xác
-B. Sai vì thờ Mẫu không liên quan đến nữ giới
-C. Sai vì thờ Mẫu chỉ gắn với tầng lớp quan lại
-D. Chỉ đúng về phương diện nghệ thuật diễn xướng
-
-Câu 20: Trong bối cảnh hiện nay, nếu địa phương muốn khai thác giá trị du lịch 
-văn hóa từ tín ngưỡng thờ thành hoàng, cần lưu ý điều gì để vừa phát triển kinh tế 
-vừa bảo tồn được bản sắc?
-A. Chỉ tập trung thương mại hóa lễ hội để thu hút khách
-B. Loại bỏ toàn bộ nghi thức dân gian, thay bằng hiện đại hóa
-*C. Giữ gìn nghi lễ truyền thống cốt lõi, kết hợp tổ chức dịch vụ du lịch một cách hài hòa
-D. Không cần quan tâm bảo tồn vì đây là tín ngưỡng dân gian không chính thống
+Câu 20. Đô thị truyền thống của Việt Nam phụ thuộc vào nông thôn, bị nông thôn hóa là vì:
+A. Chế độ phong kiến tập quyền
+B. Sự bao trùm của thể chế làng xã lên mọi thiết chế
+C. Tâm lý “trọng nông, ức thương”
+*D. Cả ba phương án đều đúng
 `;
 
     // ==== HÀM TRỘN MẢNG (Fisher–Yates) ====
@@ -1511,16 +1479,19 @@ D. Không cần quan tâm bảo tồn vì đây là tín ngưỡng dân gian kh�
     }
 
     function updateScoreBar() {
-      if (!questions.length) {
-        scoreBarEl.textContent = '';
-        summaryBtn.disabled = true;
-        return;
-      }
-      const total = questions.length;
-      const ans = countAnswered();
-      const correct = countCorrect();
-      scoreBarEl.textContent = `Đúng: ${correct}/${total} • Đã trả lời: ${ans}/${total}`;
-      summaryBtn.disabled = !allAnswered();
+  if (!questions.length) {
+    scoreBarEl.textContent = '';
+    summaryBtn.disabled = true;  // không có câu thì vẫn khoá
+    return;
+  }
+  const total = questions.length;
+  const ans = countAnswered();
+  const correct = countCorrect();
+  scoreBarEl.textContent = `Đúng: ${correct}/${total} • Đã trả lời: ${ans}/${total}`;
+
+  // CHỈ SỬA Ở ĐÂY:
+  // Cho phép tổng kết bất cứ lúc nào (kể cả chưa làm hết)
+  summaryBtn.disabled = false;
     }
 
     function renderQuestion(realIndex) {
